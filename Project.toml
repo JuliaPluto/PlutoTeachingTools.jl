@@ -1,7 +1,7 @@
 name = "PlutoTeachingTools"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
 authors = ["Eric Ford <ebf11@psu.edu> and contributors"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
