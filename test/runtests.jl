@@ -19,7 +19,9 @@ using Markdown
     end;
 
     
+    @test_nowarn (x = 5; var_not_defined(x) )
     @test_nowarn (x = 5; not_defined(x) )
+    @test_nowarn (f(x) = x; func_not_defined(f) )
 
     @testset "Useful strings" begin
          @test_nowarn TODO()
