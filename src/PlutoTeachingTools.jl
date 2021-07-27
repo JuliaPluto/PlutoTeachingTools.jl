@@ -6,9 +6,9 @@ using Random # , Distributions # not sure if we need that
 using Markdown
 using LaTeXStrings
 
-export hint, tip 
-export correct, still_missing, still_nothing, var_not_defined, func_not_defined, keep_working, almost 
-export keep_working_if_var_contains_substr
+export hint, tip, almost, warning, danger 
+export correct, still_missing, still_nothing, var_not_defined, func_not_defined, keep_working
+#export keep_working_if_var_contains_substr
 export TODO
 export not_defined
 
@@ -23,6 +23,12 @@ tip(text) = Markdown.MD(Markdown.Admonition("tip", "Pro Tip", [text]));
 
 "Admonition box labeled a warning with arguement as text."
 almost(text) = Markdown.MD(Markdown.Admonition("warning", "Almost there!", [text]));
+
+"warning box with arguement as text."
+warning_box(text) = Markdown.MD(Markdown.Admonition("warning", "Warning:", [text]));
+
+"Danger box with arguement as text."
+danger(text) = Markdown.MD(Markdown.Admonition("danger", "Beware!", [text]));
 
 
 "Admonition box with reminder to replace missing."
@@ -44,6 +50,9 @@ not_defined(variable_name) = var_not_defined(variable_name)
 "Admonition box warning that the answer isn't quite right."
 keep_working(text=md"The answer is not quite right.") = Markdown.MD(Markdown.Admonition("danger", "Keep working on it!", [text]));
 
+#= 
+# Temporarily removed since not working as intended.  
+Probably @isdefined needs the module with the variable
 function keep_working_if_var_contains_substr(var::Symbol,substr::String)
    if !@isdefined(var)
         var_not_defined(:var)
@@ -75,6 +84,7 @@ function keep_working_if_any_false(tests)
         end
    end
 end
+=#
 
 yays = [md"Great!", md"Yay ❤", md"Great! 🎉", md"Well done!", md"Keep it up!", md"Good job!", md"Awesome!", md"You got the right answer!", md"Let's move on to the next section."];
 
