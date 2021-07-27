@@ -10,6 +10,9 @@ export hint, tip
 export correct, still_missing, not_defined, keep_working, almost 
 export TODO
 
+export ingredients
+export WidthOverDocs
+
 "Hint box with arguement as text."
 hint(text) = Markdown.MD(Markdown.Admonition("hint", "Hint", [text]));
 
@@ -36,6 +39,25 @@ correct(text=rand(yays)) = Markdown.MD(Markdown.Admonition("correct", "Got it!",
 
 TODO_str = html"<span style='display: inline; font-size: 2em; color: purple; font-weight: 900;'>TODO</span>"
 TODO() = TODO_str
+
+"""
+   ingredients(path) allows Pluto notebooks to include a module from another file.
+It's like include, but for inside a pluto notebook.
+Source: https://github.com/fonsp/Pluto.jl/issues/115
+"""
+function ingredients(path::String)
+	# this is from the Julia source code (evalfile in base/loading.jl)
+	# but with the modification that it returns the module instead of the last object
+	name = Symbol(basename(path))
+	m = Module(name)
+	Core.eval(m,
+        Expr(:toplevel,
+             :(eval(x) = $(Expr(:core, :eval))($name, x)),
+             :(include(x) = $(Expr(:top, :include))($name, x)),
+             :(include(mapexpr::Function, x) = $(Expr(:top, :include))(mapexpr, $name, x)),
+             :(include($path))))
+	m
+end
 
 """ Provides checkbox to toggle full width versus narrow with column for LiveDocs """
 function WidthOverDocs(enabled=false)  # From PlutoThemes.jl
@@ -74,3 +96,4 @@ function WidthOverDocs(enabled=false)  # From PlutoThemes.jl
 """)
 end
 
+end # module
