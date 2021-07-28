@@ -50,41 +50,22 @@ not_defined(variable_name) = var_not_defined(variable_name)
 "Admonition box warning that the answer isn't quite right."
 keep_working(text=md"The answer is not quite right.") = Markdown.MD(Markdown.Admonition("danger", "Keep working on it!", [text]));
 
-#= 
-# Temporarily removed since not working as intended.  
-Probably @isdefined needs the module with the variable
-function keep_working_if_var_contains_substr(var::Symbol,substr::String)
-   if !@isdefined(var)
-        var_not_defined(:var)
-   else
-        let
-                if ismissing(var)
-                        still_missing()
-                elseif isnothing(var)
-                        still_nothing()
-                elseif occursin(substr,Markdown.plain(eval(var)))
-                        keep_working(md"Make sure to update the cell setting $var.")
-                end
-        end
-   end
+function keep_working_if_var_contains_substr(var::Symbol,str::Union{String,Markdown.MD},substr::String)
+# I had to remove !@isdefined(var) due to how Pluto puts variables into different modules
+# not exported, so provide function with same name in notebook
+  if     ismissing(var)
+         still_missing()
+  elseif isnothing(var)
+         still_nothing()
+  else
+      if typeof(str) == Markdown.MD
+         str = Markdown.plain(str)
+      end
+      if occursin(substr,str)
+         keep_working(md"Make sure to update the cell setting $var.")
+      end
+  end
 end
-
-function keep_working_if_any_false(tests)
-   if !@isdefined(var)
-        var_not_defined(:var)
-   else
-        let
-                if ismissing(var)
-                        still_missing()
-                elseif isnothing(var)
-                        still_nothing()
-                elseif occursin(substr,Markdown.plain(eval(var)))
-                        keep_working(md"Make sure to update the cell setting $var.")
-                end
-        end
-   end
-end
-=#
 
 yays = [md"Great!", md"Yay ❤", md"Great! 🎉", md"Well done!", md"Keep it up!", md"Good job!", md"Awesome!", md"You got the right answer!", md"Let's move on to the next section."];
 
