@@ -5,7 +5,7 @@ using LaTeXStrings
 
 export hint, protip, tip, almost, warning, danger 
 export correct, still_missing, still_nothing, var_not_defined, func_not_defined, keep_working
-export wrong_type
+export wrong_type, warning_box
 #export keep_working_if_var_contains_substr
 export TODO
 export not_defined  # deprecated
