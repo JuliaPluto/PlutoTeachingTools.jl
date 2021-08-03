@@ -3,14 +3,14 @@ using Random # , Distributions # not sure if we need that
 using Markdown
 using LaTeXStrings
 
-export hint, protip, tip, almost, warning, danger 
-export correct, still_missing, still_nothing, var_not_defined, func_not_defined, keep_working
-export wrong_type, warning_box
-#export keep_working_if_var_contains_substr
-export TODO
+export hint, tip, protip, almost, warning_box, danger 
+export correct, still_missing, still_nothing, wrong_type
+export var_not_defined, func_not_defined, keep_working
 export not_defined  # deprecated
+#export keep_working_if_var_contains_substr
 export type_isa, type_eq
 export code_for_check_type_funcs
+export TODO
 export display_msg_if_fail
 
 "Hint box with arguement as text."
