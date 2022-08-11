@@ -21,7 +21,7 @@ function ingredients(path::String)
 end
 
 """ Provides checkbox to toggle full width versus narrow with column for LiveDocs """
-function WidthOverDocs(enabled::Bool=false)  # From PlutoThemes.jl
+function WidthOverDocs(enabled::Bool=false, wide::Bool=false)  # From PlutoThemes.jl
 	checked = wide ? "checked" : ""
 	init = wide ? "toggle_width(document.getElementById('width-over-livedocs'))" : ""
 	return HTML("""
