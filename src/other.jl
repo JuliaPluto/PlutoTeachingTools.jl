@@ -1,24 +1,4 @@
-export ingredients
 export WidthOverDocs
-
-"""
-   ingredients(path) allows Pluto notebooks to include a module from another file.
-It's like include, but for inside a pluto notebook.
-Source: https://github.com/fonsp/Pluto.jl/issues/115
-"""
-function ingredients(path::String)
-	# this is from the Julia source code (evalfile in base/loading.jl)
-	# but with the modification that it returns the module instead of the last object
-	name = Symbol(basename(path))
-	m = Module(name)
-	Core.eval(m,
-        Expr(:toplevel,
-             :(eval(x) = $(Expr(:core, :eval))($name, x)),
-             :(include(x) = $(Expr(:top, :include))($name, x)),
-             :(include(mapexpr::Function, x) = $(Expr(:top, :include))(mapexpr, $name, x)),
-             :(include($path))))
-	m
-end
 
 """ Provides checkbox to toggle full width versus narrow with column for LiveDocs """
 function WidthOverDocs(enabled::Bool=false)  # From PlutoThemes.jl
@@ -55,4 +35,3 @@ function WidthOverDocs(enabled::Bool=false)  # From PlutoThemes.jl
 </script>
 """)
 end
-

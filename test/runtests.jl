@@ -32,7 +32,7 @@ using Markdown
     end;
 
     @testset "Ingredients" begin
-         @test typeof(ingredients("empty_module.jl")) == Module
+         @test typeof(@ingredients("empty_module.jl")) == Module
     end;
 
 end
