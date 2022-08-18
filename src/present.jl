@@ -97,8 +97,13 @@ function ChooseDisplayMode(;wide::Bool=false, present::Bool = false)  # Adapted 
         display: none !important;
         }
         body.width-over-docs main {
-                max-width: calc(100% - 4rem);
-                margin-right: 2rem;
+               max-width: none !important;
+               margin: 0 !important;
+                #max-width: 1100px;
+                #max-width: calc(100% - 4rem);
+                #align-self: flex-star;
+                #margin-left: 50px;
+                #margin-right: 2rem;
         }
 </style>
 <script>
