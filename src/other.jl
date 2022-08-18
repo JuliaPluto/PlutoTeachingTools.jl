@@ -20,8 +20,10 @@ function WidthOverDocs(enabled::Bool=false, wide::Bool=false)  # From PlutoTheme
     	display: none !important;
 	}
 	body.width-over-docs main {
-		max-width: calc(100% - 4rem);
-		margin-right: 2rem;
+               max-width: none !important;
+               margin: 0 !important;
+	       # max-width: calc(100% - 4rem);
+               # margin-right: 2rem;
 	}
 </style>
 <script>
