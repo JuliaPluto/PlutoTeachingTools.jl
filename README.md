@@ -5,13 +5,14 @@ Math from computation, math with computation (Spring 2021)](https://computationa
 
 I've also added:
 - WidthOverDocs from [PlutoThemes.jl](https://github.com/JuliaPluto/PlutoThemes.jl)
-- ingredients(path) from a [Pluto.jl discussion](https://github.com/fonsp/Pluto.jl/issues/115)
+- `@ingredients(path)` from [PlutoLinks.jl](https://github.com/JuliaPluto/PlutoLinks.jl)
 
 I hope that I and others will improve and/or contribute new functions that are of value to other educaitons.  PRs welcome.
 
 # Acknowledgements
 - [Pluto](https://github.com/fonsp/Pluto.jl)
 - [PlutoUI](https://github.com/fonsp/PlutoUI.jl)
+- [PlutoLinks.jl](https://github.com/JuliaPluto/PlutoLinks.jl)
 - [PlutoThemes.jl](https://github.com/JuliaPluto/PlutoThemes.jl)
 - Some material on this website is based on "Computational Thinking, a live online Julia/Pluto textbook, https://computationalthinking.mit.edu"
 
