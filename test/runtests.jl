@@ -18,7 +18,19 @@ using Markdown
         @test_nowarn keep_working(md"Maybe the hint will help.")
     end;
 
-    
+    @testset "aside" begin
+       @test_nowarn aside("testing aside")
+       @test_nowarn aside("testing aside with offset", v_offset=50)
+       @test_nowarn aside(md"testing in markdown")
+       @test_nowarn aside(tip(md"Good tip here"))
+       @test_nowarn aside(md"""
+Testing
+Multi-line
+""")
+   
+ 
+    end;
+ 
     @test_nowarn (x = 5; var_not_defined(x) )
     @test_nowarn (x = 5; not_defined(x) )
     @test_nowarn (f(x) = x; func_not_defined(f) )
