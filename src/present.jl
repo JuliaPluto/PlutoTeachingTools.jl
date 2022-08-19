@@ -2,10 +2,10 @@
 # Borrowed/adapted from https://andreaskroepelin.de/blog/plutoslides/
 export present_button
 export Foldable
-export TwoCollumn, ThreeCollumn
+export TwoColumn, ThreeColumn
 
 # My Minimal tweaks
-export TwoCollumnWideLeft, TwoCollumnWideRight
+export TwoColumnWideLeft, TwoColumnWideRight
 export ChooseDisplayMode # combines present_button and WidthOverDocs
 
 present_button() = html"<button onclick='present()'>present</button>"
