@@ -1,20 +1,20 @@
 ### A Pluto.jl notebook ###
-# v0.19.11
+# v0.19.9
 
 using Markdown
 using InteractiveUtils
 
 # ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
-begin
-	using PlutoUI, PlutoTeachingTools
-end
+using PlutoUI, PlutoTeachingTools
+
+# ╔═╡ cd581a51-fb2b-4579-9a7d-0d723ad5d467
+md"# PlutoTeachingTools.jl Examples"
 
 # ╔═╡ f0704e56-7e97-4c92-bbdd-76d7a873e6d8
-TableOfContents()
+TableOfContents()   # from PlutoUI
 
-# ╔═╡ 9e4b5e5e-3688-4bb2-80a5-fa0f6869528e
+# ╔═╡ d173896e-021a-4b2c-b913-62c5a2320341
 md"""
-# PlutoTeachingTools.jl Examples
 ## Common Note Boxes
 """
 
@@ -45,6 +45,9 @@ tip(md"Think back to exercise 1.")
 # ╔═╡ 947ce2c8-42e3-4704-89b2-c1968077212b
 warning_box(md"Be extra careful here.")
 
+# ╔═╡ 46556317-d7cd-4b0b-b92b-f686f078a0d4
+TODO()
+
 # ╔═╡ 8e053634-bca8-46eb-9202-8ab276dcad12
 md"""
 ## Checking variables are defined
@@ -58,9 +61,6 @@ var_not_defined(:x)
 
 # ╔═╡ d5b25395-1929-46a7-bfed-1327c650a7a5
 func_not_defined(:calc_x)
-
-# ╔═╡ 46e5c910-c06d-484d-8582-285101ce9ac5
-
 
 # ╔═╡ 79f4a49c-4ea3-4888-afaf-7860b883ef38
 md"""
@@ -93,6 +93,15 @@ md"""
 ## Checking responces
 """
 
+# ╔═╡ 5f95518f-62cd-4869-b6cf-85a7860f38ec
+response_1 = "Insert your response here."
+
+# ╔═╡ 3e12dbd9-f02a-479d-9eff-234ac88e059b
+PlutoTeachingTools.keep_working_if_var_contains_substr(:response_1,response_1,"Insert your")
+
+# ╔═╡ c8811462-874c-47da-bb34-797234046fdf
+PlutoTeachingTools.keep_working_if_var_contains_substr(:response_1,response_1,"should display nothing")
+
 # ╔═╡ cccaff2f-3fa0-45f2-9fa6-cf8a21ade844
 md"""
 ## Foldable content
@@ -106,37 +115,34 @@ protip(md"The `CSV.read` function has lots of useful optional arguements.")
 
 # ╔═╡ 88b9d474-3449-4931-ac39-4dc377c04abd
 md"""
-## Markdown / HTML hacks
+## Markdown / LaTeX / HTML hacks
 """
 
-# ╔═╡ 7d714d3b-4ab9-45d9-89c2-31b67210a005
-wrap_tex("x+y=1")
+# ╔═╡ f49ccb75-7cb8-49ce-95b9-ed59033a589d
+A = rand(2,2)
 
-# ╔═╡ d9bacc60-05f3-4608-9dae-1c16631bfbad
+# ╔═╡ af5673b5-a7f9-4033-ac9b-845254f62c98
+md"Now, you can include variables like $A=$ $(latexify_md(A)) inside markdown."
 
+# ╔═╡ 8fcfe710-ac2b-4282-85c6-d3b8800fa53a
+eqn_str = "x^2+y^2 = z^2"
+
+# ╔═╡ 7390e4a7-0561-4611-b3c1-9b83601c5805
+md"And you can grab equations in variables like $(wrap_tex(eqn_str)) inside markdown."
 
 # ╔═╡ 08794ef8-4e10-4913-808e-06ac194625b6
 md"""
-## aside
+## Aside
 """
 
+# ╔═╡ 77bb3822-2a1d-4e23-b852-6b6202069efa
+aside(tip(md"Extra information to consider.") )
+
 # ╔═╡ cc66ef97-36f2-478c-961b-dd8ab2bda4ac
-PlutoTeachingTools.aside(tip(md"Extra information to consider."))
+aside(tip(md"Even more information to consider."),v_offset=200)
 
-# ╔═╡ 46556317-d7cd-4b0b-b92b-f686f078a0d4
-TODO()
-
-# ╔═╡ 5f95518f-62cd-4869-b6cf-85a7860f38ec
-response_1 = "Insert your response here."
-
-# ╔═╡ 3e12dbd9-f02a-479d-9eff-234ac88e059b
-PlutoTeachingTools.keep_working_if_var_contains_substr(:response_1,response_1,"Insert your")
-
-# ╔═╡ c8811462-874c-47da-bb34-797234046fdf
-PlutoTeachingTools.keep_working_if_var_contains_substr(:response_1,response_1,"should display nothing")
-
-# ╔═╡ 0db566ab-d12a-4dfb-b93c-bc5560c811e2
-
+# ╔═╡ 0b2a4490-7e29-42c0-af9a-e99b5540d154
+set_aside_width(400)
 
 # ╔═╡ d7593309-3462-4dba-8275-c2eb76b4c3fe
 md"""
@@ -144,16 +150,16 @@ md"""
 """
 
 # ╔═╡ fc5789dd-4b86-4007-9771-a6246235fd73
-PlutoTeachingTools.TwoColumn(md"Left col", md"Right col")
+TwoColumn(md"Left col", md"Right col")
 
 # ╔═╡ 2881e5de-f6b7-47c0-a794-3e0fa57b712b
-PlutoTeachingTools.ThreeColumn(md"Left col", md"Middle col", md"Right col")
+ThreeColumn(md"Left col", md"Middle col", md"Right col")
 
 # ╔═╡ 0e1e62a6-3b78-4415-89fe-fa17279fddbf
-PlutoTeachingTools.TwoColumnWideLeft(md"Left col", md"Right col")
+TwoColumnWideLeft(md"Left col", md"Right col")
 
 # ╔═╡ f43beea9-7a7e-4ee6-8ae6-350640c426aa
-PlutoTeachingTools.TwoColumnWideRight(md"Left col", md"Right col")
+TwoColumnWideRight(md"Left col", md"Right col")
 
 # ╔═╡ 7859ad2b-7e87-442c-8684-f731f2512a42
 md"""
@@ -163,11 +169,11 @@ md"""
 # ╔═╡ 96ebc3d2-fc70-4a56-8e87-dfe686c723c4
 ChooseDisplayMode()
 
+# ╔═╡ a6485a75-6b52-4549-94e9-658dd971c43b
+present_button()  # Don't use this with ChooseDisplayMode() since two ways to toggle will make checkbox confusing
+
 # ╔═╡ 1f417420-cc7f-4e88-9b2b-05185ff81c31
 #WidthOverDocs()  # deprecated in favor of ChooseDisplayMode
-
-# ╔═╡ a6485a75-6b52-4549-94e9-658dd971c43b
-present_button()
 
 # ╔═╡ 743491af-3d4b-4dee-9ad7-2372ba4e97bd
 md"""
@@ -479,9 +485,10 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 """
 
 # ╔═╡ Cell order:
+# ╟─cd581a51-fb2b-4579-9a7d-0d723ad5d467
 # ╠═657c3eea-1ef6-11ed-3e82-5daad2bc19a1
 # ╠═f0704e56-7e97-4c92-bbdd-76d7a873e6d8
-# ╟─9e4b5e5e-3688-4bb2-80a5-fa0f6869528e
+# ╟─d173896e-021a-4b2c-b913-62c5a2320341
 # ╠═8c3f1fe2-c934-4743-b30b-07dc97aeac46
 # ╠═b48468f0-eeaa-4e1a-ad0b-3cfe42b6ab15
 # ╠═4f968b5c-cb11-4d22-ad5b-5ec9c7c94c87
@@ -491,11 +498,11 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╠═319dacff-fdfb-4d0b-918f-d389e4ac81fd
 # ╠═343eff72-62b0-4cd1-abd9-991245d4054a
 # ╠═947ce2c8-42e3-4704-89b2-c1968077212b
+# ╠═46556317-d7cd-4b0b-b92b-f686f078a0d4
 # ╟─8e053634-bca8-46eb-9202-8ab276dcad12
 # ╠═9ca655cd-2919-4be5-b4de-edcb10d20e3e
 # ╠═c7c3f53e-435a-4ded-a420-04476adfae1c
 # ╠═d5b25395-1929-46a7-bfed-1327c650a7a5
-# ╠═46e5c910-c06d-484d-8582-285101ce9ac5
 # ╟─79f4a49c-4ea3-4888-afaf-7860b883ef38
 # ╠═438c621a-1991-476f-9889-55c053941e1b
 # ╠═1381ca68-cc1d-4fe7-9587-ee13a5db92ab
@@ -505,19 +512,21 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╠═42cb6d16-98e0-4ea8-8b54-370df71fe54e
 # ╠═1f3e04b4-28f9-4bb8-a233-fd061ac2ee75
 # ╟─db745245-805a-478b-b3f5-c7974fab0e9c
+# ╠═5f95518f-62cd-4869-b6cf-85a7860f38ec
 # ╠═3e12dbd9-f02a-479d-9eff-234ac88e059b
 # ╠═c8811462-874c-47da-bb34-797234046fdf
 # ╟─cccaff2f-3fa0-45f2-9fa6-cf8a21ade844
 # ╠═c46d1e7c-df6e-460e-a103-a486d27932c9
 # ╠═fb4ff876-a668-40ab-8d30-bfaa858849e4
 # ╟─88b9d474-3449-4931-ac39-4dc377c04abd
-# ╠═7d714d3b-4ab9-45d9-89c2-31b67210a005
-# ╠═d9bacc60-05f3-4608-9dae-1c16631bfbad
+# ╠═f49ccb75-7cb8-49ce-95b9-ed59033a589d
+# ╠═af5673b5-a7f9-4033-ac9b-845254f62c98
+# ╠═8fcfe710-ac2b-4282-85c6-d3b8800fa53a
+# ╠═7390e4a7-0561-4611-b3c1-9b83601c5805
 # ╟─08794ef8-4e10-4913-808e-06ac194625b6
+# ╠═77bb3822-2a1d-4e23-b852-6b6202069efa
 # ╠═cc66ef97-36f2-478c-961b-dd8ab2bda4ac
-# ╠═46556317-d7cd-4b0b-b92b-f686f078a0d4
-# ╠═5f95518f-62cd-4869-b6cf-85a7860f38ec
-# ╠═0db566ab-d12a-4dfb-b93c-bc5560c811e2
+# ╠═0b2a4490-7e29-42c0-af9a-e99b5540d154
 # ╟─d7593309-3462-4dba-8275-c2eb76b4c3fe
 # ╠═fc5789dd-4b86-4007-9771-a6246235fd73
 # ╠═2881e5de-f6b7-47c0-a794-3e0fa57b712b
@@ -525,8 +534,8 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╠═f43beea9-7a7e-4ee6-8ae6-350640c426aa
 # ╟─7859ad2b-7e87-442c-8684-f731f2512a42
 # ╠═96ebc3d2-fc70-4a56-8e87-dfe686c723c4
-# ╠═1f417420-cc7f-4e88-9b2b-05185ff81c31
 # ╠═a6485a75-6b52-4549-94e9-658dd971c43b
+# ╠═1f417420-cc7f-4e88-9b2b-05185ff81c31
 # ╟─743491af-3d4b-4dee-9ad7-2372ba4e97bd
 # ╠═23afc83f-e971-4356-a30e-1b7a247ff38d
 # ╠═d4b1b5f2-b4ae-4988-aded-79398949f1c8

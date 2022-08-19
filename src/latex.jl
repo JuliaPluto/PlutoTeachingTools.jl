@@ -1,5 +1,7 @@
 # From https://github.com/fonsp/Pluto.jl/issues/1237
 
+using Latexify
+using LaTeXStrings
 export latexify_md, wrap_tex
 
 

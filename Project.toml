@@ -1,11 +1,12 @@
 name = "PlutoTeachingTools"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
 authors = ["Eric Ford <ebf11@psu.edu> and contributors"]
-version = "0.1.5"
+version = "0.1.6"
 
 [deps]
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+Latexify = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
 Markdown = "d6f4376e-aef5-505a-96c1-9c027394607a"
 PlutoLinks = "0ff47ea0-7a50-410d-8455-4348d5de0420"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
@@ -14,6 +15,7 @@ Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 [compat]
 HypertextLiteral = "0.9"
 LaTeXStrings = "1"
+Latexify = "0.15"
 PlutoLinks = "0.1.5"
 PlutoUI = "0.7"
 julia = "1"
