@@ -12,7 +12,9 @@ PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [compat]
+HypertextLiteral = "0.9"
 LaTeXStrings = "1"
+PlutoLinks = "0.1.5"
 PlutoUI = "0.7"
 julia = "1"
 
