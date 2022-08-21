@@ -218,7 +218,7 @@ PlutoTeachingTools = "661c6b06-c737-4d37-b85c-46df65de6f69"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
-PlutoTeachingTools = "~0.1.6"
+PlutoTeachingTools = "~0.1.7"
 PlutoUI = "~0.7.39"
 """
 
@@ -419,10 +419,10 @@ uuid = "0ff47ea0-7a50-410d-8455-4348d5de0420"
 version = "0.1.5"
 
 [[deps.PlutoTeachingTools]]
-deps = ["HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
-git-tree-sha1 = "73227dcaac6e39023a5b8c3a7f4308b12d539847"
+deps = ["Downloads", "HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
+git-tree-sha1 = "67c917d383c783aeadd25babad6625b834294b30"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
-version = "0.1.6"
+version = "0.1.7"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
