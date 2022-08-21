@@ -1,3 +1,5 @@
+using HypertextLiteral
+
 export aside, set_aside_width
 
 aside_has_been_setup = false
