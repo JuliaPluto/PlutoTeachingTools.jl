@@ -13,7 +13,7 @@ function WidthOverDocs(enabled::Bool=false, wide::Bool=false)  # From PlutoTheme
     onclick="window.plutoOptIns.toggle_width(this)"
 	$(checked)>
 <label for="width-over-livedocs">
-	Full Width Mode 
+	$(_"Full Width Mode")
 </label>
 <style>
 	body.width-over-docs #helpbox-wrapper {

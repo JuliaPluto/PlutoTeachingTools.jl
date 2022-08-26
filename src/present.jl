@@ -90,7 +90,7 @@ function ChooseDisplayMode(;wide::Bool=false, present::Bool = false)  # Adapted 
     onclick="window.plutoOptIns.toggle_width(this)"
         $(checked)>
 <label for="width-over-livedocs">
-        Full Width Mode
+        $(_"Full Width Mode")
 </label>
 <style>
         body.width-over-docs #helpbox-wrapper {
@@ -123,7 +123,7 @@ function ChooseDisplayMode(;wide::Bool=false, present::Bool = false)  # Adapted 
         onclick="present()"
         $(checked_present_mode)>
 <label for="present_mode">
-        Present Mode
+        $(_"Present Mode")
 </label>
 
 """)

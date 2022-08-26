@@ -14,45 +14,45 @@ export TODO
 export display_msg_if_fail
 
 "Hint box with arguement as text."
-hint(text) = Markdown.MD(Markdown.Admonition("hint", "Hint", [text]));
+hint(text) = Markdown.MD(Markdown.Admonition("hint", _"Hint", [text]));
 
 "Tip box with arguement as text."
-tip(text) = Markdown.MD(Markdown.Admonition("tip", "Tip", [text]));
+tip(text) = Markdown.MD(Markdown.Admonition("tip", _"Tip", [text]));
 
 "Tip box with arguement as text."
-protip(text, invite = "Curious to learn more?";  boxlabel = "Pro Tip") = Foldable(invite, Markdown.MD(Markdown.Admonition("tip", boxlabel, [text])) );
+protip(text, invite = _"Curious to learn more?";  boxlabel = _"Pro Tip") = Foldable(invite, Markdown.MD(Markdown.Admonition("tip", boxlabel, [text])) );
 
 "Admonition box labeled a warning with arguement as text."
-almost(text) = Markdown.MD(Markdown.Admonition("warning", "Almost there!", [text]));
+almost(text) = Markdown.MD(Markdown.Admonition("warning", _"Almost there!", [text]));
 
 "warning box with arguement as text."
-warning_box(text) = Markdown.MD(Markdown.Admonition("warning", "Warning:", [text]));
+warning_box(text) = Markdown.MD(Markdown.Admonition("warning", _"Warning:", [text]));
 
 "Danger box with arguement as text."
-danger(text) = Markdown.MD(Markdown.Admonition("danger", "Beware!", [text]));
+danger(text) = Markdown.MD(Markdown.Admonition("danger", _"Beware!", [text]));
 
 "Admonition box with reminder to replace missing."
-still_missing(text=md"Replace `missing` with your answer.") = Markdown.MD(Markdown.Admonition("warning", "Missing Response", [text]));
+still_missing(text=i18n(md"Replace `missing` with your answer.")) = Markdown.MD(Markdown.Admonition("warning", _"Missing Response", [text]));
 
 "Admonition box with reminder to replace nothing."
-still_nothing(text=md"Replace `nothing` with your answer.") = Markdown.MD(Markdown.Admonition("warning", "Here we go!", [text]));
+still_nothing(text=i18n(md"Replace `nothing` with your answer.")) = Markdown.MD(Markdown.Admonition("warning", _"Here we go!", [text]));
 
-wrong_type() = Markdown.MD(Markdown.Admonition("danger", "Type Error", [md"Check the type of your response."]))
+wrong_type() = Markdown.MD(Markdown.Admonition("danger", _"Type Error", [md"Check the type of your response."]))
 
-wrong_type(var::Symbol, type::Type; text=md"The type of $var should be $type") = Markdown.MD(Markdown.Admonition("danger", "Type Error", [text]))
+wrong_type(var::Symbol, type::Type; text=md"The type of $var should be $type") = Markdown.MD(Markdown.Admonition("danger", _"Type Error", [text]))
 
 "Admonition box with reminder that function name passed is not defined."
-func_not_defined(func_name) = Markdown.MD(Markdown.Admonition("danger", "Oopsie!", [md"Make sure that you define a function called **$(Markdown.Code(string(func_name)))**"]));
+func_not_defined(func_name) = Markdown.MD(Markdown.Admonition("danger", _"Oopsie!", [i18n(md"Make sure that you define a function called **$(Markdown.Code(string(func_name)))**")]));
 
 "Admonition box with reminder that variable name passed is not defined."
-var_not_defined(variable_name) = Markdown.MD(Markdown.Admonition("danger", "Oopsie!", [md"Make sure that you define a variable called **$(Markdown.Code(string(variable_name)))**"]));
+var_not_defined(variable_name) = Markdown.MD(Markdown.Admonition("danger", _"Oopsie!", [i18n(md"Make sure that you define a variable called **$(Markdown.Code(string(variable_name)))**")]));
 
 "Admonition box with reminder that variable name passed is not defined.  (deprecated)"
 not_defined(variable_name) = var_not_defined(variable_name)
 
 
 "Admonition box warning that the answer isn't quite right."
-keep_working(text=md"The answer is not quite right.") = Markdown.MD(Markdown.Admonition("danger", "Keep working on it!", [text]));
+keep_working(text=md"The answer is not quite right.") = Markdown.MD(Markdown.Admonition("danger", _"Keep working on it!", [text]));
 
 function keep_working_if_var_contains_substr(var::Symbol,str::Union{String,Markdown.MD},substr::String)
 # I had to remove !@isdefined(var) due to how Pluto puts variables into different modules
@@ -134,10 +134,10 @@ end
 end
 """
 
-yays = [md"Great!", md"Yay ❤", md"Great! 🎉", md"Well done!", md"Keep it up!", md"Good job!", md"Awesome!", md"You got the right answer!", md"Let's move on to the next part."];
+yays = i18n.([md"Great!", md"Yay ❤", md"Great! 🎉", md"Well done!", md"Keep it up!", md"Good job!", md"Awesome!", md"You got the right answer!", md"Let's move on to the next part."]);
 
 "Box with random positive message."
-correct(text=rand(yays)) = Markdown.MD(Markdown.Admonition("correct", "Got it!", [text]));
+correct(text=rand(yays)) = Markdown.MD(Markdown.Admonition("correct", _"Got it!", [text]));
 
 TODO_str = html"<span style='display: inline; font-size: 2em; color: purple; font-weight: 900;'>TODO</span>"
 TODO() = TODO_str
