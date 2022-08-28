@@ -37,7 +37,7 @@ still_missing(text=i18n(md"Replace `missing` with your answer.")) = Markdown.MD(
 "Admonition box with reminder to replace nothing."
 still_nothing(text=i18n(md"Replace `nothing` with your answer.")) = Markdown.MD(Markdown.Admonition("warning", _"Here we go!", [text]));
 
-wrong_type() = Markdown.MD(Markdown.Admonition("danger", _"Type Error", [md"Check the type of your response."]))
+wrong_type() = Markdown.MD(Markdown.Admonition("danger", _"Type Error", [i18n(md"Check the type of your response.")]))
 
 wrong_type(var::Symbol, type::Type; text=md"The type of $var should be $type") = Markdown.MD(Markdown.Admonition("danger", _"Type Error", [text]))
 
@@ -52,7 +52,7 @@ not_defined(variable_name) = var_not_defined(variable_name)
 
 
 "Admonition box warning that the answer isn't quite right."
-keep_working(text=md"The answer is not quite right.") = Markdown.MD(Markdown.Admonition("danger", _"Keep working on it!", [text]));
+keep_working(text=i18n(md"The answer is not quite right.")) = Markdown.MD(Markdown.Admonition("danger", _"Keep working on it!", [text]));
 
 function keep_working_if_var_contains_substr(var::Symbol,str::Union{String,Markdown.MD},substr::String)
 # I had to remove !@isdefined(var) due to how Pluto puts variables into different modules
