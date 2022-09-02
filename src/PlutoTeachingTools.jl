@@ -7,7 +7,7 @@ using Markdown
 using PlutoLinks: @ingredients
 export @ingredients
 
-include("i18n.jl")
+include("i18n.jl") # provides framework for multiple language support
 include("computational_thinking.jl")
 include("present.jl")
 include("latex.jl")

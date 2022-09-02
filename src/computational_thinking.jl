@@ -32,7 +32,7 @@ warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Mar
 danger(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", danger_str(lang), [text]));
 
 "Admonition box with reminder to replace missing."
-still_missing(text=still_missing_text_str(lang), lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", still_missing_str(label), [text]));
+still_missing(text=still_missing_text_str(lang), lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", still_missing_str(lang), [text]));
 
 "Admonition box with reminder to replace nothing."
 still_nothing(text=still_nothing_text_str(lang), lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", still_nothing_str(lang), [text]));
@@ -42,10 +42,10 @@ wrong_type(lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.A
 wrong_type(var::Symbol, type::Type, lang::AbstractLanguage = default_language[]; text=wrong_type_text_str(lang, var, type)) = Markdown.MD(Markdown.Admonition("danger", wrong_type_str(lang), [text]))
 
 "Admonition box with reminder that function name passed is not defined."
-func_not_defined(func_name, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", func_not_defined_str(lang), [func_not_defined_text_str(lang, func_name)]));
+func_not_defined(func_name, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", func_not_defined_str(lang), [func_not_defined_text_str(func_name, lang)]));
 
 "Admonition box with reminder that variable name passed is not defined."
-var_not_defined(variable_name, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", var_not_defined_str(lang), [var_not_defined_text_str(lang, variable_name)]));
+var_not_defined(variable_name, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", var_not_defined_str(lang), [var_not_defined_text_str(variable_name, lang)]));
 
 "Admonition box with reminder that variable name passed is not defined. (deprecated)"
 not_defined(variable_name, lang::AbstractLanguage = default_language[]) = var_not_defined(variable_name, lang)
@@ -65,7 +65,7 @@ function keep_working_if_var_contains_substr(var::Symbol,str::Union{String,Markd
          str = Markdown.plain(str)
       end
       if occursin(substr,str)
-         keep_working(keep_working_update_str(lang))
+         keep_working(keep_working_update_str(var, lang))
       end
   end
 end

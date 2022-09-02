@@ -23,12 +23,12 @@ wrong_type_str(lang::Lang) where {Lang <: English} = "Type Error"
 wrong_type_text_str(lang::Lang) where {Lang <: English} = md"Check the type of your response."
 wrong_type_text_str(lang::Lang, var, type) where {Lang <: English} = md"The type of $var should be $type"
 func_not_defined_str(lang::Lang) where {Lang <: English} = "Oopsie!"
-func_not_defined_text_str(lang::Lang, func_name) where {Lang <: English} = md"Make sure that you define a function called **$(Markdown.Code(string(func_name)))**"
+func_not_defined_text_str(func_name, lang::Lang) where {Lang <: English} = md"Make sure that you define a function called **$(Markdown.Code(string(func_name)))**"
 var_not_defined_str(lang::Lang) where {Lang <: English} = "Oopsie!"
-var_not_defined_text_str(lang::Lang, variable_name) where {Lang <: English} = md"Make sure that you define a variable called **$(Markdown.Code(string(variable_name)))**"
+var_not_defined_text_str(variable_name, lang::Lang) where {Lang <: English} = md"Make sure that you define a variable called **$(Markdown.Code(string(variable_name)))**"
 keep_working_str(lang::Lang) where {Lang <: English} = "Keep working on it!"
 keep_working_text_str(lang::Lang) where {Lang <: English} = md"The answer is not quite right."
-keep_working_update_str(lang::Lang) where {Lang <: English} = md"Make sure to update the cell setting $var."
+keep_working_update_str(var, lang::Lang) where {Lang <: English} = md"Make sure to update the cell setting $var."
 yays(lang::Lang) where {Lang <: English} = [md"Great!", md"Yay ❤", md"Great! 🎉", md"Well done!", md"Keep it up!", md"Good job!", md"Awesome!", md"You got the right answer!", md"Let's move on to the next part."];
 correct_str(lang::Lang) where {Lang <: English} = "Got it!"
 
@@ -52,7 +52,7 @@ full_width_mode_str(lang::Lang) where {Lang <: English} = "Full Width Mode"
 present_str(lang::Lang) where {Lang <: English} = "present"
 present_mode_str(lang::Lang) where {Lang <: English} = "Present Mode"
 
-default_language = Ref{AbstractLanguage}(EnglishUS())
+const default_language = Ref{AbstractLanguage}(EnglishUS())
 function set_language!(lang::AbstractLanguage)
     global default_language[] = lang
 end
