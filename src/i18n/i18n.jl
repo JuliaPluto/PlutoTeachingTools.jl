@@ -47,6 +47,7 @@ present_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define
 present_mode_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 
 include("english.jl")
+include("german.jl")
 
 const default_language = Ref{AbstractLanguage}(PTTEnglish.EnglishUS())
 function set_language!(lang::AbstractLanguage)
