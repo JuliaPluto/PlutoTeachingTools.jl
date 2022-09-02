@@ -1,3 +1,5 @@
+module PTTEnglish
+
 abstract type English  <: AbstractLanguage end
 struct EnglishUS <: English end
 
@@ -45,3 +47,5 @@ full_width_mode_str(lang::Lang) where {Lang <: English} = "Full Width Mode"
 # present.jl
 present_str(lang::Lang) where {Lang <: English} = "present"
 present_mode_str(lang::Lang) where {Lang <: English} = "Present Mode"
+
+end
