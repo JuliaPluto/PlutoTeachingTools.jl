@@ -1,9 +1,3 @@
-export AbstractLanguage, set_language!
-abstract type AbstractLanguage end
-
-
-
-
 abstract type English  <: AbstractLanguage end
 struct EnglishUS <: English end
 
@@ -51,8 +45,3 @@ full_width_mode_str(lang::Lang) where {Lang <: English} = "Full Width Mode"
 # present.jl
 present_str(lang::Lang) where {Lang <: English} = "present"
 present_mode_str(lang::Lang) where {Lang <: English} = "Present Mode"
-
-const default_language = Ref{AbstractLanguage}(EnglishUS())
-function set_language!(lang::AbstractLanguage)
-    global default_language[] = lang
-end
