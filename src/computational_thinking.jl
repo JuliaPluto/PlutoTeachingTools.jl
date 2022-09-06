@@ -138,7 +138,7 @@ end
 """
 
 "Box with random positive message."
-correct(text=rand(yays(lang)), lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("correct", correct_str(lang), [text]));
+correct(;text=rand(yays(lang)), lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("correct", correct_str(lang), [text]));
 correct(text, lang::AbstractLanguage = default_language[]) = correct(;lang, text);
 
 TODO_str = html"<span style='display: inline; font-size: 2em; color: purple; font-weight: 900;'>TODO</span>"
