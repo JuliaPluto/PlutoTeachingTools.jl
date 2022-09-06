@@ -5,7 +5,9 @@ using Markdown
 using ..PlutoTeachingTools
 
 abstract type German  <: AbstractLanguage end
-struct GermanGermany <: German end
+struct GermanGermanyFormal <: German end
+struct GermanGermanyColloquial <: German end
+GermanGermany = GermanGermanyFormal
 
 # computational_thinking.jl
 PlutoTeachingTools.hint_str(lang::Lang) where {Lang <: German} = "Hinweis"
@@ -16,20 +18,28 @@ PlutoTeachingTools.almost_str(lang::Lang) where {Lang <: German} = "Fast am Ziel
 PlutoTeachingTools.warning_box_str(lang::Lang) where {Lang <: German} = "Warnung:"
 PlutoTeachingTools.danger_str(lang::Lang) where {Lang <: German} = "Achtung!"
 PlutoTeachingTools.still_missing_str(lang::Lang) where {Lang <: German} = "Fehlende Antwort"
-PlutoTeachingTools.still_missing_text_str(lang::Lang) where {Lang <: German} = md"Ersetze `missing` mit deiner Antwort."
+PlutoTeachingTools.still_missing_text_str(lang::Lang) where {Lang <: GermanGermanyFormal} = md"Ersetzen Sie `missing` mit Ihrer Antwort."
+PlutoTeachingTools.still_missing_text_str(lang::Lang) where {Lang <: GermanGermanyColloquial} = md"Ersetze `missing` mit deiner Antwort."
 PlutoTeachingTools.still_nothing_str(lang::Lang) where {Lang <: German} = "Fehlende Antwort"
-PlutoTeachingTools.still_nothing_text_str(lang::Lang) where {Lang <: German} = md"Ersetze `nothing` mit deiner Antwort."
+PlutoTeachingTools.still_nothing_text_str(lang::Lang) where {Lang <: GermanGermanyFormal} = md"Ersetzen Sie `nothing` mit Ihrer Antwort."
+PlutoTeachingTools.still_nothing_text_str(lang::Lang) where {Lang <: GermanGermanyColloquial} = md"Ersetze `nothing` mit deiner Antwort."
 PlutoTeachingTools.wrong_type_str(lang::Lang) where {Lang <: German} = "Typfehler"
-PlutoTeachingTools.wrong_type_text_str(lang::Lang) where {Lang <: German} = md"Kontrolliere den Typ deiner Antwort."
+PlutoTeachingTools.wrong_type_text_str(lang::Lang) where {Lang <: GermanGermanyFormal} = md"Kontrollieren Sie den Typ Ihrer Antwort."
+PlutoTeachingTools.wrong_type_text_str(lang::Lang) where {Lang <: GermanGermanyColloquial} = md"Kontrolliere den Typ deiner Antwort."
 PlutoTeachingTools.wrong_type_text_str(lang::Lang, var, type) where {Lang <: German} = md"Der Typ von $var sollte $type sein."
 PlutoTeachingTools.func_not_defined_str(lang::Lang) where {Lang <: German} = "Uups!"
-PlutoTeachingTools.func_not_defined_text_str(func_name, lang::Lang) where {Lang <: German} = md"Stelle sicher, eine Funktion mit dem Namen **$(Markdown.Code(string(func_name)))** zu definieren."
+PlutoTeachingTools.func_not_defined_text_str(func_name, lang::Lang) where {Lang <: GermanGermanyFormal} = md"Stellen Sie sicher, eine Funktion mit dem Namen **$(Markdown.Code(string(func_name)))** zu definieren."
+PlutoTeachingTools.func_not_defined_text_str(func_name, lang::Lang) where {Lang <: GermanGermanyColloquial} = md"Stelle sicher, eine Funktion mit dem Namen **$(Markdown.Code(string(func_name)))** zu definieren."
 PlutoTeachingTools.var_not_defined_str(lang::Lang) where {Lang <: German} = "Uups!"
-PlutoTeachingTools.var_not_defined_text_str(variable_name, lang::Lang) where {Lang <: German} = md"Stelle sicher, eine Variable mit dem Namen **$(Markdown.Code(string(variable_name)))** zu definieren."
-PlutoTeachingTools.keep_working_str(lang::Lang) where {Lang <: German} = "Versuch es weiter!"
+PlutoTeachingTools.var_not_defined_text_str(variable_name, lang::Lang) where {Lang <: GermanGermanyFormal} = md"Stellen Sie sicher, eine Variable mit dem Namen **$(Markdown.Code(string(variable_name)))** zu definieren."
+PlutoTeachingTools.var_not_defined_text_str(variable_name, lang::Lang) where {Lang <: GermanGermanyColloquial} = md"Stelle sicher, eine Variable mit dem Namen **$(Markdown.Code(string(variable_name)))** zu definieren."
+PlutoTeachingTools.keep_working_str(lang::Lang) where {Lang <: GermanGermanyFormal} = "Versuchen Sie es weiter!"
+PlutoTeachingTools.keep_working_str(lang::Lang) where {Lang <: GermanGermanyColloquial} = "Versuch es weiter!"
 PlutoTeachingTools.keep_working_text_str(lang::Lang) where {Lang <: German} = md"Die Antwort ist noch nicht ganz richtig."
-PlutoTeachingTools.keep_working_update_str(var, lang::Lang) where {Lang <: German} = md"Stelle sicher, dass die Zellen mit der Variable $var erneut evaluiert wird."
-PlutoTeachingTools.yays(lang::Lang) where {Lang <: German} = [md"Großartig!", md"Juchu ❤", md"Großartig! 🎉", md"Gut gemacht!", md"Weiter so!", md"Gute Arbeit!", md"Super!", md"Deine Antwort ist richtig!", md"Weiter geht's mit der nächsten Antwort."]
+PlutoTeachingTools.keep_working_update_str(var, lang::Lang) where {Lang <: GermanGermanyFormal} = md"Stellen Sie sicher, dass die Zelle mit der Variable $var erneut evaluiert wird."
+PlutoTeachingTools.keep_working_update_str(var, lang::Lang) where {Lang <: GermanGermanyColloquial} = md"Stelle sicher, dass die Zelle mit der Variable $var erneut evaluiert wird."
+PlutoTeachingTools.yays(lang::Lang) where {Lang <: GermanGermanyFormal} = [md"Großartig!", md"Juchu ❤", md"Großartig! 🎉", md"Gut gemacht!", md"Weiter so!", md"Gute Arbeit!", md"Super!", md"Ihre Antwort ist richtig!", md"Weiter geht's mit der nächsten Antwort."]
+PlutoTeachingTools.yays(lang::Lang) where {Lang <: GermanGermanyColloquial} = [md"Großartig!", md"Juchu ❤", md"Großartig! 🎉", md"Gut gemacht!", md"Weiter so!", md"Gute Arbeit!", md"Super!", md"Deine Antwort ist richtig!", md"Weiter geht's mit der nächsten Antwort."]
 PlutoTeachingTools.correct_str(lang::Lang) where {Lang <: German} = "Richtig!"
 
 PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang <: German} = md"Die Variable \$sym ist immer noch `missing`."
