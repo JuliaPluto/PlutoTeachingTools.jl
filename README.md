@@ -13,4 +13,6 @@ I encourage others to improve and/or contribute new functions that are of value 
 - [PlutoUI](https://github.com/fonsp/PlutoUI.jl)
 - [PlutoLinks.jl](https://github.com/JuliaPluto/PlutoLinks.jl)
 - [PlutoThemes.jl](https://github.com/JuliaPluto/PlutoThemes.jl)
+- [jonschumacher](https://github.com/jonschumacher):  Internationalization & German
 - Some material on this website is based on "Computational Thinking, a live online Julia/Pluto textbook, https://computationalthinking.mit.edu"
+
