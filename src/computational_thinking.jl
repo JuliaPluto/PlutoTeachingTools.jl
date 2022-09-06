@@ -20,7 +20,8 @@ hint(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.A
 tip(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("tip", tip_str(lang), [text]));
 
 "Tip box with arguement as text."
-protip(text, invite = protip_invite_str(lang), lang::AbstractLanguage = default_language[];  boxlabel = protip_boxlabel_str(lang)) = Foldable(invite, Markdown.MD(Markdown.Admonition("tip", boxlabel, [text])) );
+protip(text; lang::AbstractLanguage = default_language[], invite = protip_invite_str(lang), boxlabel = protip_boxlabel_str(lang)) = Foldable(invite, Markdown.MD(Markdown.Admonition("tip", boxlabel, [text])) );
+protip(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = protip_boxlabel_str(lang)) = protip(text; lang, invite, boxlabel);
 
 "Admonition box labeled a warning with arguement as text."
 almost(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", almost_str(lang), [text]));
@@ -32,10 +33,12 @@ warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Mar
 danger(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", danger_str(lang), [text]));
 
 "Admonition box with reminder to replace missing."
-still_missing(text=still_missing_text_str(lang), lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", still_missing_str(lang), [text]));
+still_missing(;lang::AbstractLanguage = default_language[], text=still_missing_text_str(lang)) = Markdown.MD(Markdown.Admonition("warning", still_missing_str(lang), [text]));
+still_missing(text, lang::AbstractLanguage = default_language[]) = still_missing(;lang, text);
 
 "Admonition box with reminder to replace nothing."
-still_nothing(text=still_nothing_text_str(lang), lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", still_nothing_str(lang), [text]));
+still_nothing(; lang::AbstractLanguage = default_language[], text=still_nothing_text_str(lang)) = Markdown.MD(Markdown.Admonition("warning", still_nothing_str(lang), [text]));
+still_nothing(text, lang::AbstractLanguage = default_language[]) = still_nothing(;lang, text);
 
 wrong_type(lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", wrong_type_str(lang), [wrong_type_text_str(lang)]))
 
@@ -51,7 +54,8 @@ var_not_defined(variable_name, lang::AbstractLanguage = default_language[]) = Ma
 not_defined(variable_name, lang::AbstractLanguage = default_language[]) = var_not_defined(variable_name, lang)
 
 "Admonition box warning that the answer isn't quite right."
-keep_working(text=keep_working_text_str(lang), lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", keep_working_str(lang), [text]));
+keep_working(; lang::AbstractLanguage = default_language[], text=keep_working_text_str(lang)) = Markdown.MD(Markdown.Admonition("danger", keep_working_str(lang), [text]));
+keep_working(text, lang::AbstractLanguage = default_language[]) = keep_working(;lang, text);
 
 function keep_working_if_var_contains_substr(var::Symbol,str::Union{String,Markdown.MD},substr::String, lang::AbstractLanguage = default_language[])
 # I had to remove !@isdefined(var) due to how Pluto puts variables into different modules
@@ -135,6 +139,7 @@ end
 
 "Box with random positive message."
 correct(text=rand(yays(lang)), lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("correct", correct_str(lang), [text]));
+correct(text, lang::AbstractLanguage = default_language[]) = correct(;lang, text);
 
 TODO_str = html"<span style='display: inline; font-size: 2em; color: purple; font-weight: 900;'>TODO</span>"
 TODO() = TODO_str
