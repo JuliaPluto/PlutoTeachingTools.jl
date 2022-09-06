@@ -8,7 +8,7 @@ export TwoColumn, ThreeColumn
 export TwoColumnWideLeft, TwoColumnWideRight
 export ChooseDisplayMode # combines present_button and WidthOverDocs
 
-present_button() = html"<button onclick='present()'>present</button>"
+present_button(lang::AbstractLanguage = default_language[]) = html"<button onclick='present()'>$(present_str(lang))</button>"
 
 struct Foldable{C}
     title::String
@@ -77,7 +77,7 @@ function Base.show(io, mime::MIME"text/html", tc::ThreeColumn)
 end
 
 """ Provides checkbox to toggle full width and present mode. """
-function ChooseDisplayMode(;wide::Bool=false, present::Bool = false)  # Adapted from PlutoThemes.jl
+function ChooseDisplayMode(;wide::Bool=false, present::Bool = false, lang::AbstractLanguage = default_language[])  # Adapted from PlutoThemes.jl
         checked = wide ? "checked" : ""
         checked_present_mode = present ? "checked" : ""
         init = wide ? "toggle_width(document.getElementById('width-over-livedocs'))" : ""
@@ -90,7 +90,7 @@ function ChooseDisplayMode(;wide::Bool=false, present::Bool = false)  # Adapted 
     onclick="window.plutoOptIns.toggle_width(this)"
         $(checked)>
 <label for="width-over-livedocs">
-        Full Width Mode
+        $(full_width_mode_str(lang))
 </label>
 <style>
         body.width-over-docs #helpbox-wrapper {
@@ -123,7 +123,7 @@ function ChooseDisplayMode(;wide::Bool=false, present::Bool = false)  # Adapted 
         onclick="present()"
         $(checked_present_mode)>
 <label for="present_mode">
-        Present Mode
+        $(present_mode_str(lang))
 </label>
 
 """)

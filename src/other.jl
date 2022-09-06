@@ -1,7 +1,7 @@
 export WidthOverDocs
 
 """ Provides checkbox to toggle full width versus narrow with column for LiveDocs """
-function WidthOverDocs(enabled::Bool=false, wide::Bool=false)  # From PlutoThemes.jl
+function WidthOverDocs(enabled::Bool=false, wide::Bool=false, lang::AbstractLanguage = default_language[])  # From PlutoThemes.jl
 	checked = wide ? "checked" : ""
 	init = wide ? "toggle_width(document.getElementById('width-over-livedocs'))" : ""
 	return HTML("""
@@ -13,7 +13,7 @@ function WidthOverDocs(enabled::Bool=false, wide::Bool=false)  # From PlutoTheme
     onclick="window.plutoOptIns.toggle_width(this)"
 	$(checked)>
 <label for="width-over-livedocs">
-	Full Width Mode 
+	$(full_width_mode_str(lang))
 </label>
 <style>
 	body.width-over-docs #helpbox-wrapper {
