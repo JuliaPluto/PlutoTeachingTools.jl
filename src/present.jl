@@ -8,7 +8,10 @@ export TwoColumn, ThreeColumn
 export TwoColumnWideLeft, TwoColumnWideRight
 export ChooseDisplayMode # combines present_button and WidthOverDocs
 
-present_button(lang::AbstractLanguage = default_language[]) = html"<button onclick='present()'>$(present_str(lang))</button>"
+function present_button(lang::AbstractLanguage = default_language[]) 
+    txt = present_str(lang)
+    htl"<button onclick='present()'>$txt</button>"
+end
 
 struct Foldable{C}
     title::String

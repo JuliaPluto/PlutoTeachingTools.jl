@@ -47,9 +47,25 @@ present_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define
 present_mode_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 
 include("english.jl")
+import .PTTEnglish: EnglishUS
 include("german.jl")
+import .PTTGerman: GermanGermany, GermanGermanyFormal, GermanGermanyColloquial
 
-const default_language = Ref{AbstractLanguage}(PTTEnglish.EnglishUS())
+function get_language_from_env()
+   if !@isdefined(ENV) || !haskey(ENV,"LANG")
+      PTTEnglish.EnglishUS()
+   elseif contains(ENV["LANG"],r"^en[-_]")
+      PTTEnglish.EnglishUS()
+   elseif contains(ENV["LANG"],r"^de[-_]")
+      PTTGerman.GermanGermany()
+   else # Sorry, we don't have your language yet.
+      PTTEnglish.EnglishUS()
+   end
+end
+
+#const default_language = Ref{AbstractLanguage}(PTTEnglish.EnglishUS())
+const default_language = Ref{AbstractLanguage}(get_language_from_env())
+
 function set_language!(lang::AbstractLanguage)
     global default_language[] = lang
 end

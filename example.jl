@@ -1,11 +1,18 @@
 ### A Pluto.jl notebook ###
-# v0.19.11
+# v0.19.9
 
 using Markdown
 using InteractiveUtils
 
 # ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
-using PlutoUI, PlutoTeachingTools
+begin
+	using PlutoUI, PlutoTeachingTools
+	
+	# PlutoTeachingTools looks up language based on ENV["LANG"]
+	# Uncomment a line below to override default language
+	#set_language!(PlutoTeachingTools.EnglishUS())      # default
+	#set_language!(PlutoTeachingTools.GermanGermany())  
+end
 
 # ╔═╡ cd581a51-fb2b-4579-9a7d-0d723ad5d467
 md"# PlutoTeachingTools.jl Examples"
@@ -53,14 +60,14 @@ md"""
 ## Checking variables are defined
 """
 
-# ╔═╡ 9ca655cd-2919-4be5-b4de-edcb10d20e3e
-not_defined(:x) # deprecated
-
 # ╔═╡ c7c3f53e-435a-4ded-a420-04476adfae1c
 var_not_defined(:x)
 
 # ╔═╡ d5b25395-1929-46a7-bfed-1327c650a7a5
 func_not_defined(:calc_x)
+
+# ╔═╡ 9ca655cd-2919-4be5-b4de-edcb10d20e3e
+not_defined(:x) # deprecated
 
 # ╔═╡ 79f4a49c-4ea3-4888-afaf-7860b883ef38
 md"""
@@ -113,6 +120,23 @@ Foldable("Want more?",md"Extra info")
 # ╔═╡ fb4ff876-a668-40ab-8d30-bfaa858849e4
 protip(md"The `CSV.read` function has lots of useful optional arguements.")
 
+# ╔═╡ 69a9e9f3-a72e-4935-a200-2842010f1e54
+protip(md"Several of these functions have optional arguements.","Invitation to learn more")
+
+# ╔═╡ 08794ef8-4e10-4913-808e-06ac194625b6
+md"""
+## Aside
+"""
+
+# ╔═╡ 77bb3822-2a1d-4e23-b852-6b6202069efa
+aside(tip(md"Extra information to consider.") )
+
+# ╔═╡ cc66ef97-36f2-478c-961b-dd8ab2bda4ac
+aside(tip(md"Even more information to consider."),v_offset=100)
+
+# ╔═╡ 0b2a4490-7e29-42c0-af9a-e99b5540d154
+set_aside_width(400)
+
 # ╔═╡ 88b9d474-3449-4931-ac39-4dc377c04abd
 md"""
 ## Markdown / LaTeX / HTML hacks
@@ -129,20 +153,6 @@ eqn_str = "x^2+y^2 = z^2"
 
 # ╔═╡ 7390e4a7-0561-4611-b3c1-9b83601c5805
 md"And you can grab equations in variables like $(wrap_tex(eqn_str)) inside markdown."
-
-# ╔═╡ 08794ef8-4e10-4913-808e-06ac194625b6
-md"""
-## Aside
-"""
-
-# ╔═╡ 77bb3822-2a1d-4e23-b852-6b6202069efa
-aside(tip(md"Extra information to consider.") )
-
-# ╔═╡ cc66ef97-36f2-478c-961b-dd8ab2bda4ac
-aside(tip(md"Even more information to consider."),v_offset=200)
-
-# ╔═╡ 0b2a4490-7e29-42c0-af9a-e99b5540d154
-set_aside_width(400)
 
 # ╔═╡ d7593309-3462-4dba-8275-c2eb76b4c3fe
 md"""
@@ -170,7 +180,7 @@ md"""
 ChooseDisplayMode()
 
 # ╔═╡ a6485a75-6b52-4549-94e9-658dd971c43b
-present_button()  # Don't use this with ChooseDisplayMode() since two ways to toggle will make checkbox confusing
+present_button()  # Don't use this with ChooseDisplayMode() since two ways to toggle will make the checkbox behavior confusing
 
 # ╔═╡ 1f417420-cc7f-4e88-9b2b-05185ff81c31
 #WidthOverDocs()  # deprecated in favor of ChooseDisplayMode
@@ -183,6 +193,9 @@ begin
 	url = "https://raw.githubusercontent.com/gist/fonsp/9a36c183e2cad7c8fc30290ec95eb104/raw/ca3a38a61f95cd58d79d00b663a3c114d21e284e/cute.svg"
 	path = "data/cute.svg"
 end;
+
+# ╔═╡ 44d651d3-ce42-4061-b193-da7c31efed8e
+TwoColumnWideLeft(warning_box(md"Discussion of figure on right."), RobustLocalResource(url, path))
 
 # ╔═╡ 43a47026-4b09-4c20-9ccb-a766a17f8ff4
 RobustLocalResource(url, path, cache=false)
@@ -218,8 +231,8 @@ PlutoTeachingTools = "661c6b06-c737-4d37-b85c-46df65de6f69"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
-PlutoTeachingTools = "~0.1.7"
-PlutoUI = "~0.7.39"
+PlutoTeachingTools = "~0.2.1"
+PlutoUI = "~0.7.40"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -398,9 +411,9 @@ version = "1.4.1"
 
 [[deps.Parsers]]
 deps = ["Dates"]
-git-tree-sha1 = "0044b23da09b5608b4ecacb4e5e6c6332f833a7e"
+git-tree-sha1 = "3d5bf43e3e8b412656404ed9466f1dcbf7c50269"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
-version = "2.3.2"
+version = "2.4.0"
 
 [[deps.Pkg]]
 deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
@@ -420,15 +433,15 @@ version = "0.1.5"
 
 [[deps.PlutoTeachingTools]]
 deps = ["Downloads", "HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
-git-tree-sha1 = "67c917d383c783aeadd25babad6625b834294b30"
+git-tree-sha1 = "50f8d9a9c7e89570083ae59dc914e5b9278ee800"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
-version = "0.1.7"
+version = "0.2.1"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
-git-tree-sha1 = "8d1f54886b9037091edf146b517989fc4a09efec"
+git-tree-sha1 = "a602d7b0babfca89005da04d89223b867b55319f"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
-version = "0.7.39"
+version = "0.7.40"
 
 [[deps.Printf]]
 deps = ["Unicode"]
@@ -533,9 +546,9 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╠═947ce2c8-42e3-4704-89b2-c1968077212b
 # ╠═46556317-d7cd-4b0b-b92b-f686f078a0d4
 # ╟─8e053634-bca8-46eb-9202-8ab276dcad12
-# ╠═9ca655cd-2919-4be5-b4de-edcb10d20e3e
 # ╠═c7c3f53e-435a-4ded-a420-04476adfae1c
 # ╠═d5b25395-1929-46a7-bfed-1327c650a7a5
+# ╠═9ca655cd-2919-4be5-b4de-edcb10d20e3e
 # ╟─79f4a49c-4ea3-4888-afaf-7860b883ef38
 # ╠═438c621a-1991-476f-9889-55c053941e1b
 # ╠═1381ca68-cc1d-4fe7-9587-ee13a5db92ab
@@ -551,20 +564,22 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╟─cccaff2f-3fa0-45f2-9fa6-cf8a21ade844
 # ╠═c46d1e7c-df6e-460e-a103-a486d27932c9
 # ╠═fb4ff876-a668-40ab-8d30-bfaa858849e4
+# ╠═69a9e9f3-a72e-4935-a200-2842010f1e54
+# ╟─08794ef8-4e10-4913-808e-06ac194625b6
+# ╠═77bb3822-2a1d-4e23-b852-6b6202069efa
+# ╠═cc66ef97-36f2-478c-961b-dd8ab2bda4ac
+# ╠═0b2a4490-7e29-42c0-af9a-e99b5540d154
 # ╟─88b9d474-3449-4931-ac39-4dc377c04abd
 # ╠═f49ccb75-7cb8-49ce-95b9-ed59033a589d
 # ╠═af5673b5-a7f9-4033-ac9b-845254f62c98
 # ╠═8fcfe710-ac2b-4282-85c6-d3b8800fa53a
 # ╠═7390e4a7-0561-4611-b3c1-9b83601c5805
-# ╟─08794ef8-4e10-4913-808e-06ac194625b6
-# ╠═77bb3822-2a1d-4e23-b852-6b6202069efa
-# ╠═cc66ef97-36f2-478c-961b-dd8ab2bda4ac
-# ╠═0b2a4490-7e29-42c0-af9a-e99b5540d154
 # ╟─d7593309-3462-4dba-8275-c2eb76b4c3fe
 # ╠═fc5789dd-4b86-4007-9771-a6246235fd73
 # ╠═2881e5de-f6b7-47c0-a794-3e0fa57b712b
 # ╠═0e1e62a6-3b78-4415-89fe-fa17279fddbf
 # ╠═f43beea9-7a7e-4ee6-8ae6-350640c426aa
+# ╠═44d651d3-ce42-4061-b193-da7c31efed8e
 # ╟─7859ad2b-7e87-442c-8684-f731f2512a42
 # ╠═96ebc3d2-fc70-4a56-8e87-dfe686c723c4
 # ╠═a6485a75-6b52-4549-94e9-658dd971c43b
