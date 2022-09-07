@@ -1,7 +1,7 @@
 name = "PlutoTeachingTools"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
 authors = ["Eric Ford <ebf11@psu.edu> and contributors"]
-version = "0.2.0"
+version = "0.2.1"
 
 [deps]
 Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"

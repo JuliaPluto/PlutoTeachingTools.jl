@@ -27,7 +27,7 @@ protip(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = pro
 almost(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", almost_str(lang), [text]));
 
 "warning box with arguement as text."
-warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", warning_str(lang), [text]));
+warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", warning_box_str(lang), [text]));
 
 "Danger box with arguement as text."
 danger(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", danger_str(lang), [text]));
@@ -80,57 +80,57 @@ type_eq(var, t::Union{Type,Vector{Type},Vector{DataType}}) = (any(typeof(var) .=
 # To use functions in notebook, run eval(Meta.parse(code_for_check_type_funcs)) 
 code_for_check_type_funcs = """
 begin
-function check_type_isa(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{DataType}}, lang::AbstractLanguage = default_language[])
+function check_type_isa(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{DataType}}, lang::AbstractLanguage = PlutoTeachingTools.default_language[])
    if ismissing(var)
         passed = false
-        text = check_type_isa_missing_text_str(sym, lang)
+        text = PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang)
         msg = still_missing(text, lang)
    elseif !type_isa(var,t) # (any(typeof(var) .<: t))
         passed = false
-        text = check_type_isa_wrong_type_text_str(sym, lang)
+        text = PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang)
         if typeof(t) <: Type
            text = text * "\$t."
         else
-           text = text * check_type_isa_wrong_type_one_of_text_str(lang) " "
+           text = text * PlutoTeachingTools.check_type_isa_wrong_type_one_of_text_str(lang) * " "
            for tt in t
               if tt == last(t)
-                 text = text * " " * check_type_isa_wrong_type_or_text_str(lang) * " \$t."
+                 text = text * " " * PlutoTeachingTools.check_type_isa_wrong_type_or_text_str(lang) * " \$t."
               else
                  text = text * " \$t,"
               end
            end
         end
-        msg = Markdown.MD(Markdown.Admonition("danger", check_type_isa_type_error_str(sym, lang), [Markdown.MD(text)]))
+        msg = Markdown.MD(Markdown.Admonition("danger", PlutoTeachingTools.check_type_isa_type_error_str(sym, lang), [Markdown.MD(text)]))
    else
         passed = true
-        msg = check_type_isa_not_missing_text_str(sym, lang)
+        msg = PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang)
    end
    return (;passed, msg)
 end
-function check_type_eq(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{DataType}}, lang::AbstractLanguage = default_language[])
+function check_type_eq(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{DataType}}, lang::AbstractLanguage = PlutoTeachingTools.default_language[])
    if ismissing(var)
         passed = false
-        text = check_type_eq_missing_text_str(sym, lang)
-        msg = still_missing(text, lang)
+        text = PlutoTeachingTools.check_type_eq_missing_text_str(sym, lang)
+        msg = PlutoTeachingTools.still_missing(text, lang)
    elseif !type_eq(var, t) # (any(typeof(var) == t))
         passed = false
         if typeof(t) <: Type
-           text = check_type_eq_wrong_type_single_text_str(sym, type, lang)
+           text = PlutoTeachingTools.check_type_eq_wrong_type_single_text_str(sym, type, lang)
         else
-           text = check_type_eq_wrong_type_multi_text_str(sym, lang)
+           text = PlutoTeachingTools.check_type_eq_wrong_type_multi_text_str(sym, lang)
            for tt in t
               if tt == last(t)
-                 text = text * " " * check_type_isa_wrong_type_or_text_str(lang) * " \$t."
+                 text = text * " " * PlutoTeachingTools.check_type_isa_wrong_type_or_text_str(lang) * " \$t."
               else
                  text = text * " \$t,"
               end
            end
         end
         #text = md"The type of \$sym should be \$t."
-        msg = Markdown.MD(Markdown.Admonition("danger", check_type_eq_type_error_str(lang), [Markdown.MD(text)]))
+        msg = Markdown.MD(Markdown.Admonition("danger", PlutoTeachingTools.check_type_eq_type_error_str(lang), [Markdown.MD(text)]))
    else
         passed = true
-        msg = check_type_eq_correct_str(sym, lang)
+        msg = PlutoTeachingTools.check_type_eq_correct_str(sym, lang)
    end
    return (;passed, msg)
 end
