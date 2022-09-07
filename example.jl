@@ -433,7 +433,7 @@ version = "0.1.5"
 
 [[deps.PlutoTeachingTools]]
 deps = ["Downloads", "HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
-git-tree-sha1 = "50f8d9a9c7e89570083ae59dc914e5b9278ee800"
+git-tree-sha1 = "600e89af8f58086a2691a88f5a4ae367c41ce91d"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
 version = "0.2.1"
 
