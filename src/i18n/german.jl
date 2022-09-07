@@ -42,18 +42,18 @@ PlutoTeachingTools.yays(lang::Lang) where {Lang <: GermanGermanyFormal} = [md"Gr
 PlutoTeachingTools.yays(lang::Lang) where {Lang <: GermanGermanyColloquial} = [md"Großartig!", md"Juchu ❤", md"Großartig! 🎉", md"Gut gemacht!", md"Weiter so!", md"Gute Arbeit!", md"Super!", md"Deine Antwort ist richtig!", md"Weiter geht's mit der nächsten Antwort."]
 PlutoTeachingTools.correct_str(lang::Lang) where {Lang <: German} = "Richtig!"
 
-PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang <: German} = md"Die Variable \$sym ist immer noch `missing`."
-PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang <: German} = "Der Typ von \$sym ist nicht richtig. Richtig wäre <: "
+PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang <: German} = md"Die Variable `$sym` ist immer noch `missing`."
+PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang <: German} = "Der Typ von `$sym` ist nicht richtig. Richtig wäre <: "
 PlutoTeachingTools.check_type_isa_wrong_type_one_of_text_str(lang::Lang) where {Lang <: German} = "einer von"
 PlutoTeachingTools.check_type_isa_wrong_type_or_text_str(lang::Lang) where {Lang <: German} = "oder"
-PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang::Lang) where {Lang <: German} = md"\$sym hat den korrekten Typ."
+PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang::Lang) where {Lang <: German} = md"`$sym` hat den korrekten Typ."
 PlutoTeachingTools.check_type_isa_type_error_str(sym, lang::Lang) where {Lang <: German} = "Typfehler"
 
-PlutoTeachingTools.check_type_eq_missing_text_str(sym, lang::Lang) where {Lang <: German} = md"Die Variable \$sym ist immer noch `missing`."
-PlutoTeachingTools.check_type_eq_wrong_type_single_text_str(sym, type, lang::Lang) where {Lang <: German} = "Der Typ von \$sym sollte \$type sein."
-PlutoTeachingTools.check_type_eq_wrong_type_multi_text_str(sym, lang::Lang) where {Lang <: German} = "Der Typ von \$sym sollte einer der folgenden sein: "
+PlutoTeachingTools.check_type_eq_missing_text_str(sym, lang::Lang) where {Lang <: German} = md"Die Variable `$sym` ist immer noch `missing`."
+PlutoTeachingTools.check_type_eq_wrong_type_single_text_str(sym, type, lang::Lang) where {Lang <: German} = "Der Typ von `$sym` sollte `$type` sein."
+PlutoTeachingTools.check_type_eq_wrong_type_multi_text_str(sym, lang::Lang) where {Lang <: German} = "Der Typ von `$sym` sollte einer der folgenden sein: "
 PlutoTeachingTools.check_type_eq_type_error_str(lang::Lang) where {Lang <: German} = "Typfehler"
-PlutoTeachingTools.check_type_eq_correct_str(sym, lang::Lang) where {Lang <: German} = md"\$sym hat den korrekten Typ."
+PlutoTeachingTools.check_type_eq_correct_str(sym, lang::Lang) where {Lang <: German} = md"`$sym` hat den korrekten Typ."
 
 # other.jl
 PlutoTeachingTools.full_width_mode_str(lang::Lang) where {Lang <: German} = "Modus \"Volle Breite\""
