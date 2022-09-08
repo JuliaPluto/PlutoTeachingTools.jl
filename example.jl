@@ -4,21 +4,37 @@
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
-begin
-	using PlutoUI, PlutoTeachingTools
-	
-	# PlutoTeachingTools looks up language based on ENV["LANG"]
-	# Uncomment a line below to override default language
-	#set_language!(PlutoTeachingTools.EnglishUS())      # default
-	#set_language!(PlutoTeachingTools.GermanGermany())  
+# This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
+macro bind(def, element)
+    quote
+        local iv = try Base.loaded_modules[Base.PkgId(Base.UUID("6e696c72-6542-2067-7265-42206c756150"), "AbstractPlutoDingetjes")].Bonds.initial_value catch; b -> missing; end
+        local el = $(esc(element))
+        global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : iv(el)
+        el
+    end
 end
+
+# ╔═╡ e4c3201f-a566-4160-804d-484651e4db70
+using PlutoUI
 
 # ╔═╡ cd581a51-fb2b-4579-9a7d-0d723ad5d467
 md"# PlutoTeachingTools.jl Examples"
 
 # ╔═╡ f0704e56-7e97-4c92-bbdd-76d7a873e6d8
 TableOfContents()   # from PlutoUI
+
+# ╔═╡ 9c82fd03-eeeb-4b90-88d6-5a0b43ce901d
+md"""
+Language for common prompts: $(@bind lang Select(["en"=>"English","de"=>"German"]) ) 
+"""
+
+# ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
+begin
+	using PlutoTeachingTools
+
+	# Optionally override default language choice (lang defined in widget above)
+	set_language!( PlutoTeachingTools.get_language(lang) )
+end;
 
 # ╔═╡ d173896e-021a-4b2c-b913-62c5a2320341
 md"""
@@ -154,6 +170,12 @@ eqn_str = "x^2+y^2 = z^2"
 # ╔═╡ 7390e4a7-0561-4611-b3c1-9b83601c5805
 md"And you can grab equations in variables like $(wrap_tex(eqn_str)) inside markdown."
 
+# ╔═╡ 17fe39b8-f371-4663-9c30-a4921b11d80d
+md"#### Heading $nbsp $nbsp with extra space"
+
+# ╔═╡ 5517a632-5edb-4cb9-ba24-f8d94f9bd76b
+md"#### Multi-line $br heading"  # actually from PlutoUI
+
 # ╔═╡ d7593309-3462-4dba-8275-c2eb76b4c3fe
 md"""
 ## Multiple Columns
@@ -171,6 +193,36 @@ TwoColumnWideLeft(md"Left col", md"Right col")
 # ╔═╡ f43beea9-7a7e-4ee6-8ae6-350640c426aa
 TwoColumnWideRight(md"Left col", md"Right col")
 
+# ╔═╡ 7596325b-7a1b-4fad-bac3-ae6743e3f8dd
+md"""## RobustLocalResource"""
+
+# ╔═╡ 2bfcfe6d-221e-4619-b794-92e44494460b
+begin
+	url = "https://raw.githubusercontent.com/gist/fonsp/9a36c183e2cad7c8fc30290ec95eb104/raw/ca3a38a61f95cd58d79d00b663a3c114d21e284e/cute.svg"
+	path = "data/cute.svg"
+end;
+
+# ╔═╡ 44d651d3-ce42-4061-b193-da7c31efed8e
+TwoColumnWideLeft(warning_box(md"Discussion of figure on right."), RobustLocalResource(url, path))
+
+# ╔═╡ 43a47026-4b09-4c20-9ccb-a766a17f8ff4
+RobustLocalResource(url, path, cache=false)  # specify to not save a local copy
+
+# ╔═╡ 4774a4d7-d5f1-40e4-8c2f-f0f96e9242ce
+RobustLocalResource(url, path, :width=>200, :alt=>"Pluto logo") # add html attributes
+
+# ╔═╡ e1895edd-a776-4433-a8b1-a05ca52cb6b3
+md"## Multi-language support"
+
+# ╔═╡ 9a9fa0cd-f2f5-4362-8d16-e6e0e9805932
+preferred_text( (en=md"Hello",de=md"Hallo") )
+
+# ╔═╡ cc938e1d-62c6-4747-bb1f-260ef7ed0b64
+mls_link = "#" * (PlutoRunner.currently_running_cell_id[] |> string)
+
+# ╔═╡ 45ab5332-6e44-45be-9e37-01d731f77729
+Markdown.parse("""See also [multi-language support]($mls_link) section below""")
+
 # ╔═╡ 7859ad2b-7e87-442c-8684-f731f2512a42
 md"""
 ## Presentation mode
@@ -185,24 +237,6 @@ present_button()  # Don't use this with ChooseDisplayMode() since two ways to to
 # ╔═╡ 1f417420-cc7f-4e88-9b2b-05185ff81c31
 #WidthOverDocs()  # deprecated in favor of ChooseDisplayMode
 
-# ╔═╡ 7596325b-7a1b-4fad-bac3-ae6743e3f8dd
-md"""## RobustLocalResource"""
-
-# ╔═╡ 2bfcfe6d-221e-4619-b794-92e44494460b
-begin
-	url = "https://raw.githubusercontent.com/gist/fonsp/9a36c183e2cad7c8fc30290ec95eb104/raw/ca3a38a61f95cd58d79d00b663a3c114d21e284e/cute.svg"
-	path = "data/cute.svg"
-end;
-
-# ╔═╡ 44d651d3-ce42-4061-b193-da7c31efed8e
-TwoColumnWideLeft(warning_box(md"Discussion of figure on right."), RobustLocalResource(url, path))
-
-# ╔═╡ 43a47026-4b09-4c20-9ccb-a766a17f8ff4
-RobustLocalResource(url, path, cache=false)
-
-# ╔═╡ 4774a4d7-d5f1-40e4-8c2f-f0f96e9242ce
-RobustLocalResource(url, path, :width=>200)
-
 # ╔═╡ 743491af-3d4b-4dee-9ad7-2372ba4e97bd
 md"""
 ## Ingredients
@@ -210,7 +244,7 @@ md"""
 
 # ╔═╡ 23afc83f-e971-4356-a30e-1b7a247ff38d
 begin
-	MyModule = @ingredients "demo_module.jl"
+	MyModule = @ingredients "demo_module.jl"  # provided by PlutoLinks.jl
 	import .MyModule: Demo
 	import .Demo: hello
 end
@@ -231,7 +265,7 @@ PlutoTeachingTools = "661c6b06-c737-4d37-b85c-46df65de6f69"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
-PlutoTeachingTools = "~0.2.1"
+PlutoTeachingTools = "~0.2.2"
 PlutoUI = "~0.7.40"
 """
 
@@ -433,9 +467,9 @@ version = "0.1.5"
 
 [[deps.PlutoTeachingTools]]
 deps = ["Downloads", "HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
-git-tree-sha1 = "600e89af8f58086a2691a88f5a4ae367c41ce91d"
+git-tree-sha1 = "d8be3432505c2febcea02f44e5f4396fae017503"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
-version = "0.2.1"
+version = "0.2.3"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
@@ -532,8 +566,11 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 
 # ╔═╡ Cell order:
 # ╟─cd581a51-fb2b-4579-9a7d-0d723ad5d467
-# ╠═657c3eea-1ef6-11ed-3e82-5daad2bc19a1
+# ╠═e4c3201f-a566-4160-804d-484651e4db70
 # ╠═f0704e56-7e97-4c92-bbdd-76d7a873e6d8
+# ╟─9c82fd03-eeeb-4b90-88d6-5a0b43ce901d
+# ╠═657c3eea-1ef6-11ed-3e82-5daad2bc19a1
+# ╟─45ab5332-6e44-45be-9e37-01d731f77729
 # ╟─d173896e-021a-4b2c-b913-62c5a2320341
 # ╠═8c3f1fe2-c934-4743-b30b-07dc97aeac46
 # ╠═b48468f0-eeaa-4e1a-ad0b-3cfe42b6ab15
@@ -574,20 +611,25 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╠═af5673b5-a7f9-4033-ac9b-845254f62c98
 # ╠═8fcfe710-ac2b-4282-85c6-d3b8800fa53a
 # ╠═7390e4a7-0561-4611-b3c1-9b83601c5805
+# ╠═17fe39b8-f371-4663-9c30-a4921b11d80d
+# ╠═5517a632-5edb-4cb9-ba24-f8d94f9bd76b
 # ╟─d7593309-3462-4dba-8275-c2eb76b4c3fe
 # ╠═fc5789dd-4b86-4007-9771-a6246235fd73
 # ╠═2881e5de-f6b7-47c0-a794-3e0fa57b712b
 # ╠═0e1e62a6-3b78-4415-89fe-fa17279fddbf
 # ╠═f43beea9-7a7e-4ee6-8ae6-350640c426aa
 # ╠═44d651d3-ce42-4061-b193-da7c31efed8e
-# ╟─7859ad2b-7e87-442c-8684-f731f2512a42
-# ╠═96ebc3d2-fc70-4a56-8e87-dfe686c723c4
-# ╠═a6485a75-6b52-4549-94e9-658dd971c43b
-# ╠═1f417420-cc7f-4e88-9b2b-05185ff81c31
 # ╟─7596325b-7a1b-4fad-bac3-ae6743e3f8dd
 # ╠═2bfcfe6d-221e-4619-b794-92e44494460b
 # ╠═43a47026-4b09-4c20-9ccb-a766a17f8ff4
 # ╠═4774a4d7-d5f1-40e4-8c2f-f0f96e9242ce
+# ╟─e1895edd-a776-4433-a8b1-a05ca52cb6b3
+# ╠═9a9fa0cd-f2f5-4362-8d16-e6e0e9805932
+# ╠═cc938e1d-62c6-4747-bb1f-260ef7ed0b64
+# ╟─7859ad2b-7e87-442c-8684-f731f2512a42
+# ╠═96ebc3d2-fc70-4a56-8e87-dfe686c723c4
+# ╠═a6485a75-6b52-4549-94e9-658dd971c43b
+# ╠═1f417420-cc7f-4e88-9b2b-05185ff81c31
 # ╟─743491af-3d4b-4dee-9ad7-2372ba4e97bd
 # ╠═23afc83f-e971-4356-a30e-1b7a247ff38d
 # ╠═d4b1b5f2-b4ae-4988-aded-79398949f1c8
