@@ -10,7 +10,7 @@ export not_defined  # deprecated
 #export keep_working_if_var_contains_substr
 export type_isa, type_eq
 export code_for_check_type_funcs
-export TODO
+export TODO, nbsp
 export display_msg_if_fail
 
 "Hint box with arguement as text."
@@ -143,6 +143,9 @@ correct(text, lang::AbstractLanguage = default_language[]) = correct(;lang, text
 
 TODO_str = html"<span style='display: inline; font-size: 2em; color: purple; font-weight: 900;'>TODO</span>"
 TODO() = TODO_str
+
+# Useful strings for embedding in markdown
+nbsp = html"&nbsp;"
 
 function display_msg_if_fail(x; msg_pass = nothing)
    if !x.passed
