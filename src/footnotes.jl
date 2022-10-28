@@ -9,12 +9,12 @@ using InteractiveUtils
 
 # ╔═╡ 626cabc5-e46c-4f66-b3dd-f3afe99f5fe5
 md"""
-asdasd[^abc]uuwwwuuuuu("kjhgfd")
+asdasd[^xyz]uuwwwuuuuu("kjhgfd")
 """
 
 # ╔═╡ b1128729-0efe-4e5f-9e12-0ddbeb9d604c
 md"""
-asdasd[^aaa]iuasyasasasdasdsssss("kjhgfd")
+asdasd[^xyz]iuasyasasasdasdsssss("kjhgfd")
 """
 
 # ╔═╡ ee33cf59-2777-422f-b886-1c191433286a
@@ -24,7 +24,7 @@ asdasd[^abc]iuasasdasdadsyasassssss("kjhgfd")
 
 # ╔═╡ fab1d84f-3064-49f8-bbbb-f825f78f02ed
 md"""
-asdasd[^abc3]iuasyasassssss("kjhgfd")
+asdasd[^abc]iuasyasassssss("kjhgfd")
 """
 
 # ╔═╡ eb2e4383-d4ec-43ee-b030-f1a95b400e7f
@@ -34,7 +34,7 @@ asdasd[^bbb]rryd("kjhgfd")
 
 # ╔═╡ 47582cfd-73cf-4a11-a511-50b406aa758a
 md"""
-asdasd[^abc]cite("kjhgfd")[^abc]zsdg ("kjhgfd")
+asdasd[^aaa]cite("kjhgfd")[^abc]zsdg ("kjhgfd")
 """
 
 # ╔═╡ 8b9834c8-1747-4503-81fe-d525bc5f25bd
@@ -44,7 +44,7 @@ md"""
 
 # ╔═╡ c1b59097-a575-4797-a24a-3b13d26f3c1a
 md"""
-[^abc]: 5d4t79jhgfd")
+[^xyz]: 5d4t79jhgfd")
 """
 
 # ╔═╡ a1f03f0b-f17c-4f05-87be-edb128187aee
@@ -57,32 +57,27 @@ md"""
 [^abc3]: 46d5jhgfd")
 """
 
-# ╔═╡ e6b00569-c72f-4e7b-8ca3-8044d61e68ee
-
-
 # ╔═╡ 47055bc8-98c1-4da4-8349-6ee4e0180349
-html"""
-<script id="w">
+numberedInlineFootnotesfootnotes() = html"""
+<script id="footnotes">
 
 const addNumbersToInlineFootnotes = () => {
-console.log("\n\n\n\n\n\n\n\nstart")
+
 
 const inlinefootnotesNodes=document.querySelectorAll("a.footnote")
 const bottomfootnoteNodes=document.getElementsByClassName("footnote-title")
 
+
 const botttomFootnoteTextList=Array.from(bottomfootnoteNodes).map(x=>x.innerText);
 
-//square brackets to match the inline footnotes
-const botttomFootnoteTextListWithBrackets=botttomFootnoteTextList.map(x=>"["+x+"]");
 
-
-
-
-
+//get the inline footers inner text so that we can match up with the 
 const inlineFootnoteTextList=Array.from(inlinefootnotesNodes)
 .map(x=>x.innerText)
-console.log(inlineFootnoteTextList)
 
+
+//add square brackets to match the inline footnotes
+const botttomFootnoteTextListWithBrackets=botttomFootnoteTextList.map(x=>"["+x+"]");
 
 
 //find the number which we want to display inline
@@ -90,31 +85,26 @@ var inlineFootnoteTextListWithNumbers = inlineFootnoteTextList
 .map((x,index)=>{
 
 const indexOfBottomFootnote = botttomFootnoteTextListWithBrackets.indexOf(x)
-//botttomFootnoteTextListWithBrackets.findIndex(y=>y==x,x)
-
-const number = indexOfBottomFootnote+1
-
+const indexOfBottomFootnotePlus1 = indexOfBottomFootnote+1
 const element = inlinefootnotesNodes[index]
 
-//modify the element before part
+//modify the element before part depending on if we find a match
 if (indexOfBottomFootnote<0) 
-{
+{//if we don't find a match display an error
 	element.setAttribute("data-before","["+"ERROR! no matching reference"+"]")
 	element.style.setProperty("font-size","11px")
 }
-else
-{
-	element.setAttribute("data-before","["+number+"]")
+else 
+{//if we do add the number and make the label disapear by sizing it to 0px
+	element.setAttribute("data-before","["+indexOfBottomFootnotePlus1+"]")
 	element.style.setProperty("font-size","0px")
-	console.log(element)
 }
 
-return number
+return indexOfBottomFootnotePlus1
 
 })
-console.log(inlineFootnoteTextListWithNumbers)
 
-}
+}//end of function addNumbersToInlineFootnotes
 
 
 
@@ -124,7 +114,8 @@ console.log(inlineFootnoteTextListWithNumbers)
 
 
 //run everytime "something" is done so that it updates dynamically/reactively
-//Code taken from Table of Contents
+//2022/10/28
+//all of the below was taken from Table of Contents in PlutoUI 
 const invalidated = { current: false }
 const updateCallback = () => {
 	if (!invalidated.current) {
@@ -167,6 +158,9 @@ bodyClassObserver.observe(document.body, {attributeFilter: ["class"]})
 </script>
 """
 
+
+# ╔═╡ e6b00569-c72f-4e7b-8ca3-8044d61e68ee
+numberedInlineFootnotesfootnotes()
 
 # ╔═╡ 40371532-1320-42fc-9e57-066e1d9fbbda
 #=
