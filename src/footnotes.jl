@@ -4,61 +4,11 @@
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ 0f8276fd-9dd8-4ada-bec5-7b1990afdf19
+# ╔═╡ e6b00569-c72f-4e7b-8ca3-8044d61e68ee
 
-
-# ╔═╡ 626cabc5-e46c-4f66-b3dd-f3afe99f5fe5
-md"""
-asdasd[^xyz]uuwwwuuuuu("kjhgfd")
-"""
-
-# ╔═╡ b1128729-0efe-4e5f-9e12-0ddbeb9d604c
-md"""
-asdasd[^xyz]iuasyasasasdasdsssss("kjhgfd")
-"""
-
-# ╔═╡ ee33cf59-2777-422f-b886-1c191433286a
-md"""
-asdasd[^abc]iuasasdasdadsyasassssss("kjhgfd")
-"""
-
-# ╔═╡ fab1d84f-3064-49f8-bbbb-f825f78f02ed
-md"""
-asdasd[^abc]iuasyasassssss("kjhgfd")
-"""
-
-# ╔═╡ eb2e4383-d4ec-43ee-b030-f1a95b400e7f
-md"""
-asdasd[^bbb]rryd("kjhgfd")
-"""
-
-# ╔═╡ 47582cfd-73cf-4a11-a511-50b406aa758a
-md"""
-asdasd[^aaa]cite("kjhgfd")[^abc]zsdg ("kjhgfd")
-"""
-
-# ╔═╡ 8b9834c8-1747-4503-81fe-d525bc5f25bd
-md"""
-[^abc2]: 098iom("kjhgfd")
-"""
-
-# ╔═╡ c1b59097-a575-4797-a24a-3b13d26f3c1a
-md"""
-[^xyz]: 5d4t79jhgfd")
-"""
-
-# ╔═╡ a1f03f0b-f17c-4f05-87be-edb128187aee
-md"""
-[^aaa]: 46a=timotot")
-"""
-
-# ╔═╡ 3db1db88-d9a5-4e2c-84ac-e9ac746d3eaf
-md"""
-[^abc3]: 46d5jhgfd")
-"""
 
 # ╔═╡ 47055bc8-98c1-4da4-8349-6ee4e0180349
-numberedInlineFootnotesfootnotes() = html"""
+NumberedInlineFootnotesfootnotes() = html"""
 <script id="footnotes">
 
 const addNumbersToInlineFootnotes = () => {
@@ -159,8 +109,8 @@ bodyClassObserver.observe(document.body, {attributeFilter: ["class"]})
 """
 
 
-# ╔═╡ e6b00569-c72f-4e7b-8ca3-8044d61e68ee
-numberedInlineFootnotesfootnotes()
+# ╔═╡ 2e3d0bbd-9c1f-4d42-a726-f9b70d89b7fe
+export NumberedInlineFootnotesfootnotes
 
 # ╔═╡ 40371532-1320-42fc-9e57-066e1d9fbbda
 #=
@@ -168,7 +118,7 @@ as found and discussed here
 - https://hub.gke2.mybinder.org/user/fonsp-pluto-on-binder-o5onajv8/pluto/edit?id=f001628e-4bfb-11ed-04d7-892b7e9b1fe3&token=OG86wPs6Tn2cc0wPePWTPw#footnote-what_is_this
 - https://github.com/JuliaPluto/PlutoUI.jl/issues/44
 =#
-footnoteSuperScript()=html"""
+FootnoteStyleSuperScript()=html"""
 <style> 
 pluto-notebook {
   counter-reset:  footnote footnote-title;
@@ -193,35 +143,60 @@ a.footnote::before {
 	content: "[" counter(footnote-title) "]" !important;
 	font-size: 0.75rem !important;
 }
-
 </style>
 """
 
-# ╔═╡ 4740632d-9ef2-4718-a99f-4816f4a18d9d
-footnoteSuperScript()
+# ╔═╡ d2180e45-2e07-404a-98fb-e703a7b6d84c
+export FootnoteStyleSuperScript
 
 # ╔═╡ 808265f1-e048-4704-9345-13a9d7c674aa
-
-
-# ╔═╡ d0339220-e5ce-4bb1-b9de-39c8a726b1ce
-
-
-# ╔═╡ 2f53f42d-bfe0-4e9f-a834-49bf510cbf77
 md"""
-# old javascript code
+# Examples
+### first we call the functions
 """
 
-# ╔═╡ 4c4b016a-a8ec-4f15-82d6-71ff843be811
-//adjust zero based index
-var inlineFootnoteTextListWithNumbersPlus1 = inlineFootnoteTextListWithNumbers
-.map(x=>x+1)
-console.log(inlinefootnotesNodes)
+# ╔═╡ d0339220-e5ce-4bb1-b9de-39c8a726b1ce
+NumberedInlineFootnotesfootnotes() 
+
+# ╔═╡ 98935dba-c0b2-4837-bee7-120777c9ac18
+FootnoteStyleSuperScript()
+
+# ╔═╡ 6758b159-c225-4e2f-8859-8d3f1871ba7a
+md"""
+### then we create some inline footnotes. 
+
+look this is footnote1[^footnote1], here is another one [^info]. 
+"""
+
+# ╔═╡ a823aee0-6b83-4be0-8456-b1c5cf095e70
+md"""
+we can refer/label them whatever we want[^xyz]. Here is the first one again[^footnote1] notice how the reference number is still one. if there is no footnote title/info found "at the bottom" then an error is shown[^ahh]
+"""
+
+# ╔═╡ e911ca05-774a-4efa-bdd7-257b705983e8
+md"""
+### lastly on now create the footnote info/title
+"""
+
+# ╔═╡ 32cc9b46-d9f4-4e6e-a0e6-273b17bb76f5
+md"""
+[^footnote1]: this is the detail about footnote 1
+"""
+
+# ╔═╡ 3fefc29d-5ad3-46bf-9b03-cce615d21083
+md"""
+[^info]: here is some extra info - foonotes are fun
+[^xyz]: author-some guy, age 28,  
+"""
+
+# ╔═╡ ddd3e869-a44a-428f-845a-139c288e6252
 
 
-//Add style for inline fornotes to hide label/reference and just show numbers
-document.querySelectorAll(".footnote").forEach(x=>{
-x.style.content='red'
-})
+# ╔═╡ cf8d37ef-4fba-4e05-9463-56c6c7c48000
+
+
+# ╔═╡ 31c15329-b9f0-4195-99e7-71773cd1026d
+
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -240,24 +215,21 @@ project_hash = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
 """
 
 # ╔═╡ Cell order:
-# ╠═0f8276fd-9dd8-4ada-bec5-7b1990afdf19
-# ╠═626cabc5-e46c-4f66-b3dd-f3afe99f5fe5
-# ╠═b1128729-0efe-4e5f-9e12-0ddbeb9d604c
-# ╠═ee33cf59-2777-422f-b886-1c191433286a
-# ╠═fab1d84f-3064-49f8-bbbb-f825f78f02ed
-# ╠═eb2e4383-d4ec-43ee-b030-f1a95b400e7f
-# ╠═47582cfd-73cf-4a11-a511-50b406aa758a
-# ╠═8b9834c8-1747-4503-81fe-d525bc5f25bd
-# ╠═c1b59097-a575-4797-a24a-3b13d26f3c1a
-# ╠═a1f03f0b-f17c-4f05-87be-edb128187aee
-# ╠═3db1db88-d9a5-4e2c-84ac-e9ac746d3eaf
-# ╠═4740632d-9ef2-4718-a99f-4816f4a18d9d
 # ╠═e6b00569-c72f-4e7b-8ca3-8044d61e68ee
+# ╠═2e3d0bbd-9c1f-4d42-a726-f9b70d89b7fe
 # ╠═47055bc8-98c1-4da4-8349-6ee4e0180349
+# ╠═d2180e45-2e07-404a-98fb-e703a7b6d84c
 # ╠═40371532-1320-42fc-9e57-066e1d9fbbda
-# ╠═808265f1-e048-4704-9345-13a9d7c674aa
+# ╟─808265f1-e048-4704-9345-13a9d7c674aa
 # ╠═d0339220-e5ce-4bb1-b9de-39c8a726b1ce
-# ╟─2f53f42d-bfe0-4e9f-a834-49bf510cbf77
-# ╠═4c4b016a-a8ec-4f15-82d6-71ff843be811
+# ╠═98935dba-c0b2-4837-bee7-120777c9ac18
+# ╟─6758b159-c225-4e2f-8859-8d3f1871ba7a
+# ╠═a823aee0-6b83-4be0-8456-b1c5cf095e70
+# ╟─e911ca05-774a-4efa-bdd7-257b705983e8
+# ╟─32cc9b46-d9f4-4e6e-a0e6-273b17bb76f5
+# ╟─3fefc29d-5ad3-46bf-9b03-cce615d21083
+# ╠═ddd3e869-a44a-428f-845a-139c288e6252
+# ╠═cf8d37ef-4fba-4e05-9463-56c6c7c48000
+# ╠═31c15329-b9f0-4195-99e7-71773cd1026d
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
