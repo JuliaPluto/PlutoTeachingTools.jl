@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.9
+# v0.19.12
 
 using Markdown
 using InteractiveUtils
@@ -12,7 +12,7 @@ begin
 	# Uncomment a line below to override default language
 	#set_language!(PlutoTeachingTools.EnglishUS())      # default
 	#set_language!(PlutoTeachingTools.GermanGermany())  
-end
+end;
 
 # ╔═╡ cd581a51-fb2b-4579-9a7d-0d723ad5d467
 md"# PlutoTeachingTools.jl Examples"
@@ -203,6 +203,56 @@ RobustLocalResource(url, path, cache=false)
 # ╔═╡ 4774a4d7-d5f1-40e4-8c2f-f0f96e9242ce
 RobustLocalResource(url, path, :width=>200)
 
+# ╔═╡ 97967267-6dbe-4d13-b9cf-1be9038b23ab
+md"""
+## Footnotes
+Call functions to specify your preferred footnote format.
+These might be best in the package cell.
+"""
+
+# ╔═╡ cb31500f-0cc4-49f0-a338-a75a34c95560
+InlineFootnotesStyleSuperscript()
+#InlineFootnotesStyleBaseline()
+#InlineFootnotesStyleSubscript()
+
+# ╔═╡ f66b3b03-78ee-4eef-a0d6-43f4249d3332
+InlineAndBottomFootnotesNumbered()
+#InlineFootnotesNumbered()
+#BottomFootnotesNumbered()
+
+# ╔═╡ c83e0b4a-7376-4061-8796-ba396c9fbc7a
+md"""
+### Create inline footnotes
+
+Look this is footnote1[^footnote1].  Here is another one [^info]. 
+"""
+
+# ╔═╡ 26219cb8-b1a2-4a35-b50d-10d496954f34
+md"""
+We can refer/label them whatever we want[^xyz]. 
+Here is the first one again[^footnote1].
+Notice how the reference number is still one. 
+
+If there is no footnote title/info found then an error is shown[^ahh] Oh No!
+"""
+
+# ╔═╡ 93467d07-7235-41a2-a6a7-e89c87e28006
+md"""
+### Create the footnote text
+These would usually appear at the bottom of the notebook.  But their cells can be placed where ever works best.
+"""
+
+# ╔═╡ e33a5805-dfc6-4331-83cd-42f113955e5a
+md"""
+[^footnote1]: this is the detail about footnote 1
+"""
+
+# ╔═╡ 0be97858-c4f4-4c47-adde-caed151971bb
+md"""
+[^info]: here is some extra info - foonotes are fun
+[^xyz]: author-some guy, age 28,  
+"""
+
 # ╔═╡ 743491af-3d4b-4dee-9ad7-2372ba4e97bd
 md"""
 ## Ingredients
@@ -239,8 +289,9 @@ PlutoUI = "~0.7.40"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.7.0"
+julia_version = "1.8.2"
 manifest_format = "2.0"
+project_hash = "ec52ce371f78a586a32ed48fc6fd5d04784d389d"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
@@ -250,6 +301,7 @@ version = "1.1.4"
 
 [[deps.ArgTools]]
 uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
+version = "1.1.1"
 
 [[deps.Artifacts]]
 uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
@@ -259,9 +311,9 @@ uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 
 [[deps.CodeTracking]]
 deps = ["InteractiveUtils", "UUIDs"]
-git-tree-sha1 = "1833bda4a027f4b2a1c984baddcf755d77266818"
+git-tree-sha1 = "cc4bd91eba9cdbbb4df4746124c22c0832a460d6"
 uuid = "da1fd8a2-8d9e-5ec2-8556-3022fb5608a2"
-version = "1.1.0"
+version = "1.1.1"
 
 [[deps.ColorTypes]]
 deps = ["FixedPointNumbers", "Random"]
@@ -272,6 +324,7 @@ version = "0.11.4"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
+version = "0.5.2+0"
 
 [[deps.Dates]]
 deps = ["Printf"]
@@ -282,8 +335,9 @@ deps = ["Random", "Serialization", "Sockets"]
 uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[deps.Downloads]]
-deps = ["ArgTools", "LibCURL", "NetworkOptions"]
+deps = ["ArgTools", "FileWatching", "LibCURL", "NetworkOptions"]
 uuid = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+version = "1.6.0"
 
 [[deps.FileWatching]]
 uuid = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
@@ -340,18 +394,20 @@ uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 version = "1.3.0"
 
 [[deps.Latexify]]
-deps = ["Formatting", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "Printf", "Requires"]
-git-tree-sha1 = "1a43be956d433b5d0321197150c2f94e16c0aaa0"
+deps = ["Formatting", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "OrderedCollections", "Printf", "Requires"]
+git-tree-sha1 = "ab9aa169d2160129beb241cb2750ca499b4e90e9"
 uuid = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
-version = "0.15.16"
+version = "0.15.17"
 
 [[deps.LibCURL]]
 deps = ["LibCURL_jll", "MozillaCACerts_jll"]
 uuid = "b27032c2-a3e7-50c8-80cd-2d36dbcbfd21"
+version = "0.6.3"
 
 [[deps.LibCURL_jll]]
 deps = ["Artifacts", "LibSSH2_jll", "Libdl", "MbedTLS_jll", "Zlib_jll", "nghttp2_jll"]
 uuid = "deac9b47-8bc7-5906-a0fe-35ac56dc84c0"
+version = "7.84.0+0"
 
 [[deps.LibGit2]]
 deps = ["Base64", "NetworkOptions", "Printf", "SHA"]
@@ -360,6 +416,7 @@ uuid = "76f85450-5226-5b5a-8eaa-529ad045b433"
 [[deps.LibSSH2_jll]]
 deps = ["Artifacts", "Libdl", "MbedTLS_jll"]
 uuid = "29816b5a-b9ab-546f-933c-edad1886dfa8"
+version = "1.10.2+0"
 
 [[deps.Libdl]]
 uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
@@ -377,11 +434,16 @@ git-tree-sha1 = "dedbebe234e06e1ddad435f5c6f4b85cd8ce55f7"
 uuid = "6f1432cf-f94c-5a45-995e-cdbf5db27b0b"
 version = "2.2.2"
 
+[[deps.MIMEs]]
+git-tree-sha1 = "65f28ad4b594aebe22157d6fac869786a255b7eb"
+uuid = "6c6e2e6c-3030-632d-7369-2d6c69616d65"
+version = "0.1.4"
+
 [[deps.MacroTools]]
 deps = ["Markdown", "Random"]
-git-tree-sha1 = "3d3e902b31198a27340d0bf00d6ac452866021cf"
+git-tree-sha1 = "42324d08725e200c23d4dfb549e0d5d89dede2d2"
 uuid = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
-version = "0.5.9"
+version = "0.5.10"
 
 [[deps.Markdown]]
 deps = ["Base64"]
@@ -390,19 +452,23 @@ uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
 [[deps.MbedTLS_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
+version = "2.28.0+0"
 
 [[deps.Mmap]]
 uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 
 [[deps.MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
+version = "2022.2.1"
 
 [[deps.NetworkOptions]]
 uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
+version = "1.2.0"
 
 [[deps.OpenBLAS_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
 uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
+version = "0.3.20+0"
 
 [[deps.OrderedCollections]]
 git-tree-sha1 = "85f8e6578bf1f9ee0d11e7bb1b1456435479d47c"
@@ -411,13 +477,14 @@ version = "1.4.1"
 
 [[deps.Parsers]]
 deps = ["Dates"]
-git-tree-sha1 = "3d5bf43e3e8b412656404ed9466f1dcbf7c50269"
+git-tree-sha1 = "6c01a9b494f6d2a9fc180a08b182fcb06f0958a0"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
-version = "2.4.0"
+version = "2.4.2"
 
 [[deps.Pkg]]
 deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+version = "1.8.0"
 
 [[deps.PlutoHooks]]
 deps = ["InteractiveUtils", "Markdown", "UUIDs"]
@@ -433,15 +500,15 @@ version = "0.1.5"
 
 [[deps.PlutoTeachingTools]]
 deps = ["Downloads", "HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
-git-tree-sha1 = "600e89af8f58086a2691a88f5a4ae367c41ce91d"
+git-tree-sha1 = "2784ec6fd23a4e99081fd1f11fae40c5ec5f3777"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
-version = "0.2.1"
+version = "0.2.4"
 
 [[deps.PlutoUI]]
-deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
-git-tree-sha1 = "a602d7b0babfca89005da04d89223b867b55319f"
+deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "FixedPointNumbers", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "MIMEs", "Markdown", "Random", "Reexport", "URIs", "UUIDs"]
+git-tree-sha1 = "efc140104e6d0ae3e7e30d56c98c4a927154d684"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
-version = "0.7.40"
+version = "0.7.48"
 
 [[deps.Printf]]
 deps = ["Unicode"]
@@ -474,6 +541,7 @@ version = "3.4.0"
 
 [[deps.SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+version = "0.7.0"
 
 [[deps.Serialization]]
 uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
@@ -492,10 +560,12 @@ uuid = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 [[deps.TOML]]
 deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
+version = "1.0.0"
 
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
+version = "1.10.1"
 
 [[deps.Test]]
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
@@ -505,6 +575,11 @@ uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 git-tree-sha1 = "6bac775f2d42a611cdfcd1fb217ee719630c4175"
 uuid = "410a4b4d-49e4-4fbc-ab6d-cb71b17b3775"
 version = "0.1.6"
+
+[[deps.URIs]]
+git-tree-sha1 = "e59ecc5a41b000fa94423a578d29290c7266fc10"
+uuid = "5c2747f8-b7ea-4ff2-ba2e-563bfd36b1d4"
+version = "1.4.0"
 
 [[deps.UUIDs]]
 deps = ["Random", "SHA"]
@@ -516,18 +591,22 @@ uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 [[deps.Zlib_jll]]
 deps = ["Libdl"]
 uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
+version = "1.2.12+3"
 
 [[deps.libblastrampoline_jll]]
 deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
 uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+version = "5.1.1+0"
 
 [[deps.nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "8e850ede-7688-5339-a07c-302acd2aaf8d"
+version = "1.48.0+0"
 
 [[deps.p7zip_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
+version = "17.4.0+0"
 """
 
 # ╔═╡ Cell order:
@@ -588,6 +667,14 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╠═2bfcfe6d-221e-4619-b794-92e44494460b
 # ╠═43a47026-4b09-4c20-9ccb-a766a17f8ff4
 # ╠═4774a4d7-d5f1-40e4-8c2f-f0f96e9242ce
+# ╟─97967267-6dbe-4d13-b9cf-1be9038b23ab
+# ╠═cb31500f-0cc4-49f0-a338-a75a34c95560
+# ╠═f66b3b03-78ee-4eef-a0d6-43f4249d3332
+# ╠═c83e0b4a-7376-4061-8796-ba396c9fbc7a
+# ╠═26219cb8-b1a2-4a35-b50d-10d496954f34
+# ╠═93467d07-7235-41a2-a6a7-e89c87e28006
+# ╟─e33a5805-dfc6-4331-83cd-42f113955e5a
+# ╟─0be97858-c4f4-4c47-adde-caed151971bb
 # ╟─743491af-3d4b-4dee-9ad7-2372ba4e97bd
 # ╠═23afc83f-e971-4356-a30e-1b7a247ff38d
 # ╠═d4b1b5f2-b4ae-4988-aded-79398949f1c8
