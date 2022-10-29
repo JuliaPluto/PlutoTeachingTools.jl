@@ -14,6 +14,7 @@ PlutoTeachingTools.protip_invite_str(lang::Lang) where {Lang <: English} = "Curi
 PlutoTeachingTools.protip_boxlabel_str(lang::Lang) where {Lang <: English} = "Pro Tip"
 PlutoTeachingTools.almost_str(lang::Lang) where {Lang <: English} = "Almost there!"
 PlutoTeachingTools.warning_box_str(lang::Lang) where {Lang <: English} = "Warning:"
+PlutoTeachingTools.question_box_str(lang::Lang) where {Lang <: English} = "Question:"
 PlutoTeachingTools.danger_str(lang::Lang) where {Lang <: English} = "Beware!"
 PlutoTeachingTools.still_missing_str(lang::Lang) where {Lang <: English} = "Missing Response"
 PlutoTeachingTools.still_missing_text_str(lang::Lang) where {Lang <: English} = md"Replace `missing` with your answer."

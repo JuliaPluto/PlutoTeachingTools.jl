@@ -29,6 +29,8 @@ almost(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown
 "warning box with arguement as text."
 warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", warning_box_str(lang), [text]));
 
+question_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("tip", question_box_str(lang), [text]));
+
 "Danger box with arguement as text."
 danger(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", danger_str(lang), [text]));
 
