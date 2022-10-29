@@ -5,10 +5,16 @@ using Markdown
 using InteractiveUtils
 
 # ╔═╡ e6b00569-c72f-4e7b-8ca3-8044d61e68ee
+#=
+inpired by discussion and code found here
 
+- https://hub.gke2.mybinder.org/user/fonsp-pluto-on-binder-o5onajv8/pluto/edit?id=f001628e-4bfb-11ed-04d7-892b7e9b1fe3&token=OG86wPs6Tn2cc0wPePWTPw#footnote-what_is_this
+
+- https://github.com/JuliaPluto/PlutoUI.jl/issues/44
+=#
 
 # ╔═╡ 47055bc8-98c1-4da4-8349-6ee4e0180349
-NumberedInlineFootnotesfootnotes() = html"""
+InlineFootnotesNumbered() = html"""
 <script id="footnotes">
 
 const addNumbersToInlineFootnotes = () => {
@@ -42,12 +48,10 @@ const element = inlinefootnotesNodes[index]
 if (indexOfBottomFootnote<0) 
 {//if we don't find a match display an error
 	element.setAttribute("data-before","["+"ERROR! no matching reference"+"]")
-	element.style.setProperty("font-size","11px")
 }
 else 
 {//if we do add the number and make the label disapear by sizing it to 0px
 	element.setAttribute("data-before","["+indexOfBottomFootnotePlus1+"]")
-	element.style.setProperty("font-size","0px")
 }
 
 return indexOfBottomFootnotePlus1
@@ -106,34 +110,27 @@ bodyClassObserver.observe(document.body, {attributeFilter: ["class"]})
 
 
 </script>
-"""
-
-
-# ╔═╡ 2e3d0bbd-9c1f-4d42-a726-f9b70d89b7fe
-export NumberedInlineFootnotesfootnotes
-
-# ╔═╡ 40371532-1320-42fc-9e57-066e1d9fbbda
-#=
-as found and discussed here
-- https://hub.gke2.mybinder.org/user/fonsp-pluto-on-binder-o5onajv8/pluto/edit?id=f001628e-4bfb-11ed-04d7-892b7e9b1fe3&token=OG86wPs6Tn2cc0wPePWTPw#footnote-what_is_this
-- https://github.com/JuliaPluto/PlutoUI.jl/issues/44
-=#
-FootnoteStyleSuperScript()=html"""
 <style> 
-pluto-notebook {
-  counter-reset:  footnote footnote-title;
-} 
-
 a.footnote {
-	font-weight: normal !important;
-	font-size: 10px ;
-	vertical-align: super;
+	font-size: 0 !important;
 }
 a.footnote::before {
 	content: attr(data-before) ;
 	font-size: 10px;
 }
+</style>
+"""
 
+
+# ╔═╡ 2e3d0bbd-9c1f-4d42-a726-f9b70d89b7fe
+export InlineFootnotesNumbered 
+
+# ╔═╡ 3e102434-e413-409b-846c-fe0afa466947
+BottomFootnotesNumbered() =html"""
+<style> 
+pluto-notebook {
+  counter-reset:  footnote-title;
+} 
 
 .footnote-title {
 	font-size: 0 !important;
@@ -146,20 +143,82 @@ a.footnote::before {
 </style>
 """
 
+# ╔═╡ 2db43318-7e99-4e30-8ca1-e78eb5574d11
+export BottomFootnotesNumbered 
+
+# ╔═╡ 25e12914-b0c3-4a62-9156-e586c5c062b5
+export InlineAndBottomFootnotesNumbered
+
+# ╔═╡ 80182cc4-64d1-4f06-b8bb-bd2e386e8368
+function InlineAndBottomFootnotesNumebred() 
+	return (BottomFootnotesNumbered(),InlineFootnotesNumbered())
+end
+
+# ╔═╡ 40371532-1320-42fc-9e57-066e1d9fbbda
+InlineFootnotesStyleSuperScript()=html"""
+<style> 
+
+
+a.footnote {
+	vertical-align: super;
+}
+
+
+</style>
+"""
+
 # ╔═╡ d2180e45-2e07-404a-98fb-e703a7b6d84c
-export FootnoteStyleSuperScript
+export InlineFootnotesStyleSuperScript 
+
+# ╔═╡ c2a3a813-409b-48c6-9482-dbe7f20f19bb
+InlineFootnotesStyleSubScript()=html"""
+<style> 
+
+
+a.footnote {
+	vertical-align: sub;
+}
+
+
+</style>
+"""
+
+# ╔═╡ 659cae55-bf5c-4b85-83fd-8bcb32874874
+export InlineFootnotesStyleSubScript  
+
+# ╔═╡ 16ca0710-2fd1-41b8-a896-62ea46770c43
+InlineFootnotesStyleBaseline()=html"""
+<style> 
+
+
+a.footnote {
+	vertical-align: sub;
+}
+
+
+</style>
+"""
+
+# ╔═╡ ca383eff-fc8e-47ce-b6b7-3780967f2c1d
+export InlineFootnotesStyleBaseline 
+
+# ╔═╡ 3482aaf5-11ca-452c-ad32-2dbdab789496
+
 
 # ╔═╡ 808265f1-e048-4704-9345-13a9d7c674aa
 md"""
-# Examples
+# Examples/Intended Use
 ### first we call the functions
 """
 
 # ╔═╡ d0339220-e5ce-4bb1-b9de-39c8a726b1ce
-NumberedInlineFootnotesfootnotes() 
+InlineFootnotesNumbered()
+
+# ╔═╡ 5e95baef-b8b6-4416-b583-ce2410a91b7c
+BottomFootnotesNumbered()
 
 # ╔═╡ 98935dba-c0b2-4837-bee7-120777c9ac18
-FootnoteStyleSuperScript()
+InlineFootnotesStyleSubScript()
 
 # ╔═╡ 6758b159-c225-4e2f-8859-8d3f1871ba7a
 md"""
@@ -170,12 +229,12 @@ look this is footnote1[^footnote1], here is another one [^info].
 
 # ╔═╡ a823aee0-6b83-4be0-8456-b1c5cf095e70
 md"""
-we can refer/label them whatever we want[^xyz]. Here is the first one again[^footnote1] notice how the reference number is still one. if there is no footnote title/info found "at the bottom" then an error is shown[^ahh]
+we can refer/label them whatever we want[^xyz]. Here is the first one again[^footnote1] notice how the reference number is still one. if there is no footnote title/info found then an error is shown[^ahh] Oh No!
 """
 
 # ╔═╡ e911ca05-774a-4efa-bdd7-257b705983e8
 md"""
-### lastly on now create the footnote info/title
+### lastly, create the footnote info/title (that ususally appear at the bottom of the page)
 """
 
 # ╔═╡ 32cc9b46-d9f4-4e6e-a0e6-273b17bb76f5
@@ -217,13 +276,23 @@ project_hash = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
 # ╔═╡ Cell order:
 # ╠═e6b00569-c72f-4e7b-8ca3-8044d61e68ee
 # ╠═2e3d0bbd-9c1f-4d42-a726-f9b70d89b7fe
-# ╠═47055bc8-98c1-4da4-8349-6ee4e0180349
+# ╟─47055bc8-98c1-4da4-8349-6ee4e0180349
+# ╠═2db43318-7e99-4e30-8ca1-e78eb5574d11
+# ╟─3e102434-e413-409b-846c-fe0afa466947
+# ╠═25e12914-b0c3-4a62-9156-e586c5c062b5
+# ╠═80182cc4-64d1-4f06-b8bb-bd2e386e8368
 # ╠═d2180e45-2e07-404a-98fb-e703a7b6d84c
-# ╠═40371532-1320-42fc-9e57-066e1d9fbbda
+# ╟─40371532-1320-42fc-9e57-066e1d9fbbda
+# ╠═659cae55-bf5c-4b85-83fd-8bcb32874874
+# ╟─c2a3a813-409b-48c6-9482-dbe7f20f19bb
+# ╠═ca383eff-fc8e-47ce-b6b7-3780967f2c1d
+# ╟─16ca0710-2fd1-41b8-a896-62ea46770c43
+# ╠═3482aaf5-11ca-452c-ad32-2dbdab789496
 # ╟─808265f1-e048-4704-9345-13a9d7c674aa
 # ╠═d0339220-e5ce-4bb1-b9de-39c8a726b1ce
+# ╠═5e95baef-b8b6-4416-b583-ce2410a91b7c
 # ╠═98935dba-c0b2-4837-bee7-120777c9ac18
-# ╟─6758b159-c225-4e2f-8859-8d3f1871ba7a
+# ╠═6758b159-c225-4e2f-8859-8d3f1871ba7a
 # ╠═a823aee0-6b83-4be0-8456-b1c5cf095e70
 # ╟─e911ca05-774a-4efa-bdd7-257b705983e8
 # ╟─32cc9b46-d9f4-4e6e-a0e6-273b17bb76f5
