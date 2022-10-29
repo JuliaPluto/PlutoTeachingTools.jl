@@ -155,7 +155,7 @@ function InlineAndBottomFootnotesNumebred()
 end
 
 # ╔═╡ 40371532-1320-42fc-9e57-066e1d9fbbda
-InlineFootnotesStyleSuperScript()=html"""
+InlineFootnotesStyleSuperscript()=html"""
 <style> 
 
 
@@ -168,10 +168,10 @@ a.footnote {
 """
 
 # ╔═╡ d2180e45-2e07-404a-98fb-e703a7b6d84c
-export InlineFootnotesStyleSuperScript 
+export InlineFootnotesStyleSuperscript 
 
 # ╔═╡ c2a3a813-409b-48c6-9482-dbe7f20f19bb
-InlineFootnotesStyleSubScript()=html"""
+InlineFootnotesStyleSubscript()=html"""
 <style> 
 
 
@@ -184,7 +184,7 @@ a.footnote {
 """
 
 # ╔═╡ 659cae55-bf5c-4b85-83fd-8bcb32874874
-export InlineFootnotesStyleSubScript  
+export InlineFootnotesStyleSubscript  
 
 # ╔═╡ 16ca0710-2fd1-41b8-a896-62ea46770c43
 InlineFootnotesStyleBaseline()=html"""
@@ -218,7 +218,7 @@ InlineFootnotesNumbered()
 BottomFootnotesNumbered()
 
 # ╔═╡ 98935dba-c0b2-4837-bee7-120777c9ac18
-InlineFootnotesStyleSubScript()
+InlineFootnotesStyleSuperscript()
 
 # ╔═╡ 6758b159-c225-4e2f-8859-8d3f1871ba7a
 md"""
@@ -282,9 +282,9 @@ project_hash = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
 # ╠═25e12914-b0c3-4a62-9156-e586c5c062b5
 # ╠═80182cc4-64d1-4f06-b8bb-bd2e386e8368
 # ╠═d2180e45-2e07-404a-98fb-e703a7b6d84c
-# ╟─40371532-1320-42fc-9e57-066e1d9fbbda
+# ╠═40371532-1320-42fc-9e57-066e1d9fbbda
 # ╠═659cae55-bf5c-4b85-83fd-8bcb32874874
-# ╟─c2a3a813-409b-48c6-9482-dbe7f20f19bb
+# ╠═c2a3a813-409b-48c6-9482-dbe7f20f19bb
 # ╠═ca383eff-fc8e-47ce-b6b7-3780967f2c1d
 # ╟─16ca0710-2fd1-41b8-a896-62ea46770c43
 # ╠═3482aaf5-11ca-452c-ad32-2dbdab789496
