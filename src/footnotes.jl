@@ -134,7 +134,7 @@ pluto-notebook {
 """
 
 
-function InlineAndBottomFootnotesNumebred() 
+function InlineAndBottomFootnotesNumbered() 
 	return (BottomFootnotesNumbered(),InlineFootnotesNumbered())
 end
 
