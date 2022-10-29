@@ -14,5 +14,6 @@ include("latex.jl")     # provides latexify_md and wrap_tex
 include("aside.jl")     # provides aside
 include("robustlocalresource.jl") # provides RobustLocalResource
 include("other.jl")     # provides WidthOverDocs()
+include("footnotes.jl") # provides InlineAndBottomFootnotesNumbered() and InlineFootnotesStyleSuperscript()
 
 end # module
