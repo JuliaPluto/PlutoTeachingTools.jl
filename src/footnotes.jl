@@ -6,10 +6,9 @@ inpired by discussion and code found here
 
 - https://github.com/JuliaPluto/PlutoUI.jl/issues/44
 =#
+using HypertextLiteral
 
-InlineFootnotesNumbered() = html"""
-<script id="footnotes">
-
+InlineFootnotesNumberedJsString()="""
 const addNumbersToInlineFootnotes = () => {
 
 
@@ -99,11 +98,11 @@ notebookObserver.observe(notebook, {childList: true})
 const bodyClassObserver = new MutationObserver(updateCallback)
 bodyClassObserver.observe(document.body, {attributeFilter: ["class"]})
 
+"""
 
 
 
-</script>
-<style> 
+InlineFootnotesNumberedCssString()="""
 a.footnote {
 	font-size: 0 !important;
 }
@@ -111,13 +110,20 @@ a.footnote::before {
 	content: attr(data-before) ;
 	font-size: 10px;
 }
-</style>
 """
 
+function InlineFootnotesNumbered()
+	return @htl("""
+	<script id="footnotes">
+	$(InlineFootnotesNumberedJsString())
+	</script>
+	<style> 
+	$(InlineFootnotesNumberedCssString())
+	</style>
+	""")
+end
 
-
-BottomFootnotesNumbered() =html"""
-<style> 
+BottomFootnotesNumberedCssString()="""
 pluto-notebook {
   counter-reset:  footnote-title;
 } 
@@ -130,12 +136,26 @@ pluto-notebook {
 	content: "[" counter(footnote-title) "]" !important;
 	font-size: 0.75rem !important;
 }
-</style>
 """
+
+function BottomFootnotesNumbered()
+	@htl("""
+	<style> 
+	$(BottomFootnotesNumberedCssString())
+	</style>
+	"""
+end
 
 
 function InlineAndBottomFootnotesNumbered() 
-	return (BottomFootnotesNumbered(),InlineFootnotesNumbered())
+	return @htl("""
+	<script id="footnotes">
+	$(InlineFootnotesNumberedJsString())
+	</script>
+	<style> 
+	$(InlineFootnotesNumberedCssString()*BottomFootnotesNumberedCssString())
+	</style>
+	""")
 end
 
 InlineFootnotesStyleSuperscript()=html"""
@@ -169,7 +189,7 @@ InlineFootnotesStyleBaseline()=html"""
 
 
 a.footnote {
-#	vertical-align: sub;
+	vertical-align: baseline;
 }
 
 
