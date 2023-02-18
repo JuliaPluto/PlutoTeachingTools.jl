@@ -23,10 +23,9 @@ tip(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Ad
 protip(text; lang::AbstractLanguage = default_language[], invite = protip_invite_str(lang), boxlabel = protip_boxlabel_str(lang)) = Foldable(invite, Markdown.MD(Markdown.Admonition("tip", boxlabel, [text])) );
 protip(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = protip_boxlabel_str(lang)) = protip(text; lang, invite, boxlabel);
 
-"Tip box with arguement as text."
+"Answer box with arguement as text."
 answer(text; lang::AbstractLanguage = default_language[], invite = answer_invite_str(lang), boxlabel = answer_boxlabel_str(lang)) = Foldable(invite, Markdown.MD(Markdown.Admonition("answer", boxlabel, [text])) );
 answer(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = answer_boxlabel_str(lang)) = answer(text; lang, invite, boxlabel);
-
 
 "Admonition box labeled a warning with arguement as text."
 almost(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", almost_str(lang), [text]));
@@ -35,7 +34,7 @@ almost(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown
 warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", warning_box_str(lang), [text]));
 
 "Question box with arguement as text."
-question_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("tip", question_box_str(lang), [text]));
+question_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("question", question_box_str(lang), [text]));
 
 "Danger box with arguement as text."
 danger(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", danger_str(lang), [text]));
