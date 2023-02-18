@@ -24,8 +24,8 @@ protip(text; lang::AbstractLanguage = default_language[], invite = protip_invite
 protip(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = protip_boxlabel_str(lang)) = protip(text; lang, invite, boxlabel);
 
 "Answer box with arguement as text."
-answer(text; lang::AbstractLanguage = default_language[], invite = answer_invite_str(lang), boxlabel = answer_boxlabel_str(lang)) = Foldable(invite, Markdown.MD(Markdown.Admonition("answer", boxlabel, [text])) );
-answer(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = answer_boxlabel_str(lang)) = answer(text; lang, invite, boxlabel);
+answer_box(text; lang::AbstractLanguage = default_language[], invite = answer_invite_str(lang), boxlabel = answer_boxlabel_str(lang)) = Foldable(invite, Markdown.MD(Markdown.Admonition("answer", boxlabel, [text])) );
+answer_box(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = answer_boxlabel_str(lang)) = answer(text; lang, invite, boxlabel);
 
 "Admonition box labeled a warning with arguement as text."
 almost(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", almost_str(lang), [text]));
