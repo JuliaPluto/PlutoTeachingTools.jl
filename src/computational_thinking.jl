@@ -3,7 +3,7 @@ using Random # , Distributions # not sure if we need that
 using Markdown
 using LaTeXStrings
 
-export hint, tip, protip, almost, warning_box, question_box, danger 
+export hint, tip, protip, almost, warning_box, question_box, answer_box, danger 
 export correct, still_missing, still_nothing, wrong_type
 export var_not_defined, func_not_defined, keep_working
 export not_defined  # deprecated
