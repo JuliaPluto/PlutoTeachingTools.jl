@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.12
+# v0.19.22
 
 using Markdown
 using InteractiveUtils
@@ -53,6 +53,9 @@ tip(md"Think back to exercise 1.")
 
 # ╔═╡ 12619e7d-5360-4d71-9a2d-5cf0385f0bcf
 question_box(md"What might explain this?")
+
+# ╔═╡ 8eb551ef-a9c0-43e3-aea7-d83679436e93
+answer_box(md"1+1=2")
 
 # ╔═╡ 947ce2c8-42e3-4704-89b2-c1968077212b
 warning_box(md"Be extra careful here.")
@@ -328,7 +331,7 @@ PlutoUI = "~0.7.40"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.2"
+julia_version = "1.8.1"
 manifest_format = "2.0"
 project_hash = "ec52ce371f78a586a32ed48fc6fd5d04784d389d"
 
@@ -604,7 +607,7 @@ version = "1.0.0"
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
-version = "1.10.1"
+version = "1.10.0"
 
 [[deps.Test]]
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
@@ -662,6 +665,7 @@ version = "17.4.0+0"
 # ╠═319dacff-fdfb-4d0b-918f-d389e4ac81fd
 # ╠═343eff72-62b0-4cd1-abd9-991245d4054a
 # ╠═12619e7d-5360-4d71-9a2d-5cf0385f0bcf
+# ╠═8eb551ef-a9c0-43e3-aea7-d83679436e93
 # ╠═947ce2c8-42e3-4704-89b2-c1968077212b
 # ╠═46556317-d7cd-4b0b-b92b-f686f078a0d4
 # ╟─8e053634-bca8-46eb-9202-8ab276dcad12
