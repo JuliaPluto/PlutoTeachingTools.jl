@@ -52,10 +52,20 @@ still_nothing()
 tip(md"Think back to exercise 1.")
 
 # ╔═╡ 12619e7d-5360-4d71-9a2d-5cf0385f0bcf
-question_box(md"What might explain this?")
+question_box(md"Why does the stone have a greater force?")
 
 # ╔═╡ 8eb551ef-a9c0-43e3-aea7-d83679436e93
-answer_box(md"1+1=2")
+answer_box(
+md"""
+The stone has a greater force becasue force is give by Newtons 2nd law: 
+
+```math
+F=m \times a
+```
+
+It has a greater mass, therefore $m$ is larger, this then results in a larger force $F$
+"""
+)
 
 # ╔═╡ 947ce2c8-42e3-4704-89b2-c1968077212b
 warning_box(md"Be extra careful here.")
