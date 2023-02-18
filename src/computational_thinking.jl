@@ -3,7 +3,7 @@ using Random # , Distributions # not sure if we need that
 using Markdown
 using LaTeXStrings
 
-export hint, tip, protip, almost, warning_box, question_box, danger 
+export hint, tip, protip, almost, warning_box, question_box, answer_box, danger 
 export correct, still_missing, still_nothing, wrong_type
 export var_not_defined, func_not_defined, keep_working
 export not_defined  # deprecated
@@ -23,13 +23,18 @@ tip(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Ad
 protip(text; lang::AbstractLanguage = default_language[], invite = protip_invite_str(lang), boxlabel = protip_boxlabel_str(lang)) = Foldable(invite, Markdown.MD(Markdown.Admonition("tip", boxlabel, [text])) );
 protip(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = protip_boxlabel_str(lang)) = protip(text; lang, invite, boxlabel);
 
+"Answer box with arguement as text."
+answer_box(text; lang::AbstractLanguage = default_language[], invite = answer_invite_str(lang), boxlabel = answer_boxlabel_str(lang)) = Foldable(invite, Markdown.MD(Markdown.Admonition("answer", boxlabel, [text])) );
+answer_box(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = answer_boxlabel_str(lang)) = answer(text; lang, invite, boxlabel);
+
 "Admonition box labeled a warning with arguement as text."
 almost(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", almost_str(lang), [text]));
 
-"warning box with arguement as text."
+"Warning box with arguement as text."
 warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", warning_box_str(lang), [text]));
 
-question_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("tip", question_box_str(lang), [text]));
+"Question box with arguement as text."
+question_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("question", question_box_str(lang), [text]));
 
 "Danger box with arguement as text."
 danger(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", danger_str(lang), [text]));
