@@ -26,9 +26,10 @@ protip(text, invite, lang::AbstractLanguage = default_language[]; boxlabel = pro
 "Admonition box labeled a warning with arguement as text."
 almost(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", almost_str(lang), [text]));
 
-"warning box with arguement as text."
+"Warning box with arguement as text."
 warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("warning", warning_box_str(lang), [text]));
 
+"Question box with arguement as text."
 question_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("tip", question_box_str(lang), [text]));
 
 "Danger box with arguement as text."
