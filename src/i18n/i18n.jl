@@ -5,6 +5,8 @@ abstract type AbstractLanguage end
 # computational_thinking.jl
 hint_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 tip_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
+answer_invite_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
+answer_boxlabel_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 protip_invite_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 protip_boxlabel_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 almost_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."

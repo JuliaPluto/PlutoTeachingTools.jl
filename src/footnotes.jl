@@ -143,7 +143,7 @@ function BottomFootnotesNumbered()
 	<style> 
 	$(BottomFootnotesNumberedCssString())
 	</style>
-	"""
+	""")
 end
 
 
