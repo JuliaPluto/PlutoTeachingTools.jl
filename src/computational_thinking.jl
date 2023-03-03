@@ -12,6 +12,7 @@ export not_defined  # deprecated
 export type_isa, type_eq
 export code_for_check_type_funcs
 export TODO, nbsp
+export blockquote
 export display_msg_if_fail
 
 "Hint box with arguement as text."
@@ -203,3 +204,84 @@ function display_msg_if_fail(x; msg_pass = nothing)
    end 
 end
 
+
+"""
+Displays a nice blockquote. Useful for including quotes by well known figures or useful nuggets of wisdom.  
+"""
+function BlockQuote(text,author="")
+@htl("""
+
+<div class="nice-blockquote nice-blockquote__bordered nice-blockquote--quoted">
+<p class="nice-blockquote__text">
+$text
+<p>
+<div class="nice-blockquote__text nice-blockquote__text--author">
+$author
+</div> 
+</div> 
+
+
+
+<style> 
+
+.nice-blockquote{
+margin: 10px 30px;
+padding: 25px;
+background: light grey;
+border: 0.5px solid #ccc;
+color: black;
+box-sizing:border-box;
+}
+
+.nice-blockquote__bordered{
+border-left-width: 14px;
+}
+
+.nice-blockquote--quoted::before{
+content:open-quote;
+font-size:70px;
+font-family: Arial;
+font-weight:bold;
+color:#ccc;
+display:block;
+margin-top:-20px;
+margin-bottom:-40px;
+font-family: Arial;
+}
+
+.nice-blockquote__text{
+font-family: Arial;
+font-style: italic;
+fontsize: 1.5em;	
+margin:0;
+line height: 1.5;
+text-align:left;
+}
+
+.nice-blockquote__text:not(:last_child){
+margin-bottom:10px;
+}
+
+.nice-blockquote__text--author{
+font-weight:bold;
+font-style: normal;
+text-align:right;
+fontsize: 2em;
+}
+
+.nice-blockquote__text--author::before{
+content:close-quote;
+font-size:70px;
+font-family: Arial;
+font-weight:bold;
+color:#ccc;
+display:block;
+margin-top:-40px;
+margin-bottom:-40px;
+
+}
+
+
+</style>
+""")
+end
