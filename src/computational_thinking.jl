@@ -2,6 +2,7 @@
 using Random # , Distributions # not sure if we need that
 using Markdown
 using LaTeXStrings
+using HypertextLiteral 
 
 export hint, tip, protip, almost, warning_box, question_box, answer_box, danger 
 export correct, still_missing, still_nothing, wrong_type
@@ -150,6 +151,42 @@ correct(text, lang::AbstractLanguage = default_language[]) = correct(;lang, text
 
 TODO_str = html"<span style='display: inline; font-size: 2em; color: purple; font-weight: 900;'>TODO</span>"
 TODO() = TODO_str
+
+"""
+Displays nice TODO graphic inline as an H1 heading (so will show up in PlutoUI's table of contents). 
+Useful for demarcating work-in-progress sections or parts that could be imporved or will be worked on later, etc.
+"""
+function TODO(text)
+@htl("""
+<div class="todo-tape">
+</div> 
+<div class="todo-tape-content">
+<h1>&#9888; TODO &#9888;</h1>
+<p>$text</p>
+</div> 
+<div class="todo-tape">
+</div> 
+
+
+<style> 
+div.todo-tape {
+padding: 1rem;
+background: repeating-linear-gradient(
+45deg,
+#FFE41E,
+#FFE41E 12px,
+#141617 12px,
+#141617 24px
+);
+}
+
+div.todo-tape-content {
+padding:1.2rem;
+background-color: white;
+}
+</style>
+""")
+end
 
 # Useful strings for embedding in markdown
 nbsp = html"&nbsp;"
