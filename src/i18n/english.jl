@@ -34,6 +34,7 @@ PlutoTeachingTools.keep_working_text_str(lang::Lang) where {Lang <: English} = m
 PlutoTeachingTools.keep_working_update_str(var, lang::Lang) where {Lang <: English} = md"Make sure to update the cell setting $var."
 PlutoTeachingTools.yays(lang::Lang) where {Lang <: English} = [md"Great!", md"Yay ❤", md"Great! 🎉", md"Well done!", md"Keep it up!", md"Good job!", md"Awesome!", md"You got the right answer!", md"Let's move on to the next part."]
 PlutoTeachingTools.correct_str(lang::Lang) where {Lang <: English} = "Got it!"
+PlutoTeachingTools.todo_str(lang::Lang) where {Lang <: English} = "TODO"
 
 PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang <: English} = md"The variable `$sym` is still set to missing."
 PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang <: English} = "The type of `$sym` is not correct.  It should be <: "

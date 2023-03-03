@@ -44,6 +44,7 @@ PlutoTeachingTools.keep_working_update_str(var, lang::Lang) where {Lang <: Germa
 PlutoTeachingTools.yays(lang::Lang) where {Lang <: GermanGermanyFormal} = [md"Großartig!", md"Juchu ❤", md"Großartig! 🎉", md"Gut gemacht!", md"Weiter so!", md"Gute Arbeit!", md"Super!", md"Ihre Antwort ist richtig!", md"Weiter geht's mit der nächsten Antwort."]
 PlutoTeachingTools.yays(lang::Lang) where {Lang <: GermanGermanyColloquial} = [md"Großartig!", md"Juchu ❤", md"Großartig! 🎉", md"Gut gemacht!", md"Weiter so!", md"Gute Arbeit!", md"Super!", md"Deine Antwort ist richtig!", md"Weiter geht's mit der nächsten Antwort."]
 PlutoTeachingTools.correct_str(lang::Lang) where {Lang <: German} = "Richtig!"
+PlutoTeachingTools.todo_str(lang::Lang) where {Lang <: German} = "Machen"
 
 PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang <: German} = md"Die Variable `$sym` ist immer noch `missing`."
 PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang <: German} = "Der Typ von `$sym` ist nicht richtig. Richtig wäre <: "

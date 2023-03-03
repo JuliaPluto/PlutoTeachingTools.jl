@@ -29,6 +29,7 @@ keep_working_text_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Ple
 keep_working_update_str(var, lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 yays(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 correct_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
+todo_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 
 check_type_isa_missing_text_str(sym, lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
