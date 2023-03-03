@@ -208,7 +208,7 @@ end
 """
 Displays a nice blockquote. Useful for including quotes by well known figures or useful nuggets of wisdom.  
 """
-function BlockQuote(text,author="")
+function blockquote(text,author="")
 @htl("""
 
 <div class="nice-blockquote nice-blockquote__bordered nice-blockquote--quoted">
