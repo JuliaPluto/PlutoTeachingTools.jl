@@ -360,7 +360,7 @@ PlutoTeachingTools = "661c6b06-c737-4d37-b85c-46df65de6f69"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
-PlutoTeachingTools = "~0.2.7"
+PlutoTeachingTools = "~0.2.8"
 PlutoUI = "~0.7.50"
 """
 
@@ -370,7 +370,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.2"
 manifest_format = "2.0"
-project_hash = "f5a5c452071f514dd0c0218e40fd97f5fec9d922"
+project_hash = "6bb201a032efe7739abcd2613b6a702f0cfd8acf"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
