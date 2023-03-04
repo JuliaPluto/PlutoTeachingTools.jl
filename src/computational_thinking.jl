@@ -205,12 +205,12 @@ function display_msg_if_fail(x; msg_pass = nothing)
 end
 
 
+
 """
 Displays a nice blockquote. Useful for including quotes by well known figures or useful nuggets of wisdom.  
 """
 function blockquote(text,author="")
 @htl("""
-
 <div class="nice-blockquote nice-blockquote__bordered nice-blockquote--quoted">
 <p class="nice-blockquote__text">
 $text
@@ -219,24 +219,18 @@ $text
 $author
 </div> 
 </div> 
-
-
-
 <style> 
-
 .nice-blockquote{
-margin: 10px 30px;
 padding: 25px;
 background: light grey;
 border: 0.5px solid #ccc;
 color: black;
 box-sizing:border-box;
+overflow-y:hidden;
 }
-
 .nice-blockquote__bordered{
 border-left-width: 14px;
 }
-
 .nice-blockquote--quoted::before{
 content:open-quote;
 font-size:70px;
@@ -248,7 +242,6 @@ margin-top:-20px;
 margin-bottom:-40px;
 font-family: Arial;
 }
-
 .nice-blockquote__text{
 font-family: Arial;
 font-style: italic;
@@ -257,18 +250,15 @@ margin:0;
 line height: 1.5;
 text-align:left;
 }
-
 .nice-blockquote__text:not(:last_child){
 margin-bottom:10px;
 }
-
 .nice-blockquote__text--author{
 font-weight:bold;
 font-style: normal;
 text-align:right;
 fontsize: 2em;
 }
-
 .nice-blockquote__text--author::before{
 content:close-quote;
 font-size:70px;
@@ -276,12 +266,9 @@ font-family: Arial;
 font-weight:bold;
 color:#ccc;
 display:block;
-margin-top:-40px;
+margin-top:-28px;
 margin-bottom:-40px;
-
 }
-
-
 </style>
 """)
 end
