@@ -306,14 +306,12 @@ If you do, the CSS that they provide may not take effect.
 """
 
 # ╔═╡ cb31500f-0cc4-49f0-a338-a75a34c95560
-InlineFootnotesStyleSuperscript()
-#InlineFootnotesStyleBaseline()
-#InlineFootnotesStyleSubscript()
+FootnotesStyleSuperscript()
+#FootnotesStyleBaseline()
+#FootnotesStyleSubscript()
 
 # ╔═╡ f66b3b03-78ee-4eef-a0d6-43f4249d3332
-InlineAndBottomFootnotesNumbered()
-#InlineFootnotesNumbered()
-#BottomFootnotesNumbered()
+FootnotesNumbered()
 
 # ╔═╡ f4201010-71d1-4889-99e7-abb774612a4d
 begin
