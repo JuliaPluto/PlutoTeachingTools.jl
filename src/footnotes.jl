@@ -1,41 +1,31 @@
 #=
-# Code from unamedunknownusername via https://github.com/JuliaPluto/PlutoTeachingTools.jl/pull/19
 inpired by discussion and code found here
 
 - https://hub.gke2.mybinder.org/user/fonsp-pluto-on-binder-o5onajv8/pluto/edit?id=f001628e-4bfb-11ed-04d7-892b7e9b1fe3&token=OG86wPs6Tn2cc0wPePWTPw#footnote-what_is_this
 
 - https://github.com/JuliaPluto/PlutoUI.jl/issues/44
 =#
-using HypertextLiteral
-
-InlineFootnotesNumberedJsString()="""
+export FootnotesNumbered
+"""
+Styles footnotes in `Pluto.jl` as numbers 
+"""
+FootnotesNumbered()= html"""
+<script id="footnotes">
 const addNumbersToInlineFootnotes = () => {
-
-
 const inlinefootnotesNodes=document.querySelectorAll("a.footnote")
 const bottomfootnoteNodes=document.getElementsByClassName("footnote-title")
-
-
 const botttomFootnoteTextList=Array.from(bottomfootnoteNodes).map(x=>x.innerText);
-
-
 //get the inline footers inner text so that we can match up with the 
 const inlineFootnoteTextList=Array.from(inlinefootnotesNodes)
 .map(x=>x.innerText)
-
-
 //add square brackets to match the inline footnotes
 const botttomFootnoteTextListWithBrackets=botttomFootnoteTextList.map(x=>"["+x+"]");
-
-
 //find the number which we want to display inline
 var inlineFootnoteTextListWithNumbers = inlineFootnoteTextList
 .map((x,index)=>{
-
 const indexOfBottomFootnote = botttomFootnoteTextListWithBrackets.indexOf(x)
 const indexOfBottomFootnotePlus1 = indexOfBottomFootnote+1
 const element = inlinefootnotesNodes[index]
-
 //modify the element before part depending on if we find a match
 if (indexOfBottomFootnote<0) 
 {//if we don't find a match display an error
@@ -45,20 +35,9 @@ else
 {//if we do add the number and make the label disapear by sizing it to 0px
 	element.setAttribute("data-before","["+indexOfBottomFootnotePlus1+"]")
 }
-
 return indexOfBottomFootnotePlus1
-
 })
-
 }//end of function addNumbersToInlineFootnotes
-
-
-
-
-
-
-
-
 //run everytime "something" is done so that it updates dynamically/reactively
 //2022/10/28
 //all of the below was taken from Table of Contents in PlutoUI 
@@ -86,121 +65,97 @@ const createCellObservers = () => {
 	})
 }
 createCellObservers()
-
 // And one for the notebook's child list, which updates our cell observers:
 const notebookObserver = new MutationObserver(() => {
 	updateCallback()
 	createCellObservers()
 })
 notebookObserver.observe(notebook, {childList: true})
-
 // And finally, an observer for the document.body classList, to make sure that the fotnotz also works when it is loaded during notebook initialization
 const bodyClassObserver = new MutationObserver(updateCallback)
 bodyClassObserver.observe(document.body, {attributeFilter: ["class"]})
 
-"""
+</script>
 
 
 
-InlineFootnotesNumberedCssString()="""
-a.footnote {
-	font-size: 0 !important;
-}
-a.footnote::before {
-	content: attr(data-before) ;
-	font-size: 10px;
-}
-"""
 
-function InlineFootnotesNumbered()
-	return @htl("""
-	<script id="footnotes">
-	$(InlineFootnotesNumberedJsString())
-	</script>
-	<style> 
-	$(InlineFootnotesNumberedCssString())
-	</style>
-	""")
-end
-
-BottomFootnotesNumberedCssString()="""
-pluto-notebook {
-  counter-reset:  footnote-title;
-} 
-
-.footnote-title {
-	font-size: 0 !important;
-}
-.footnote-title::before {
-	counter-increment: footnote-title !important;
-	content: "[" counter(footnote-title) "]" !important;
-	font-size: 0.75rem !important;
-}
-"""
-
-function BottomFootnotesNumbered()
-	@htl("""
-	<style> 
-	$(BottomFootnotesNumberedCssString())
-	</style>
-	""")
-end
-
-
-function InlineAndBottomFootnotesNumbered() 
-	return @htl("""
-	<script id="footnotes">
-	$(InlineFootnotesNumberedJsString())
-	</script>
-	<style> 
-	$(InlineFootnotesNumberedCssString()*BottomFootnotesNumberedCssString())
-	</style>
-	""")
-end
-
-InlineFootnotesStyleSuperscript()=html"""
 <style> 
+	/*
+	in-line/in-text footnote css styling
+	*/
+	a.footnote {
+		font-size: 0 !important;
+	}
+	a.footnote::before {
+		content: attr(data-before) ;
+		font-size: 10px;
+	}
 
 
+
+	/*
+	bottom-of-page footnote title css styling
+	*/
+	pluto-notebook {
+	counter-reset:  footnote-title;
+	} 
+
+	.footnote-title {
+		font-size: 0 !important;
+	}
+	.footnote-title::before {
+		counter-increment: footnote-title !important;
+		content: "[" counter(footnote-title) "]" !important;
+		font-size: 0.75rem !important;
+	}
+</style>
+"""
+
+
+
+export FootnotesStyleSuperscript 
+"""
+Styles in-text/in-line footnotes in `Pluto.jl` as superscript text
+"""
+FootnotesStyleSuperscript()=html"""
+<style> 
 a.footnote {
 	vertical-align: super;
 }
-
-
 </style>
 """
 
 
-InlineFootnotesStyleSubscript()=html"""
+export FootnotesStyleSubscript 
+"""
+Styles in-text/in-line footnotes in `Pluto.jl` as subscript text
+"""
+FootnotesStyleSubscript()=html"""
 <style> 
-
-
 a.footnote {
 	vertical-align: sub;
 }
-
-
 </style>
 """
 
 
-InlineFootnotesStyleBaseline()=html"""
+
+export FootnotesStyleBaseline 
+"""
+Styles in-text/in-line footnotes in `Pluto.jl` as baseline text 
+"""
+FootnotesStyleBaseline()=html"""
 <style> 
-
-
 a.footnote {
 	vertical-align: baseline;
 }
-
-
 </style>
 """
 
-export InlineFootnotesNumbered 
-export BottomFootnotesNumbered 
-export InlineAndBottomFootnotesNumbered
-export InlineFootnotesStyleSuperscript 
-export InlineFootnotesStyleSubscript  
-export InlineFootnotesStyleBaseline 
+
+
+ 
+
 
 
