@@ -115,7 +115,7 @@ end
 
 
 
-function BottomFootnotesNumbered()
+function FootnotesBottomNumbered()
 html"""
 <style> 
 pluto-notebook {
