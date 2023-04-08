@@ -10,7 +10,7 @@ using PlutoUI
 
 function FootnotesInlineNumbered()
 html"""
-<script>
+<script id="footnotes">
 const addNumbersToInlineFootnotes = () => {
 
 
