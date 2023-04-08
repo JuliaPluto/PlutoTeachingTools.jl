@@ -180,7 +180,7 @@ a.footnote {
 
 export FootnotesInlineNumbered 
 export FootnotesBottomNumbered 
-export InlineAndBottomFootnotesNumbered
+export FootnotesNumbered
 export FootnotesInlineStyleSuperscript 
 export FootnotesInlineStyleSubscript  
 export FootnotesInlineStyleBaseline 
