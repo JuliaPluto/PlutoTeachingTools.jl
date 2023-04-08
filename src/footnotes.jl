@@ -140,8 +140,8 @@ end
 function FootnotesNumbered()
 	PlutoUI.combine() do Child
 	@htl("""
-	$(Child(FootnotesBottomNumbered()))
 	$(Child(FootnotesInlineNumbered()))
+	$(Child(FootnotesBottomNumbered()))
 	""")
 	end
 end
