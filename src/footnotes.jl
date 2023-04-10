@@ -1,5 +1,4 @@
 #=
-# Code from unamedunknownusername via https://github.com/JuliaPluto/PlutoTeachingTools.jl/pull/19
 inpired by discussion and code found here
 
 - https://hub.gke2.mybinder.org/user/fonsp-pluto-on-binder-o5onajv8/pluto/edit?id=f001628e-4bfb-11ed-04d7-892b7e9b1fe3&token=OG86wPs6Tn2cc0wPePWTPw#footnote-what_is_this
@@ -7,8 +6,11 @@ inpired by discussion and code found here
 - https://github.com/JuliaPluto/PlutoUI.jl/issues/44
 =#
 using HypertextLiteral
+using PlutoUI
 
-InlineFootnotesNumberedJsString()="""
+function FootnotesInlineNumbered()
+html"""
+<script id="footnotes">
 const addNumbersToInlineFootnotes = () => {
 
 
@@ -97,12 +99,9 @@ notebookObserver.observe(notebook, {childList: true})
 // And finally, an observer for the document.body classList, to make sure that the fotnotz also works when it is loaded during notebook initialization
 const bodyClassObserver = new MutationObserver(updateCallback)
 bodyClassObserver.observe(document.body, {attributeFilter: ["class"]})
+</script>
 
-"""
-
-
-
-InlineFootnotesNumberedCssString()="""
+<style>
 a.footnote {
 	font-size: 0 !important;
 }
@@ -110,97 +109,80 @@ a.footnote::before {
 	content: attr(data-before) ;
 	font-size: 10px;
 }
+</style>
 """
-
-function InlineFootnotesNumbered()
-	return @htl("""
-	<script id="footnotes">
-	$(InlineFootnotesNumberedJsString())
-	</script>
-	<style> 
-	$(InlineFootnotesNumberedCssString())
-	</style>
-	""")
 end
 
-BottomFootnotesNumberedCssString()="""
+
+
+function FootnotesBottomNumbered()
+html"""
+<style> 
 pluto-notebook {
-  counter-reset:  footnote-title;
+counter-reset:  footnote-title;
 } 
 
 .footnote-title {
-	font-size: 0 !important;
+font-size: 0 !important;
 }
+
 .footnote-title::before {
-	counter-increment: footnote-title !important;
-	content: "[" counter(footnote-title) "]" !important;
-	font-size: 0.75rem !important;
+counter-increment: footnote-title !important;
+content: "[" counter(footnote-title) "]" !important;
+font-size: 0.75rem !important;
 }
+</style>
 """
+end
 
-function BottomFootnotesNumbered()
+
+
+function FootnotesNumbered()
+	PlutoUI.combine() do Child
 	@htl("""
-	<style> 
-	$(BottomFootnotesNumberedCssString())
-	</style>
+	$(Child(FootnotesInlineNumbered()))
+	$(Child(FootnotesBottomNumbered()))
 	""")
+	end
 end
 
 
-function InlineAndBottomFootnotesNumbered() 
-	return @htl("""
-	<script id="footnotes">
-	$(InlineFootnotesNumberedJsString())
-	</script>
-	<style> 
-	$(InlineFootnotesNumberedCssString()*BottomFootnotesNumberedCssString())
-	</style>
-	""")
-end
 
-InlineFootnotesStyleSuperscript()=html"""
+FootnotesInlineStyleSuperscript()=html"""
 <style> 
-
-
 a.footnote {
 	vertical-align: super;
 }
-
-
 </style>
 """
 
 
-InlineFootnotesStyleSubscript()=html"""
+
+FootnotesInlineStyleSubscript()=html"""
 <style> 
-
-
 a.footnote {
 	vertical-align: sub;
 }
-
-
 </style>
 """
 
 
-InlineFootnotesStyleBaseline()=html"""
+
+FootnotesInlineStyleBaseline()=html"""
 <style> 
-
-
 a.footnote {
 	vertical-align: baseline;
 }
-
-
 </style>
 """
 
-export InlineFootnotesNumbered 
-export BottomFootnotesNumbered 
-export InlineAndBottomFootnotesNumbered
-export InlineFootnotesStyleSuperscript 
-export InlineFootnotesStyleSubscript  
-export InlineFootnotesStyleBaseline 
+
+
+export FootnotesInlineNumbered 
+export FootnotesBottomNumbered 
+export FootnotesNumbered
+export FootnotesInlineStyleSuperscript 
+export FootnotesInlineStyleSubscript  
+export FootnotesInlineStyleBaseline 
 
 
