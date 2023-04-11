@@ -12,12 +12,13 @@ begin
 	# Uncomment a line below to override default language
 	#set_language!(PlutoTeachingTools.EnglishUS())      # default
 	#set_language!(PlutoTeachingTools.GermanGermany())  
+	#set_language!(PlutoTeachingTools.SpanishFormal())  
 	
 	pkg_cell_link = "#" * (PlutoRunner.currently_running_cell_id[] |> string)
 end;
 
 # ╔═╡ cd581a51-fb2b-4579-9a7d-0d723ad5d467
-md"# PlutoTeachingTools.jl Examples"
+md"# [PlutoTeachingTools.jl](https://github.com/JuliaPluto/PlutoTeachingTools.jl) Examples"
 
 # ╔═╡ f0704e56-7e97-4c92-bbdd-76d7a873e6d8
 TableOfContents()   # from PlutoUI
@@ -306,14 +307,14 @@ If you do, the CSS that they provide may not take effect.
 """
 
 # ╔═╡ cb31500f-0cc4-49f0-a338-a75a34c95560
-InlineFootnotesStyleSuperscript()
-#InlineFootnotesStyleBaseline()
-#InlineFootnotesStyleSubscript()
+FootnotesInlineStyleSuperscript()
+#FootnotesInlineStyleBaseline()
+#FootnotesInlineStyleSubscript()
 
 # ╔═╡ f66b3b03-78ee-4eef-a0d6-43f4249d3332
-InlineAndBottomFootnotesNumbered()
-#InlineFootnotesNumbered()
-#BottomFootnotesNumbered()
+FootnotesNumbered()
+#FootnotesInlineNumbered()
+#FootnotesBottomNumbered()
 
 # ╔═╡ f4201010-71d1-4889-99e7-abb774612a4d
 begin
@@ -322,11 +323,12 @@ begin
 end
 
 # ╔═╡ ef32d891-0a7a-4803-95ae-a930787c243a
-preferred_text( (en=md"Hello",de=md"Hallo") )
+preferred_text( (en=md"Hello",de=md"Hallo",es=md"Hola") )
 
 # ╔═╡ d3762092-e31d-4b96-840a-3939b89f60b7
 tip(preferred_text( (en=md"Remember to add good documentation.",
-						de=md"Denken Sie daran, eine gute Dokumentation hinzuzufügen.") ))
+						de=md"Denken Sie daran, eine gute Dokumentation hinzuzufügen.",
+						es=md"Recuerde agregar buena documentación") ))
 
 # ╔═╡ 93e4e977-efb1-48c7-ac4c-c578140135ee
 Markdown.parse("""See also [package cell]($pkg_cell_link) for overriding default language selected from `ENV[LANG]`.""")
@@ -390,9 +392,9 @@ uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 
 [[deps.CodeTracking]]
 deps = ["InteractiveUtils", "UUIDs"]
-git-tree-sha1 = "4f619d394ac521dc59cb80a2cd8f78578e483a9d"
+git-tree-sha1 = "d730914ef30a06732bdd9f763f6cc32e92ffbff1"
 uuid = "da1fd8a2-8d9e-5ec2-8556-3022fb5608a2"
-version = "1.2.1"
+version = "1.3.1"
 
 [[deps.ColorTypes]]
 deps = ["FixedPointNumbers", "Random"]
@@ -463,9 +465,9 @@ version = "0.21.3"
 
 [[deps.JuliaInterpreter]]
 deps = ["CodeTracking", "InteractiveUtils", "Random", "UUIDs"]
-git-tree-sha1 = "d9ae7a9081d9b1a3b2a5c1d3dac5e2fdaafbd538"
+git-tree-sha1 = "6a125e6a4cb391e0b9adbd1afa9e771c2179f8ef"
 uuid = "aa1ae85d-cabe-5617-a682-6adf51b2e16a"
-version = "0.9.22"
+version = "0.9.23"
 
 [[deps.LaTeXStrings]]
 git-tree-sha1 = "f2355693d6778a178ade15952b7ac47a4ff97996"
@@ -550,15 +552,15 @@ uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 version = "0.3.20+0"
 
 [[deps.OrderedCollections]]
-git-tree-sha1 = "85f8e6578bf1f9ee0d11e7bb1b1456435479d47c"
+git-tree-sha1 = "d321bf2de576bf25ec4d3e4360faca399afca282"
 uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
-version = "1.4.1"
+version = "1.6.0"
 
 [[deps.Parsers]]
 deps = ["Dates", "SnoopPrecompile"]
-git-tree-sha1 = "6f4fbcd1ad45905a5dee3f4256fabb49aa2110c6"
+git-tree-sha1 = "478ac6c952fddd4399e71d4779797c538d0ff2bf"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
-version = "2.5.7"
+version = "2.5.8"
 
 [[deps.Pkg]]
 deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
@@ -579,9 +581,9 @@ version = "0.1.6"
 
 [[deps.PlutoTeachingTools]]
 deps = ["Downloads", "HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
-git-tree-sha1 = "b970826468465da71f839cdacc403e99842c18ea"
+git-tree-sha1 = "8c8b07296990c12ac3a9eb9f74cd80f7e81c16b7"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
-version = "0.2.8"
+version = "0.2.9"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "FixedPointNumbers", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "MIMEs", "Markdown", "Random", "Reexport", "URIs", "UUIDs"]
@@ -620,9 +622,9 @@ version = "1.3.0"
 
 [[deps.Revise]]
 deps = ["CodeTracking", "Distributed", "FileWatching", "JuliaInterpreter", "LibGit2", "LoweredCodeUtils", "OrderedCollections", "Pkg", "REPL", "Requires", "UUIDs", "Unicode"]
-git-tree-sha1 = "90cb983381a9dc7d3dff5fb2d1ee52cd59877412"
+git-tree-sha1 = "feafdc70b2e6684314e188d95fe66d116de834a7"
 uuid = "295af30f-e4ad-537b-8983-00126c2a3abe"
-version = "3.5.1"
+version = "3.5.2"
 
 [[deps.SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
@@ -663,9 +665,9 @@ deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [[deps.Tricks]]
-git-tree-sha1 = "6bac775f2d42a611cdfcd1fb217ee719630c4175"
+git-tree-sha1 = "aadb748be58b492045b4f56166b5188aa63ce549"
 uuid = "410a4b4d-49e4-4fbc-ab6d-cb71b17b3775"
-version = "0.1.6"
+version = "0.1.7"
 
 [[deps.URIs]]
 git-tree-sha1 = "074f993b0ca030848b897beff716d93aca60f06a"
