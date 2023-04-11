@@ -14,6 +14,7 @@ begin
 	#set_language!(PlutoTeachingTools.GermanGermany())  
 	#set_language!(PlutoTeachingTools.SpanishFormal())  
 	
+	nb_link_prefix = PlutoRunner.notebook_id[] |>string
 	pkg_cell_link = "#" * (PlutoRunner.currently_running_cell_id[] |> string)
 end;
 
@@ -22,6 +23,9 @@ md"# [PlutoTeachingTools.jl](https://github.com/JuliaPluto/PlutoTeachingTools.jl
 
 # ╔═╡ f0704e56-7e97-4c92-bbdd-76d7a873e6d8
 TableOfContents()   # from PlutoUI
+
+# ╔═╡ a0e8b662-074f-47c0-9f0c-545ee847f6b9
+Markdown.parse("Here's a link to the [Pkg cell]($pkg_cell_link).")
 
 # ╔═╡ d173896e-021a-4b2c-b913-62c5a2320341
 md"""
@@ -772,6 +776,7 @@ version = "17.4.0+0"
 # ╠═96ebc3d2-fc70-4a56-8e87-dfe686c723c4
 # ╠═a6485a75-6b52-4549-94e9-658dd971c43b
 # ╠═1f417420-cc7f-4e88-9b2b-05185ff81c31
+# ╠═a0e8b662-074f-47c0-9f0c-545ee847f6b9
 # ╟─97967267-6dbe-4d13-b9cf-1be9038b23ab
 # ╠═c83e0b4a-7376-4061-8796-ba396c9fbc7a
 # ╠═26219cb8-b1a2-4a35-b50d-10d496954f34
