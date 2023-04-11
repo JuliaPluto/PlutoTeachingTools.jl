@@ -56,6 +56,8 @@ include("english.jl")
 import .PTTEnglish: EnglishUS
 include("german.jl")
 import .PTTGerman: GermanGermany, GermanGermanyFormal, GermanGermanyColloquial
+include("spanish.jl")
+import .PTTSpanish: SpanishES, SpanishFormal, SpanishColloquial
 
 const languages_registered = Ref{Dict{String,AbstractLanguage}}(
         Dict( "en" => PTTEnglish.EnglishUS(),
@@ -63,12 +65,19 @@ const languages_registered = Ref{Dict{String,AbstractLanguage}}(
         "de" => PTTGerman.GermanGermany(),
         "de_colloq" => PTTGerman.GermanGermanyColloquial(),
         "de_de" => PTTGerman.GermanGermany(),
-        "de_de_colloq" => PTTGerman.GermanGermanyColloquial() ))
+        "de_de_colloq" => PTTGerman.GermanGermanyColloquial(),
+              "es" => PTTSpanish.SpanishES(),
+              "es_colloq" => PTTSpanish.SpanishColloquial(),
+              "es_es" => PTTSpanish.SpanishES(),
+              "es_es_colloq" => PTTSpanish.SpanishColloquial(),
+              ))
 
 const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
         Dict( PTTEnglish.EnglishUS() => ["en","en_us"],
         PTTGerman.GermanGermany() => ["de","de_de"],
-        PTTGerman.GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"]
+        PTTGerman.GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"],
+        PTTSpanish.SpanishES() => ["es", "es_es"],
+        PTTSpanish.SpanishColloquial() => ["es_colloq", "es_es_colloq"]
         ))
 
 # Allow users to register additional languages
@@ -105,6 +114,8 @@ function get_language_old(str::AbstractString)
       PTTEnglish.EnglishUS()
    elseif contains(str,r"^de")
       PTTGerman.GermanGermany()
+   elseif contains(str,r"^es")
+       PTTSpanish.SpanishFormal()
    else # Sorry, we don't have your language yet.
       # @info "Sorry, PlutoTeachingTools doesn't include that language."
       PTTEnglish.EnglishUS()
