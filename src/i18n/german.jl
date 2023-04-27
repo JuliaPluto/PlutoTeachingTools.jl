@@ -18,7 +18,7 @@ PlutoTeachingTools.answer_invite_str(lang::Lang) where {Lang <: German} = "Wills
 PlutoTeachingTools.answer_boxlabel_str(lang::Lang) where {Lang <: German} = "Antwort"
 PlutoTeachingTools.almost_str(lang::Lang) where {Lang <: German} = "Fast am Ziel!"
 PlutoTeachingTools.warning_box_str(lang::Lang) where {Lang <: German} = "Warnung:"
-PlutoTeachingTools.question_box_str(lang::Lang) where {Lang <: German} = "Frange:"
+PlutoTeachingTools.question_box_str(lang::Lang) where {Lang <: German} = "Frage:"
 PlutoTeachingTools.danger_str(lang::Lang) where {Lang <: German} = "Achtung!"
 PlutoTeachingTools.still_missing_str(lang::Lang) where {Lang <: German} = "Fehlende Antwort"
 PlutoTeachingTools.still_missing_text_str(lang::Lang) where {Lang <: GermanGermanyFormal} = md"Ersetzen Sie `missing` mit Ihrer Antwort."
@@ -44,7 +44,7 @@ PlutoTeachingTools.keep_working_update_str(var, lang::Lang) where {Lang <: Germa
 PlutoTeachingTools.yays(lang::Lang) where {Lang <: GermanGermanyFormal} = [md"Großartig!", md"Juchu ❤", md"Großartig! 🎉", md"Gut gemacht!", md"Weiter so!", md"Gute Arbeit!", md"Super!", md"Ihre Antwort ist richtig!", md"Weiter geht's mit der nächsten Antwort."]
 PlutoTeachingTools.yays(lang::Lang) where {Lang <: GermanGermanyColloquial} = [md"Großartig!", md"Juchu ❤", md"Großartig! 🎉", md"Gut gemacht!", md"Weiter so!", md"Gute Arbeit!", md"Super!", md"Deine Antwort ist richtig!", md"Weiter geht's mit der nächsten Antwort."]
 PlutoTeachingTools.correct_str(lang::Lang) where {Lang <: German} = "Richtig!"
-PlutoTeachingTools.todo_str(lang::Lang) where {Lang <: German} = "Machen"
+PlutoTeachingTools.todo_str(lang::Lang) where {Lang <: German} = "TO-DO"
 
 PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang <: German} = md"Die Variable `$sym` ist immer noch `missing`."
 PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang <: German} = "Der Typ von `$sym` ist nicht richtig. Richtig wäre <: "
