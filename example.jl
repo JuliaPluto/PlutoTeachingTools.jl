@@ -24,9 +24,6 @@ md"# [PlutoTeachingTools.jl](https://github.com/JuliaPluto/PlutoTeachingTools.jl
 # ╔═╡ f0704e56-7e97-4c92-bbdd-76d7a873e6d8
 TableOfContents()   # from PlutoUI
 
-# ╔═╡ a0e8b662-074f-47c0-9f0c-545ee847f6b9
-Markdown.parse("Here's a link to the [Pkg cell]($pkg_cell_link).")
-
 # ╔═╡ d173896e-021a-4b2c-b913-62c5a2320341
 md"""
 ## Common Note Boxes
@@ -138,6 +135,14 @@ PlutoTeachingTools.keep_working_if_var_contains_substr(:response_2,response_2,"I
 
 # ╔═╡ c8811462-874c-47da-bb34-797234046fdf
 PlutoTeachingTools.keep_working_if_var_contains_substr(:response_2,response_2,"should display nothing")
+
+# ╔═╡ 40155961-e8bb-41d1-bf54-178cf2a0c524
+responce_1 = missing
+
+# ╔═╡ 957ec770-ab5b-4b0b-a38d-46834d96fa68
+if !ismissing(responce_1) && responce_1 == 42
+	PlutoTeachingTools.confetti()
+end
 
 # ╔═╡ 7596325b-7a1b-4fad-bac3-ae6743e3f8dd
 md"""# Robust Local Resources"""
@@ -259,6 +264,9 @@ present_button()  # Don't use this with ChooseDisplayMode() since two ways to to
 
 # ╔═╡ 1f417420-cc7f-4e88-9b2b-05185ff81c31
 #WidthOverDocs()  # deprecated in favor of ChooseDisplayMode
+
+# ╔═╡ a0e8b662-074f-47c0-9f0c-545ee847f6b9
+Markdown.parse("Here's a link to the [Pkg cell]($pkg_cell_link).")
 
 # ╔═╡ 97967267-6dbe-4d13-b9cf-1be9038b23ab
 md"""
@@ -463,9 +471,9 @@ uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 
 [[deps.JSON]]
 deps = ["Dates", "Mmap", "Parsers", "Unicode"]
-git-tree-sha1 = "3c837543ddb02250ef42f4738347454f95079d4e"
+git-tree-sha1 = "31e996f0a15c7b280ba9f76636b3ff9e2ae58c9a"
 uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
-version = "0.21.3"
+version = "0.21.4"
 
 [[deps.JuliaInterpreter]]
 deps = ["CodeTracking", "InteractiveUtils", "Random", "UUIDs"]
@@ -480,9 +488,9 @@ version = "1.3.0"
 
 [[deps.Latexify]]
 deps = ["Formatting", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "OrderedCollections", "Printf", "Requires"]
-git-tree-sha1 = "2422f47b34d4b127720a18f86fa7b1aa2e141f29"
+git-tree-sha1 = "98dc144f1e0b299d49e8d23e56ad68d3e4f340a5"
 uuid = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
-version = "0.15.18"
+version = "0.15.20"
 
 [[deps.LibCURL]]
 deps = ["LibCURL_jll", "MozillaCACerts_jll"]
@@ -585,9 +593,9 @@ version = "0.1.6"
 
 [[deps.PlutoTeachingTools]]
 deps = ["Downloads", "HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
-git-tree-sha1 = "8c8b07296990c12ac3a9eb9f74cd80f7e81c16b7"
+git-tree-sha1 = "901509f7ae6abfb20281c53c34ecfa95ec3119df"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
-version = "0.2.9"
+version = "0.2.10"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "FixedPointNumbers", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "MIMEs", "Markdown", "Random", "Reexport", "URIs", "UUIDs"]
@@ -744,6 +752,8 @@ version = "17.4.0+0"
 # ╠═5f95518f-62cd-4869-b6cf-85a7860f38ec
 # ╠═3e12dbd9-f02a-479d-9eff-234ac88e059b
 # ╠═c8811462-874c-47da-bb34-797234046fdf
+# ╠═40155961-e8bb-41d1-bf54-178cf2a0c524
+# ╠═957ec770-ab5b-4b0b-a38d-46834d96fa68
 # ╟─7596325b-7a1b-4fad-bac3-ae6743e3f8dd
 # ╠═2bfcfe6d-221e-4619-b794-92e44494460b
 # ╠═43a47026-4b09-4c20-9ccb-a766a17f8ff4
