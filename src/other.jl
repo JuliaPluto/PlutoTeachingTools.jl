@@ -93,3 +93,6 @@ function confetti()
 	</script>
 	""")
 end
+
+export confetti
+
