@@ -38,7 +38,7 @@ warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Mar
 "Question box with arguement as text."
 question_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("question", question_box_str(lang), [text]));
 
-"Key concept box with arguement as text."
+"Key concept box with concept name and description as input arguments."
 keyconcept(concept, text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("key-concept", keyconcept_str(lang), [md"**$concept**", text]))
 
 "Danger box with arguement as text."
