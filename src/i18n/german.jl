@@ -20,6 +20,7 @@ PlutoTeachingTools.almost_str(lang::Lang) where {Lang <: German} = "Fast am Ziel
 PlutoTeachingTools.warning_box_str(lang::Lang) where {Lang <: German} = "Warnung:"
 PlutoTeachingTools.question_box_str(lang::Lang) where {Lang <: German} = "Frage:"
 PlutoTeachingTools.danger_str(lang::Lang) where {Lang <: German} = "Achtung!"
+PlutoTeachingTools.keyconcept_str(lang::Lang) where {Lang <: German} = "🎯 Schlüsselkonzept"
 PlutoTeachingTools.still_missing_str(lang::Lang) where {Lang <: German} = "Fehlende Antwort"
 PlutoTeachingTools.still_missing_text_str(lang::Lang) where {Lang <: GermanGermanyFormal} = md"Ersetzen Sie `missing` mit Ihrer Antwort."
 PlutoTeachingTools.still_missing_text_str(lang::Lang) where {Lang <: GermanGermanyColloquial} = md"Ersetze `missing` mit deiner Antwort."

@@ -10,12 +10,14 @@ using Markdown
         @test_nowarn almost("Testing almost")
         @test_nowarn still_missing("Variable xxx is missing.")
         @test_nowarn keep_working("Maybe the hint will help.")
+        @test_nowarn keyconcept("Julia", "Julia is an amazing programming language.")
     end;
     @testset "Markdown arguments" begin
         @test_nowarn hint(md"Test hint")
         @test_nowarn almost(md"Testing almost")
         @test_nowarn still_missing(md"Variable xxx is missing.")
         @test_nowarn keep_working(md"Maybe the hint will help.")
+        @test_nowarn keyconcept("Julia", md"Julia is an amazing programming language.")
     end;
 
     @testset "aside" begin

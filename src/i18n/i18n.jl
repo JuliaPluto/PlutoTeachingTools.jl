@@ -12,6 +12,7 @@ protip_boxlabel_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Pleas
 almost_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 warning_box_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 question_box_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
+keyconcept_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 danger_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 still_missing_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."
 still_missing_text_str(lang::Lang) where {Lang <: AbstractLanguage} = @error "Please define a translation."

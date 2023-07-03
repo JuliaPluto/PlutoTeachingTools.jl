@@ -18,6 +18,7 @@ PlutoTeachingTools.almost_str(lang::Lang) where {Lang <: English} = "Almost ther
 PlutoTeachingTools.warning_box_str(lang::Lang) where {Lang <: English} = "Warning:"
 PlutoTeachingTools.question_box_str(lang::Lang) where {Lang <: English} = "Question:"
 PlutoTeachingTools.danger_str(lang::Lang) where {Lang <: English} = "Beware!"
+PlutoTeachingTools.keyconcept_str(lang::Lang) where {Lang <: English} = "🎯 Key concept"
 PlutoTeachingTools.still_missing_str(lang::Lang) where {Lang <: English} = "Missing Response"
 PlutoTeachingTools.still_missing_text_str(lang::Lang) where {Lang <: English} = md"Replace `missing` with your answer."
 PlutoTeachingTools.still_nothing_str(lang::Lang) where {Lang <: English} = "Here we go!"

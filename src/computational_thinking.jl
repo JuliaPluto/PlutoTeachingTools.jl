@@ -4,7 +4,7 @@ using Markdown
 using LaTeXStrings
 using HypertextLiteral 
 
-export hint, tip, protip, almost, warning_box, question_box, answer_box, danger 
+export hint, tip, protip, almost, warning_box, question_box, answer_box, danger, keyconcept
 export correct, still_missing, still_nothing, wrong_type
 export var_not_defined, func_not_defined, keep_working
 export not_defined  # deprecated
@@ -37,6 +37,9 @@ warning_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Mar
 
 "Question box with arguement as text."
 question_box(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("question", question_box_str(lang), [text]));
+
+"Key concept box with concept name and description as input arguments."
+keyconcept(concept, text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("key-concept", keyconcept_str(lang), [md"**$concept**", text]))
 
 "Danger box with arguement as text."
 danger(text, lang::AbstractLanguage = default_language[]) = Markdown.MD(Markdown.Admonition("danger", danger_str(lang), [text]));
