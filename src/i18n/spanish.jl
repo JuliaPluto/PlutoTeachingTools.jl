@@ -50,18 +50,18 @@ PlutoTeachingTools.correct_str(lang::Lang) where {Lang<:SpanishColloquial} = "¡
 PlutoTeachingTools.correct_str(lang::Lang) where {Lang<:SpanishFormal} = "¡Lo tiene!"
 PlutoTeachingTools.todo_str(lang::Lang) where {Lang<:Spanish} = "PENDIENTE"
 
-PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang<:Spanish} = md"La variable `$sym` sigue estando `missing`."
-PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang<:Spanish} = "El tipo de `$sym` no es correcto.  Debería de ser <: "
+PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang<:Spanish} = md"La variable $sym sigue estando `missing`."
+PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang<:Spanish} = "El tipo de $sym no es correcto.  Debería de ser <: "
 PlutoTeachingTools.check_type_isa_wrong_type_one_of_text_str(lang::Lang) where {Lang<:Spanish} = "uno de"
 PlutoTeachingTools.check_type_isa_wrong_type_or_text_str(lang::Lang) where {Lang<:Spanish} = "o"
-PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang::Lang) where {Lang<:Spanish} = md"`$sym` tiene el tipo correcto."
+PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang::Lang) where {Lang<:Spanish} = md"$sym tiene el tipo correcto."
 PlutoTeachingTools.check_type_isa_type_error_str(sym, lang::Lang) where {Lang<:Spanish} = "Error de Tipo"
 
-PlutoTeachingTools.check_type_eq_missing_text_str(sym, lang::Lang) where {Lang<:Spanish} = md"La variable `$sym` aún es `missing`."
-PlutoTeachingTools.check_type_eq_wrong_type_single_text_str(sym, type, lang::Lang) where {Lang<:Spanish} = "El tipo de `$sym` debería de ser $type."
-PlutoTeachingTools.check_type_eq_wrong_type_multi_text_str(sym, lang::Lang) where {Lang<:Spanish} = "El tipo de `$sym` debería de ser uno de "
+PlutoTeachingTools.check_type_eq_missing_text_str(sym, lang::Lang) where {Lang<:Spanish} = md"La variable $sym aún es `missing`."
+PlutoTeachingTools.check_type_eq_wrong_type_single_text_str(sym, type, lang::Lang) where {Lang<:Spanish} = "El tipo de $sym debería de ser $type."
+PlutoTeachingTools.check_type_eq_wrong_type_multi_text_str(sym, lang::Lang) where {Lang<:Spanish} = "El tipo de $sym debería de ser uno de "
 PlutoTeachingTools.check_type_eq_type_error_str(lang::Lang) where {Lang<:Spanish} = "Error de Tipo"
-PlutoTeachingTools.check_type_eq_correct_str(sym, lang::Lang) where {Lang<:Spanish} = md"`$sym` tiene el tipo correcto."
+PlutoTeachingTools.check_type_eq_correct_str(sym, lang::Lang) where {Lang<:Spanish} = md"$sym tiene el tipo correcto."
 
 # other.jl
 PlutoTeachingTools.full_width_mode_str(lang::Lang) where {Lang<:Spanish} = "Modo Pantalla Completa"
