@@ -37,18 +37,18 @@ PlutoTeachingTools.yays(lang::Lang) where {Lang <: English} = [md"Great!", md"Ya
 PlutoTeachingTools.correct_str(lang::Lang) where {Lang <: English} = "Got it!"
 PlutoTeachingTools.todo_str(lang::Lang) where {Lang <: English} = "TODO"
 
-PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang <: English} = md"The variable `$sym` is still set to missing."
-PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang <: English} = "The type of `$sym` is not correct.  It should be <: "
+PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang::Lang) where {Lang <: English} = md"The variable $sym is still set to missing."
+PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang::Lang) where {Lang <: English} = "The type of $sym is not correct.  It should be <: "
 PlutoTeachingTools.check_type_isa_wrong_type_one_of_text_str(lang::Lang) where {Lang <: English} = "one of"
 PlutoTeachingTools.check_type_isa_wrong_type_or_text_str(lang::Lang) where {Lang <: English} = "or"
-PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang::Lang) where {Lang <: English} = md"`$sym` has the correct type."
+PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang::Lang) where {Lang <: English} = md"$sym has the correct type."
 PlutoTeachingTools.check_type_isa_type_error_str(sym, lang::Lang) where {Lang <: English} = "Type Error"
 
-PlutoTeachingTools.check_type_eq_missing_text_str(sym, lang::Lang) where {Lang <: English} = md"The variable `$sym` is still set to missing."
-PlutoTeachingTools.check_type_eq_wrong_type_single_text_str(sym, type, lang::Lang) where {Lang <: English} = "The type of `$sym` should be $type."
-PlutoTeachingTools.check_type_eq_wrong_type_multi_text_str(sym, lang::Lang) where {Lang <: English} = "The type of `$sym` should be one of "
+PlutoTeachingTools.check_type_eq_missing_text_str(sym, lang::Lang) where {Lang <: English} = md"The variable $sym is still set to missing."
+PlutoTeachingTools.check_type_eq_wrong_type_single_text_str(sym, type, lang::Lang) where {Lang <: English} = "The type of $sym should be $type."
+PlutoTeachingTools.check_type_eq_wrong_type_multi_text_str(sym, lang::Lang) where {Lang <: English} = "The type of $sym should be one of "
 PlutoTeachingTools.check_type_eq_type_error_str(lang::Lang) where {Lang <: English} = "Type Error"
-PlutoTeachingTools.check_type_eq_correct_str(sym, lang::Lang) where {Lang <: English} = md"`$sym` has the correct type."
+PlutoTeachingTools.check_type_eq_correct_str(sym, lang::Lang) where {Lang <: English} = md"$sym has the correct type."
 
 # other.jl
 PlutoTeachingTools.full_width_mode_str(lang::Lang) where {Lang <: English} = "Full Width Mode"
