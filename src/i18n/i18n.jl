@@ -100,7 +100,7 @@ end
 function get_language(str::AbstractString)
    str = replace(lowercase(str), '-'=>'_')
    m =  match(r"^(\w+)\.",str)
-   key = isnothing(m) ? str : first(m)
+   key = isnothing(m) ? str : first(m.captures)
    if !haskey(languages_registered[],key) 	   
       # @info "Sorry, PlutoTeachingTools doesn't include that language."
       nothing # PTTEnglish.EnglishUS()
