@@ -1,0 +1,44 @@
+name: Julia tests
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+# this is the same as Test.yml
+on:
+    workflow_dispatch:
+    push:
+        paths-ignore:
+            - '**.md'
+        branches:
+            - main
+    pull_request:
+        paths-ignore:
+            - '**.md'
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+    test:
+        runs-on: ${{ matrix.os }}
+        timeout-minutes: 10
+
+        strategy:
+            # Without setting this, a failing test cancels all others
+            fail-fast: false
+            matrix:
+                julia-version: ["1.6", "1", "~1.10.0-0"]
+                os: [ubuntu-latest]
+
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v3
+
+            # Makes the `julia` command available
+            - uses: julia-actions/setup-julia@v1
+              with:
+                  version: ${{ matrix.julia-version }}
+            - uses: julia-actions/cache@v1
+
+            # 🚗
+            - uses: julia-actions/julia-runtest@v1
+              with:
+                  coverage: false
