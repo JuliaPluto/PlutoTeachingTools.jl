@@ -30,9 +30,10 @@ struct TwoColumn{L, R}
 end
 
 function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
-    write(io, """<div style="display: flex;"><div style="flex: 50%;">""")
+    write(io, """<div style="display: flex;"><div style="flex: 49%;">""")
     show(io, mime, tc.left)
-    write(io, """</div><div style="flex: 50%;">""")
+    write(io, """</div><div style="flex: 2%;">""")
+    write(io, """</div><div style="flex: 49%;">""")
     show(io, mime, tc.right)
     write(io, """</div></div>""")
 end
@@ -43,9 +44,10 @@ struct TwoColumnWideLeft{L, R}
 end
 
 function Base.show(io, mime::MIME"text/html", tc::TwoColumnWideLeft)
-    write(io, """<div style="display: flex;"><div style="flex: 66%;">""")
+    write(io, """<div style="display: flex;"><div style="flex: 65%;">""")
     show(io, mime, tc.left)
-    write(io, """</div><div style="flex: 34%;">""")
+    write(io, """</div><div style="flex: 2%;">""")
+    write(io, """</div><div style="flex: 33%;">""")
     show(io, mime, tc.right)
     write(io, """</div></div>""")
 end
@@ -56,9 +58,10 @@ struct TwoColumnWideRight{L, R}
 end
 
 function Base.show(io, mime::MIME"text/html", tc::TwoColumnWideRight)
-    write(io, """<div style="display: flex;"><div style="flex: 34%;">""")
+    write(io, """<div style="display: flex;"><div style="flex: 33%;">""")
     show(io, mime, tc.left)
-    write(io, """</div><div style="flex: 66%;">""")
+    write(io, """</div><div style="flex: 2%;">""")
+    write(io, """</div><div style="flex: 65%;">""")
     show(io, mime, tc.right)
     write(io, """</div></div>""")
 end
@@ -70,11 +73,13 @@ struct ThreeColumn{L, C, R}
 end
 
 function Base.show(io, mime::MIME"text/html", tc::ThreeColumn)
-    write(io, """<div style="display: flex;"><div style="flex: 33%;">""")
+    write(io, """<div style="display: flex;"><div style="flex: 32%;">""")
     show(io, mime, tc.left)
-    write(io, """</div><div style="flex: 34%;">""")
+    write(io, """</div><div style="flex: 2%;">""")
+    write(io, """</div><div style="flex: 32%;">""")
     show(io, mime, tc.center)
-    write(io, """</div><div style="flex: 33%;">""")
+    write(io, """</div><div style="flex: 2%;">""")
+    write(io, """</div><div style="flex: 32%;">""")
     show(io, mime, tc.right)
     write(io, """</div></div>""")
 end
@@ -131,5 +136,3 @@ function ChooseDisplayMode(;wide::Bool=false, present::Bool = false, lang::Abstr
 
 """)
 end
-
-
