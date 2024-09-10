@@ -59,6 +59,15 @@ include("german.jl")
 import .PTTGerman: GermanGermany, GermanGermanyFormal, GermanGermanyColloquial
 include("spanish.jl")
 import .PTTSpanish: SpanishES, SpanishFormal, SpanishColloquial
+include("chinese.jl")
+import .PTTChinese: SimplifiedChinese
+
+
+abstract type German  <: AbstractLanguage end
+struct GermanGermanyFormal <: German end
+struct GermanGermanyColloquial <: German end
+GermanGermany = GermanGermanyFormal
+
 
 const languages_registered = Ref{Dict{String,AbstractLanguage}}(
         Dict( "en" => PTTEnglish.EnglishUS(),
@@ -71,6 +80,8 @@ const languages_registered = Ref{Dict{String,AbstractLanguage}}(
               "es_colloq" => PTTSpanish.SpanishColloquial(),
               "es_es" => PTTSpanish.SpanishES(),
               "es_es_colloq" => PTTSpanish.SpanishColloquial(),
+              "zh" => PTTChinese.SimplifiedChinese(),
+              "zh_CN" => PTTChinese.SimplifiedChinese(),
               ))
 
 const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
@@ -78,7 +89,8 @@ const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
         PTTGerman.GermanGermany() => ["de","de_de"],
         PTTGerman.GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"],
         PTTSpanish.SpanishES() => ["es", "es_es"],
-        PTTSpanish.SpanishColloquial() => ["es_colloq", "es_es_colloq"]
+        PTTSpanish.SpanishColloquial() => ["es_colloq", "es_es_colloq"],
+        PTTChinese.SimplifiedChinese() => ["zh", "zh_CN"]
         ))
 
 # Allow users to register additional languages
