@@ -5,7 +5,7 @@ using Markdown
 using ..PlutoTeachingTools
 
 abstract type Russian  <: AbstractLanguage end
-
+struct RussianRU <: Russian end
 
 # computational_thinking.jl
 PlutoTeachingTools.hint_str(lang::Lang) where {Lang <: Russian} = "Подсказка"
@@ -29,7 +29,7 @@ PlutoTeachingTools.wrong_type_text_str(lang::Lang, var, type) where {Lang <: Rus
 PlutoTeachingTools.func_not_defined_str(lang::Lang) where {Lang <: Russian} = "Ой!"
 PlutoTeachingTools.func_not_defined_text_str(func_name, lang::Lang) where {Lang <: Russian} = md"Убедитесь, что вы определили функцию под названием **$(Markdown.Code(string(func_name)))**"
 PlutoTeachingTools.var_not_defined_str(lang::Lang) where {Lang <: Russian} = "Ой!"
-PlutoTeachingTools.var_not_defined_text_str(variable_name, lang::Lang) where {Lang <: Russian} = md"Убедитесь, что вы определили переменнную под названием **$(Markdown.Code(string(variable_name)))**"
+PlutoTeachingTools.var_not_defined_text_str(variable_name, lang::Lang) where {Lang <: Russian} = md"Убедитесь, что вы определили переменную под названием **$(Markdown.Code(string(variable_name)))**"
 PlutoTeachingTools.keep_working_str(lang::Lang) where {Lang <: Russian} = "Продолжайте работу!"
 PlutoTeachingTools.keep_working_text_str(lang::Lang) where {Lang <: Russian} = md"Ответ не вполне правильный."
 PlutoTeachingTools.keep_working_update_str(var, lang::Lang) where {Lang <: Russian} = md"Обязательно обновите параметр ячейки $var."
