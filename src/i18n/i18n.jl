@@ -57,29 +57,33 @@ include("english.jl")
 import .PTTEnglish: EnglishUS
 include("german.jl")
 import .PTTGerman: GermanGermany, GermanGermanyFormal, GermanGermanyColloquial
+include("russian.jl")
+import .PTTRussian: RussianRU
 include("spanish.jl")
 import .PTTSpanish: SpanishES, SpanishFormal, SpanishColloquial
 
 const languages_registered = Ref{Dict{String,AbstractLanguage}}(
-        Dict( "en" => PTTEnglish.EnglishUS(),
-	"en_us" => PTTEnglish.EnglishUS(),
-        "de" => PTTGerman.GermanGermany(),
-        "de_colloq" => PTTGerman.GermanGermanyColloquial(),
-        "de_de" => PTTGerman.GermanGermany(),
-        "de_de_colloq" => PTTGerman.GermanGermanyColloquial(),
-              "es" => PTTSpanish.SpanishES(),
-              "es_colloq" => PTTSpanish.SpanishColloquial(),
-              "es_es" => PTTSpanish.SpanishES(),
-              "es_es_colloq" => PTTSpanish.SpanishColloquial(),
-              ))
+    Dict( "en" => PTTEnglish.EnglishUS(),
+	      "en_us" => PTTEnglish.EnglishUS(),
+          "de" => PTTGerman.GermanGermany(),
+          "de_colloq" => PTTGerman.GermanGermanyColloquial(),
+          "de_de" => PTTGerman.GermanGermany(),
+          "de_de_colloq" => PTTGerman.GermanGermanyColloquial(),
+          "ru" => PTTRussian.RussianRU(),
+          "es" => PTTSpanish.SpanishES(),
+          "es_colloq" => PTTSpanish.SpanishColloquial(),
+          "es_es" => PTTSpanish.SpanishES(),
+          "es_es_colloq" => PTTSpanish.SpanishColloquial(),
+          ))
 
 const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
-        Dict( PTTEnglish.EnglishUS() => ["en","en_us"],
-        PTTGerman.GermanGermany() => ["de","de_de"],
-        PTTGerman.GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"],
-        PTTSpanish.SpanishES() => ["es", "es_es"],
-        PTTSpanish.SpanishColloquial() => ["es_colloq", "es_es_colloq"]
-        ))
+    Dict( PTTEnglish.EnglishUS() => ["en","en_us"],
+          PTTGerman.GermanGermany() => ["de","de_de"],
+          PTTGerman.GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"],
+          PTTRussian.RussianRU() => ["ru","ru_ru"],
+          PTTSpanish.SpanishES() => ["es", "es_es"],
+          PTTSpanish.SpanishColloquial() => ["es_colloq", "es_es_colloq"]
+          ))
 
 # Allow users to register additional languages
 function register_language!(str::AbstractString, lang::Lang) where { Lang <: AbstractLanguage } 
