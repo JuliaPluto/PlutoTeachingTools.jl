@@ -23,7 +23,7 @@ md"# [PlutoTeachingTools.jl](https://github.com/JuliaPluto/PlutoTeachingTools.jl
 # ╔═╡ 84ccb960-41f8-430d-bd73-a7c0248cfb95
 md"""
 Language for common prompts: $(@bind lang Select(["en"=>"English","de"=>"German","es"=>"Spanish",
-"ru"=>"Russian"]) )
+"ru"=>"Russian", "zh"=>"chinese"]]) )
 """
 
 # ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
