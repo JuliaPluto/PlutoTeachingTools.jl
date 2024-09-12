@@ -86,7 +86,7 @@ const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
           PTTRussian.RussianRU() => ["ru","ru_ru"],
           PTTSpanish.SpanishES() => ["es", "es_es"],
           PTTSpanish.SpanishColloquial() => ["es_colloq", "es_es_colloq"],
-          PTTChinese.ChineseZH() => ["zh", "zh-cn"]
+          PTTChinese.ChineseZH() => ["zh", "zh_cn"]
           ))
 
 # Allow users to register additional languages
