@@ -7,7 +7,14 @@ using InteractiveUtils
 # This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
 macro bind(def, element)
     quote
-        local iv = try Base.loaded_modules[Base.PkgId(Base.UUID("6e696c72-6542-2067-7265-42206c756150"), "AbstractPlutoDingetjes")].Bonds.initial_value catch; b -> missing; end
+        local iv = try
+            Base.loaded_modules[Base.PkgId(
+                Base.UUID("6e696c72-6542-2067-7265-42206c756150"),
+                "AbstractPlutoDingetjes",
+            )].Bonds.initial_value
+        catch
+            b -> missing
+        end
         local el = $(esc(element))
         global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : iv(el)
         el
@@ -28,12 +35,12 @@ Language for common prompts: $(@bind lang Select(["en"=>"English","de"=>"German"
 
 # ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
 begin
-	using PlutoTeachingTools
-	# Optionally override default language choice (lang defined in widget above)
-	set_language!( PlutoTeachingTools.get_language(lang) )
+    using PlutoTeachingTools
+    # Optionally override default language choice (lang defined in widget above)
+    set_language!(PlutoTeachingTools.get_language(lang))
 
-	nb_link_prefix = PlutoRunner.notebook_id[] |>string # for making urls to notebook
-	pkg_cell_link = "#" * (PlutoRunner.currently_running_cell_id[] |> string) # for making urls to this cell
+    nb_link_prefix = string(PlutoRunner.notebook_id[]) # for making urls to notebook
+    pkg_cell_link = "#" * (string(PlutoRunner.currently_running_cell_id[])) # for making urls to this cell
 end;
 
 # ╔═╡ f0704e56-7e97-4c92-bbdd-76d7a873e6d8
@@ -45,7 +52,9 @@ md"""
 """
 
 # ╔═╡ 8c3f1fe2-c934-4743-b30b-07dc97aeac46
-almost(md"You're right that the answer is a positive number, but the value isn't quite right.")
+almost(
+    md"You're right that the answer is a positive number, but the value isn't quite right."
+)
 
 # ╔═╡ b48468f0-eeaa-4e1a-ad0b-3cfe42b6ab15
 correct()
@@ -78,13 +87,16 @@ warning_box(md"Be extra careful here.")
 blockquote("A insightful quote that spans two lines.")
 
 # ╔═╡ e9c10995-ff3d-4a47-82d1-051b0b7cc65d
-blockquote("Logic will get you from A to B.  Imagination will take you everywhere.", md"-- A. Einstein")
+blockquote(
+    "Logic will get you from A to B.  Imagination will take you everywhere.",
+    md"-- A. Einstein",
+)
 
 # ╔═╡ 4758e75c-1729-4dab-964c-7a2ee9798534
 TODO("Remember to add good documentation.")
 
 # ╔═╡ 39766d40-81a8-498b-83d9-c6f27c131db7
-TODO("Remember to add good documentation.", heading="TODO #2")
+TODO("Remember to add good documentation."; heading="TODO #2")
 
 # ╔═╡ 462025ab-b520-499d-9925-4b5770b80355
 md"""
@@ -111,25 +123,25 @@ md"""
 """
 
 # ╔═╡ 438c621a-1991-476f-9889-55c053941e1b
-a= 1
+a = 1
 
 # ╔═╡ 1381ca68-cc1d-4fe7-9587-ee13a5db92ab
 type_eq(a, Float64)
 
 # ╔═╡ b52ff55b-3a8a-44e6-9bf6-2b6f9dda5e33
-type_isa(a,Real)
+type_isa(a, Real)
 
 # ╔═╡ 0cb5c037-8c2f-4fca-a999-63f9a4f9b891
-wrong_type(:a,Float64)
+wrong_type(:a, Float64)
 
 # ╔═╡ 4a380230-f977-4ff7-9114-9d4075bba240
 eval(Meta.parse(PlutoTeachingTools.code_for_check_type_funcs))
 
 # ╔═╡ 42cb6d16-98e0-4ea8-8b54-370df71fe54e
-display_msg_if_fail(check_type_isa(:a,a,Float64))
+display_msg_if_fail(check_type_isa(:a, a, Float64))
 
 # ╔═╡ 1f3e04b4-28f9-4bb8-a233-fd061ac2ee75
-display_msg_if_fail(check_type_isa(:a,a,Int64))  # should display nothing
+display_msg_if_fail(check_type_isa(:a, a, Int64))  # should display nothing
 
 # ╔═╡ db745245-805a-478b-b3f5-c7974fab0e9c
 md"""
@@ -140,23 +152,29 @@ md"""
 response_1 = missing # replace with your answer
 
 # ╔═╡ 8f980fa3-559e-491d-8a84-34a4678fa53d
-if ismissing(response_1)  still_missing() end
+if ismissing(response_1)
+    still_missing()
+end
 
 # ╔═╡ 5f95518f-62cd-4869-b6cf-85a7860f38ec
 response_2 = "Insert your response here."
 
 # ╔═╡ 3e12dbd9-f02a-479d-9eff-234ac88e059b
-PlutoTeachingTools.keep_working_if_var_contains_substr(:response_2,response_2,"Insert your")
+PlutoTeachingTools.keep_working_if_var_contains_substr(
+    :response_2, response_2, "Insert your"
+)
 
 # ╔═╡ c8811462-874c-47da-bb34-797234046fdf
-PlutoTeachingTools.keep_working_if_var_contains_substr(:response_2,response_2,"should display nothing")
+PlutoTeachingTools.keep_working_if_var_contains_substr(
+    :response_2, response_2, "should display nothing"
+)
 
 # ╔═╡ 40155961-e8bb-41d1-bf54-178cf2a0c524
 responce_1 = missing
 
 # ╔═╡ 957ec770-ab5b-4b0b-a38d-46834d96fa68
 if !ismissing(responce_1) && responce_1 == 42
-	PlutoTeachingTools.confetti()
+    PlutoTeachingTools.confetti()
 end
 
 # ╔═╡ 7596325b-7a1b-4fad-bac3-ae6743e3f8dd
@@ -164,15 +182,15 @@ md"""# Robust Local Resources"""
 
 # ╔═╡ 2bfcfe6d-221e-4619-b794-92e44494460b
 begin
-	url = "https://raw.githubusercontent.com/gist/fonsp/9a36c183e2cad7c8fc30290ec95eb104/raw/ca3a38a61f95cd58d79d00b663a3c114d21e284e/cute.svg"
-	path = "data/cute.svg"
+    url = "https://raw.githubusercontent.com/gist/fonsp/9a36c183e2cad7c8fc30290ec95eb104/raw/ca3a38a61f95cd58d79d00b663a3c114d21e284e/cute.svg"
+    path = "data/cute.svg"
 end;
 
 # ╔═╡ 43a47026-4b09-4c20-9ccb-a766a17f8ff4
-RobustLocalResource(url, path, cache=false) # specify to not save a local copy
+RobustLocalResource(url, path; cache=false) # specify to not save a local copy
 
 # ╔═╡ 4774a4d7-d5f1-40e4-8c2f-f0f96e9242ce
-RobustLocalResource(url, path, :width=>200, :alt=>"Pluto logo") # add html attributes
+RobustLocalResource(url, path, :width => 200, :alt => "Pluto logo") # add html attributes
 
 # ╔═╡ d61ec51d-60c4-4f48-8179-2c8045416953
 md"""
@@ -185,29 +203,32 @@ md"""
 """
 
 # ╔═╡ c46d1e7c-df6e-460e-a103-a486d27932c9
-Foldable("Want more?",md"Extra info")
+Foldable("Want more?", md"Extra info")
 
 # ╔═╡ fb77557c-cbf1-4d91-bf4b-76abd54a4024
 answer_box(
-md"""
-The stone has a greater force becasue force is given by Newtons 2nd law: 
+    md"""
+    The stone has a greater force becasue force is given by Newtons 2nd law: 
 
-```math
-F=m \times a
-```
+    ```math
+    F=m \times a
+    ```
 
-It has a greater mass, therefore $m$ is larger. This then results in a larger force $F$
-"""
+    It has a greater mass, therefore $m$ is larger. This then results in a larger force $F$
+    """
 )
 
 # ╔═╡ 8eb551ef-a9c0-43e3-aea7-d83679436e93
-answer_box(md"""Three""", invite="1+2 = ?")
+answer_box(md"""Three"""; invite="1+2 = ?")
 
 # ╔═╡ fb4ff876-a668-40ab-8d30-bfaa858849e4
 protip(md"The `CSV.read` function has lots of useful optional arguments.")
 
 # ╔═╡ 69a9e9f3-a72e-4935-a200-2842010f1e54
-protip(md"Several of these functions have optional arguments.", invite="Invitation to learn more")
+protip(
+    md"Several of these functions have optional arguments.";
+    invite="Invitation to learn more",
+)
 
 # ╔═╡ 08794ef8-4e10-4913-808e-06ac194625b6
 md"""
@@ -217,10 +238,10 @@ The vertical offset can be set by the optional parameter `v_offset`.
 """
 
 # ╔═╡ 77bb3822-2a1d-4e23-b852-6b6202069efa
-aside(tip(md"Extra information to consider.") )
+aside(tip(md"Extra information to consider."))
 
 # ╔═╡ cc66ef97-36f2-478c-961b-dd8ab2bda4ac
-aside(tip(md"Even more information to consider."),v_offset=100)
+aside(tip(md"Even more information to consider."); v_offset=100)
 
 # ╔═╡ 0b2a4490-7e29-42c0-af9a-e99b5540d154
 set_aside_width(400)
@@ -231,7 +252,7 @@ md"""
 """
 
 # ╔═╡ f49ccb75-7cb8-49ce-95b9-ed59033a589d
-A = rand(2,2)
+A = rand(2, 2)
 
 # ╔═╡ af5673b5-a7f9-4033-ac9b-845254f62c98
 md"Now, you can include variables like $A=$ $(latexify_md(A)) inside markdown."
@@ -266,7 +287,9 @@ TwoColumnWideLeft(md"Left col", md"Right col")
 TwoColumnWideRight(md"Left col", md"Right col")
 
 # ╔═╡ 44d651d3-ce42-4061-b193-da7c31efed8e
-TwoColumnWideLeft(warning_box(md"Discussion of figure on right."), RobustLocalResource(url, path))
+TwoColumnWideLeft(
+    warning_box(md"Discussion of figure on right."), RobustLocalResource(url, path)
+)
 
 # ╔═╡ 7859ad2b-7e87-442c-8684-f731f2512a42
 md"""
@@ -347,23 +370,29 @@ FootnotesNumbered()
 
 # ╔═╡ f4201010-71d1-4889-99e7-abb774612a4d
 begin
-	mls_link = "#" * (PlutoRunner.currently_running_cell_id[] |> string)
-	md"# Multi-language support"
+    mls_link = "#" * (string(PlutoRunner.currently_running_cell_id[]))
+    md"# Multi-language support"
 end
 
 # ╔═╡ d6b3f009-22e4-4b21-8986-a29e3f261c3b
 Markdown.parse("""See also [multi-language support]($mls_link) section below""")
 
 # ╔═╡ ef32d891-0a7a-4803-95ae-a930787c243a
-preferred_text( (en=md"Hello",de=md"Hallo",es=md"Hola") )
+preferred_text((en=md"Hello", de=md"Hallo", es=md"Hola"))
 
 # ╔═╡ d3762092-e31d-4b96-840a-3939b89f60b7
-tip(preferred_text( (en=md"Remember to add good documentation.",
-						de=md"Denken Sie daran, eine gute Dokumentation hinzuzufügen.",
-						es=md"Recuerde agregar buena documentación") ))
+tip(
+    preferred_text((
+        en=md"Remember to add good documentation.",
+        de=md"Denken Sie daran, eine gute Dokumentation hinzuzufügen.",
+        es=md"Recuerde agregar buena documentación",
+    )),
+)
 
 # ╔═╡ 93e4e977-efb1-48c7-ac4c-c578140135ee
-Markdown.parse("""See also [package cell]($pkg_cell_link) for overriding default language selected from `ENV[LANG]`.""")
+Markdown.parse(
+    """See also [package cell]($pkg_cell_link) for overriding default language selected from `ENV[LANG]`.""",
+)
 
 # ╔═╡ 743491af-3d4b-4dee-9ad7-2372ba4e97bd
 md"""
@@ -373,9 +402,9 @@ md"""
 
 # ╔═╡ 23afc83f-e971-4356-a30e-1b7a247ff38d
 begin
-	MyModule = @ingredients "demo_module.jl" # provided by PlutoLinks.jl
-	import .MyModule: Demo
-	import .Demo: hello
+    MyModule = @ingredients "demo_module.jl" # provided by PlutoLinks.jl
+    import .MyModule: Demo
+    import .Demo: hello
 end
 
 # ╔═╡ d4b1b5f2-b4ae-4988-aded-79398949f1c8
