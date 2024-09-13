@@ -1,23 +1,34 @@
 using PlutoTeachingTools
 using Test
+using JuliaFormatter
+
 using Markdown
 
-@testset "PlutoTeachingTools.jl" begin
-    # Write your tests here.
-
-    @testset "Standard String arguments" begin
-        @test_nowarn hint("Test hint")
-        @test_nowarn almost("Testing almost")
-        @test_nowarn still_missing("Variable xxx is missing.")
-        @test_nowarn keep_working("Maybe the hint will help.")
-        @test_nowarn keyconcept("Julia", "Julia is an amazing programming language.")
+@testset verbose = true "PlutoTeachingTools.jl" begin
+    @testset verbose = true "Linting" begin
+        @testset "Code formatting" begin
+            @test JuliaFormatter.format(PlutoTeachingTools; verbose=false, overwrite=false)
+        end
     end
-    @testset "Markdown arguments" begin
-        @test_nowarn hint(md"Test hint")
-        @test_nowarn almost(md"Testing almost")
-        @test_nowarn still_missing(md"Variable xxx is missing.")
-        @test_nowarn keep_working(md"Maybe the hint will help.")
-        @test_nowarn keyconcept("Julia", md"Julia is an amazing programming language.")
+
+    @testset "Admonitions" begin
+        @testset "Standard String arguments" begin
+            @test_nowarn hint("Test hint")
+            @test_nowarn almost("Testing almost")
+            @test_nowarn still_missing("Variable xxx is missing.")
+            @test_nowarn keep_working("Maybe the hint will help.")
+            @test_nowarn keyconcept("Julia", "Julia is an amazing programming language.")
+        end
+        @testset "Markdown arguments" begin
+            @test_nowarn hint(md"Test hint")
+            @test_nowarn almost(md"Testing almost")
+            @test_nowarn still_missing(md"Variable xxx is missing.")
+            @test_nowarn keep_working(md"Maybe the hint will help.")
+            @test_nowarn keyconcept("Julia", md"Julia is an amazing programming language.")
+        end
+        @test_nowarn (x = 5; var_not_defined(x))
+        @test_nowarn (x = 5; not_defined(x))
+        @test_nowarn (f(x) = x; func_not_defined(f))
     end
 
     @testset "aside" begin
@@ -30,10 +41,6 @@ using Markdown
  Multi-line
  """)
     end
-
-    @test_nowarn (x = 5; var_not_defined(x))
-    @test_nowarn (x = 5; not_defined(x))
-    @test_nowarn (f(x) = x; func_not_defined(f))
 
     @testset "Useful strings" begin
         @test_nowarn TODO()
