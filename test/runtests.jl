@@ -5,9 +5,10 @@ using JuliaFormatter
 using Markdown
 
 @testset verbose = true "PlutoTeachingTools.jl" begin
-    @testset verbose = true "Linting" begin
-        @testset "Code formatting" begin
-            @test JuliaFormatter.format(PlutoTeachingTools; verbose=false, overwrite=false)
+    if VERSION >= v"1.10"
+        @testset verbose = true "Linting" begin
+            @info "Testing linting..."
+            include("test_linting.jl")
         end
     end
 
