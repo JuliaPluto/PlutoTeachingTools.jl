@@ -1,5 +1,3 @@
-export WidthOverDocs
-
 """ Provides checkbox to toggle full width versus narrow with column for LiveDocs """
 function WidthOverDocs(
     enabled::Bool=false, wide::Bool=false, lang::AbstractLanguage=default_language[]
@@ -94,5 +92,3 @@ function confetti()
    </script>
    """)
 end
-
-export confetti

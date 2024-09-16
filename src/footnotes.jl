@@ -165,10 +165,3 @@ function FootnotesInlineStyleBaseline()
     </style>
     """
 end
-
-export FootnotesInlineNumbered
-export FootnotesBottomNumbered
-export FootnotesNumbered
-export FootnotesInlineStyleSuperscript
-export FootnotesInlineStyleSubscript
-export FootnotesInlineStyleBaseline

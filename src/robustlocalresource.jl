@@ -1,5 +1,4 @@
 using Downloads
-export RobustLocalResource
 
 """
 `RobustLocalResource(url, path, [html_attributes]; [cache] )`

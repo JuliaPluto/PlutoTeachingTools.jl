@@ -1,7 +1,5 @@
 using HypertextLiteral
 
-export aside, set_aside_width
-
 aside_has_been_setup = false
 get_aside_has_been_setup()::Bool = aside_has_been_setup
 set_aside_has_been_setup(b::Bool=true) = aside_has_been_setup = b
