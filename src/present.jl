@@ -66,7 +66,7 @@ function Base.show(io, mime::MIME"text/html", tc::TwoColumnWideRight)
     write(io, """</div><div style="flex: 2%;">""")
     write(io, """</div><div style="flex: 65%;">""")
     show(io, mime, tc.right)
-    qwrite(io, """</div></div>""")
+    write(io, """</div></div>""")
     return nothing
 end
 
