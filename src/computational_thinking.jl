@@ -1,12 +1,12 @@
 
 "Hint box with arguement as text."
 function hint(text, lang::AbstractLanguage=default_language[])
-    return MD(Markdown.Admonition("hint", hint_str(lang), [text]))
+    return MD(Admonition("hint", hint_str(lang), [text]))
 end
 
 "Tip box with arguement as text."
 function tip(text, lang::AbstractLanguage=default_language[])
-    return MD(Markdown.Admonition("tip", tip_str(lang), [text]))
+    return MD(Admonition("tip", tip_str(lang), [text]))
 end
 
 "Tip box with arguement as text."
@@ -16,7 +16,7 @@ function protip(
     invite=protip_invite_str(lang),
     boxlabel=protip_boxlabel_str(lang),
 )
-    return Foldable(invite, MD(Markdown.Admonition("tip", boxlabel, [text])))
+    return Foldable(invite, MD(Admonition("tip", boxlabel, [text])))
 end
 function protip(
     text,
@@ -34,7 +34,7 @@ function answer_box(
     invite=answer_invite_str(lang),
     boxlabel=answer_boxlabel_str(lang),
 )
-    return Foldable(invite, MD(Markdown.Admonition("answer", boxlabel, [text])))
+    return Foldable(invite, MD(Admonition("answer", boxlabel, [text])))
 end
 function answer_box(
     text,
@@ -47,36 +47,34 @@ end
 
 "Admonition box labeled a warning with arguement as text."
 function almost(text, lang::AbstractLanguage=default_language[])
-    return MD(Markdown.Admonition("warning", almost_str(lang), [text]))
+    return MD(Admonition("warning", almost_str(lang), [text]))
 end
 
 "Warning box with arguement as text."
 function warning_box(text, lang::AbstractLanguage=default_language[])
-    return MD(Markdown.Admonition("warning", warning_box_str(lang), [text]))
+    return MD(Admonition("warning", warning_box_str(lang), [text]))
 end
 
 "Question box with arguement as text."
 function question_box(text, lang::AbstractLanguage=default_language[])
-    return MD(Markdown.Admonition("question", question_box_str(lang), [text]))
+    return MD(Admonition("question", question_box_str(lang), [text]))
 end
 
 "Key concept box with concept name and description as input arguments."
 function keyconcept(concept, text, lang::AbstractLanguage=default_language[])
-    return MD(
-        Markdown.Admonition("key-concept", keyconcept_str(lang), [md"**$concept**", text])
-    )
+    return MD(Admonition("key-concept", keyconcept_str(lang), [md"**$concept**", text]))
 end
 
 "Danger box with arguement as text."
 function danger(text, lang::AbstractLanguage=default_language[])
-    return MD(Markdown.Admonition("danger", danger_str(lang), [text]))
+    return MD(Admonition("danger", danger_str(lang), [text]))
 end
 
 "Admonition box with reminder to replace missing."
 function still_missing(;
     lang::AbstractLanguage=default_language[], text=still_missing_text_str(lang)
 )
-    return MD(Markdown.Admonition("warning", still_missing_str(lang), [text]))
+    return MD(Admonition("warning", still_missing_str(lang), [text]))
 end
 still_missing(text, lang::AbstractLanguage=default_language[]) = still_missing(; lang, text)
 
@@ -84,14 +82,12 @@ still_missing(text, lang::AbstractLanguage=default_language[]) = still_missing(;
 function still_nothing(;
     lang::AbstractLanguage=default_language[], text=still_nothing_text_str(lang)
 )
-    return MD(Markdown.Admonition("warning", still_nothing_str(lang), [text]))
+    return MD(Admonition("warning", still_nothing_str(lang), [text]))
 end
 still_nothing(text, lang::AbstractLanguage=default_language[]) = still_nothing(; lang, text)
 
 function wrong_type(lang::AbstractLanguage=default_language[])
-    return MD(
-        Markdown.Admonition("danger", wrong_type_str(lang), [wrong_type_text_str(lang)])
-    )
+    return MD(Admonition("danger", wrong_type_str(lang), [wrong_type_text_str(lang)]))
 end
 
 function wrong_type(
@@ -100,13 +96,13 @@ function wrong_type(
     lang::AbstractLanguage=default_language[];
     text=wrong_type_text_str(lang, var, type),
 )
-    return MD(Markdown.Admonition("danger", wrong_type_str(lang), [text]))
+    return MD(Admonition("danger", wrong_type_str(lang), [text]))
 end
 
 "Admonition box with reminder that function name passed is not defined."
 function func_not_defined(func_name, lang::AbstractLanguage=default_language[])
     return MD(
-        Markdown.Admonition(
+        Admonition(
             "danger",
             func_not_defined_str(lang),
             [func_not_defined_text_str(func_name, lang)],
@@ -117,7 +113,7 @@ end
 "Admonition box with reminder that variable name passed is not defined."
 function var_not_defined(variable_name, lang::AbstractLanguage=default_language[])
     return MD(
-        Markdown.Admonition(
+        Admonition(
             "danger",
             var_not_defined_str(lang),
             [var_not_defined_text_str(variable_name, lang)],
@@ -134,7 +130,7 @@ end
 function keep_working(;
     lang::AbstractLanguage=default_language[], text=keep_working_text_str(lang)
 )
-    return MD(Markdown.Admonition("danger", keep_working_str(lang), [text]))
+    return MD(Admonition("danger", keep_working_str(lang), [text]))
 end
 keep_working(text, lang::AbstractLanguage=default_language[]) = keep_working(; lang, text);
 
@@ -185,7 +181,7 @@ function check_type_isa(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{Data
               end
            end
         end
-        msg = MD(Markdown.Admonition("danger", PlutoTeachingTools.check_type_isa_type_error_str(sym, lang), [Markdown.parse(text)]))
+        msg = MD(Admonition("danger", PlutoTeachingTools.check_type_isa_type_error_str(sym, lang), [parse(text)]))
    else
         passed = true
         msg = PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang)
@@ -212,7 +208,7 @@ function check_type_eq(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{DataT
            end
         end
         #text = md"The type of \$sym should be \$t."
-        msg = MD(Markdown.Admonition("danger", PlutoTeachingTools.check_type_eq_type_error_str(lang), [Markdown.parse(text)]))
+        msg = MD(Admonition("danger", PlutoTeachingTools.check_type_eq_type_error_str(lang), [parse(text)]))
    else
         passed = true
         msg = PlutoTeachingTools.check_type_eq_correct_str(sym, lang)
@@ -224,7 +220,7 @@ end
 
 "Box with random positive message."
 function correct(; lang::AbstractLanguage=default_language[], text=rand(yays(lang)))
-    return MD(Markdown.Admonition("correct", correct_str(lang), [text]))
+    return MD(Admonition("correct", correct_str(lang), [text]))
 end
 correct(text, lang::AbstractLanguage=default_language[]) = correct(; lang, text)
 

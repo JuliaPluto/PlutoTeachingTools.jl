@@ -1,12 +1,12 @@
 module PlutoTeachingTools
 
 using PlutoUI: Resource, LocalResource
-using Markdown: MD, @md_str
-using HypertextLiteral: @htl, @htl_str  # used by aside & present, might be useful elsewhere
+using Markdown: @md_str, MD, Admonition
+using HypertextLiteral: @htl, @htl_str
 using Latexify: latexify
 using Downloads: download
 
-using PlutoLinks: @ingredients  # just for @ingredients
+using PlutoLinks: @ingredients
 export @ingredients
 
 include("i18n/i18n.jl") # framework for multiple language support
