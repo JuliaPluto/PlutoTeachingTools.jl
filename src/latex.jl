@@ -1,10 +1,10 @@
 # From https://github.com/fonsp/Pluto.jl/issues/1237
 
 function latexify_md(args...; kwargs...)
-    return Markdown.LaTeX(repr(MIME"text/latex"(), latexify(args...; kwargs...)))
+    return LaTeX(repr(MIME"text/latex"(), latexify(args...; kwargs...)))
 end
 
-wrap_tex(x) = Markdown.LaTeX(repr(MIME"text/latex"(), x))
+wrap_tex(x) = LaTeX(repr(MIME"text/latex"(), x))
 
 #=
 Issue also includes a suggestion to use

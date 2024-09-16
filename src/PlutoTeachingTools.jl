@@ -1,7 +1,7 @@
 module PlutoTeachingTools
 
 using PlutoUI: Resource, LocalResource
-using Markdown: @md_str, MD, Admonition
+using Markdown: @md_str, MD, Admonition, LaTeX
 using HypertextLiteral: @htl, @htl_str
 using Latexify: latexify
 using Downloads: download
