@@ -181,7 +181,7 @@ function check_type_isa(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{Data
               end
            end
         end
-        msg = MD(Admonition("danger", PlutoTeachingTools.check_type_isa_type_error_str(sym, lang), [parse(text)]))
+        msg = Markdown.MD(Markdown.Admonition("danger", PlutoTeachingTools.check_type_isa_type_error_str(sym, lang), [Markdown.parse(text)]))
     else
         passed = true
         msg = PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang)
