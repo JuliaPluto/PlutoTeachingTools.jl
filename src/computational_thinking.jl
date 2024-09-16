@@ -162,11 +162,11 @@ type_eq(var, t::Union{Type,Vector{Type},Vector{DataType}}) = (any(typeof(var) .=
 const code_for_check_type_funcs = """
 begin
 function check_type_isa(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{DataType}}, lang::AbstractLanguage = PlutoTeachingTools.default_language[])
-   if ismissing(var)
+    if ismissing(var)
         passed = false
         text = PlutoTeachingTools.check_type_isa_missing_text_str(sym, lang)
         msg = still_missing(text, lang)
-   elseif !type_isa(var,t) # (any(typeof(var) .<: t))
+    elseif !type_isa(var,t) # (any(typeof(var) .<: t))
         passed = false
         text = PlutoTeachingTools.check_type_isa_wrong_type_text_str(sym, lang)
         if typeof(t) <: Type
@@ -182,18 +182,18 @@ function check_type_isa(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{Data
            end
         end
         msg = MD(Admonition("danger", PlutoTeachingTools.check_type_isa_type_error_str(sym, lang), [parse(text)]))
-   else
+    else
         passed = true
         msg = PlutoTeachingTools.check_type_isa_not_missing_text_str(sym, lang)
-   end
-   return (;passed, msg)
+    end
+    return (;passed, msg)
 end
 function check_type_eq(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{DataType}}, lang::AbstractLanguage = PlutoTeachingTools.default_language[])
-   if ismissing(var)
+    if ismissing(var)
         passed = false
         text = PlutoTeachingTools.check_type_eq_missing_text_str(sym, lang)
         msg = PlutoTeachingTools.still_missing(text, lang)
-   elseif !type_eq(var, t) # (any(typeof(var) == t))
+    elseif !type_eq(var, t) # (any(typeof(var) == t))
         passed = false
         if typeof(t) <: Type
            text = PlutoTeachingTools.check_type_eq_wrong_type_single_text_str(sym, type, lang)
@@ -208,12 +208,12 @@ function check_type_eq(sym::Symbol, var, t::Union{Type,Vector{Type},Vector{DataT
            end
         end
         #text = md"The type of \$sym should be \$t."
-        msg = MD(Admonition("danger", PlutoTeachingTools.check_type_eq_type_error_str(lang), [parse(text)]))
-   else
+        msg = Markdown.MD(Markdown.Admonition("danger", PlutoTeachingTools.check_type_eq_type_error_str(lang), [Markdown.parse(text)]))
+    else
         passed = true
         msg = PlutoTeachingTools.check_type_eq_correct_str(sym, lang)
-   end
-   return (;passed, msg)
+    end
+    return (;passed, msg)
 end
 end
 """
