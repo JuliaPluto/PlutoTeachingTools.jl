@@ -8,7 +8,7 @@ export TwoColumn, ThreeColumn
 export TwoColumnWideLeft, TwoColumnWideRight
 export ChooseDisplayMode # combines present_button and WidthOverDocs
 
-function present_button(lang::AbstractLanguage = default_language[]) 
+function present_button(lang::AbstractLanguage=default_language[])
     txt = present_str(lang)
     htl"<button onclick='present()'>$txt</button>"
 end
@@ -19,12 +19,13 @@ struct Foldable{C}
 end
 
 function Base.show(io, mime::MIME"text/html", fld::Foldable)
-    write(io,"<details><summary>$(fld.title)</summary><p>")
+    write(io, "<details><summary>$(fld.title)</summary><p>")
     show(io, mime, fld.content)
-    write(io,"</p></details>")
+    write(io, "</p></details>")
+    return nothing
 end
 
-struct TwoColumn{L, R}
+struct TwoColumn{L,R}
     left::L
     right::R
 end
@@ -36,9 +37,10 @@ function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
     write(io, """</div><div style="flex: 49%;">""")
     show(io, mime, tc.right)
     write(io, """</div></div>""")
+    return nothing
 end
 
-struct TwoColumnWideLeft{L, R}
+struct TwoColumnWideLeft{L,R}
     left::L
     right::R
 end
@@ -50,9 +52,10 @@ function Base.show(io, mime::MIME"text/html", tc::TwoColumnWideLeft)
     write(io, """</div><div style="flex: 33%;">""")
     show(io, mime, tc.right)
     write(io, """</div></div>""")
+    return nothing
 end
 
-struct TwoColumnWideRight{L, R}
+struct TwoColumnWideRight{L,R}
     left::L
     right::R
 end
@@ -63,10 +66,11 @@ function Base.show(io, mime::MIME"text/html", tc::TwoColumnWideRight)
     write(io, """</div><div style="flex: 2%;">""")
     write(io, """</div><div style="flex: 65%;">""")
     show(io, mime, tc.right)
-    write(io, """</div></div>""")
+    qwrite(io, """</div></div>""")
+    return nothing
 end
 
-struct ThreeColumn{L, C, R}
+struct ThreeColumn{L,C,R}
     left::L
     center::C
     right::R
@@ -82,14 +86,17 @@ function Base.show(io, mime::MIME"text/html", tc::ThreeColumn)
     write(io, """</div><div style="flex: 32%;">""")
     show(io, mime, tc.right)
     write(io, """</div></div>""")
+    return nothing
 end
 
 """ Provides checkbox to toggle full width and present mode. """
-function ChooseDisplayMode(;wide::Bool=false, present::Bool = false, lang::AbstractLanguage = default_language[])  # Adapted from PlutoThemes.jl
-        checked = wide ? "checked" : ""
-        checked_present_mode = present ? "checked" : ""
-        init = wide ? "toggle_width(document.getElementById('width-over-livedocs'))" : ""
-        return HTML("""
+function ChooseDisplayMode(;
+    wide::Bool=false, present::Bool=false, lang::AbstractLanguage=default_language[]
+)  # Adapted from PlutoThemes.jl
+    checked = wide ? "checked" : ""
+    checked_present_mode = present ? "checked" : ""
+    init = wide ? "toggle_width(document.getElementById('width-over-livedocs'))" : ""
+    return HTML("""
 <!-- https://github.com/fonsp/Pluto.jl/issues/400#issuecomment-695040745 -->
 <input
         type="checkbox"
