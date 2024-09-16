@@ -124,7 +124,7 @@ function FootnotesBottomNumbered()
 end
 
 function FootnotesNumbered()
-    PlutoUI.combine() do Child
+    combine() do Child
         @htl("""
         $(Child(FootnotesInlineNumbered()))
         $(Child(FootnotesBottomNumbered()))
