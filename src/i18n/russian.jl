@@ -1,8 +1,8 @@
 module PTTRussian
 
-using Markdown
+using Markdown: @md_str
 
-using ..PlutoTeachingTools
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type Russian <: AbstractLanguage end
 struct RussianRU <: Russian end

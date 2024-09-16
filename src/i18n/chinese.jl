@@ -1,8 +1,7 @@
 module PTTChinese
 
-using Markdown
-
-using ..PlutoTeachingTools
+using Markdown: @md_str
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type Chinese <: AbstractLanguage end
 struct ChineseZH <: Chinese end

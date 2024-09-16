@@ -1,4 +1,3 @@
-using HypertextLiteral
 
 aside_has_been_setup = false
 get_aside_has_been_setup()::Bool = aside_has_been_setup

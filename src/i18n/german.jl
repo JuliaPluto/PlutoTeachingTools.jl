@@ -1,8 +1,8 @@
 module PTTGerman
 
-using Markdown
+using Markdown: @md_str
 
-using ..PlutoTeachingTools
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type German <: AbstractLanguage end
 struct GermanGermanyFormal <: German end

@@ -1,13 +1,15 @@
 module PlutoTeachingTools
 
-using PlutoUI
-using HypertextLiteral  # used by aside & present, might be useful elsewhere
-using Markdown
+using PlutoUI: Resource, LocalResource
+using Markdown: MD, @md_str
+using HypertextLiteral: @htl, @htl_str  # used by aside & present, might be useful elsewhere
+using Latexify: latexify
+using Downloads: download
 
 using PlutoLinks: @ingredients  # just for @ingredients
 export @ingredients
 
-include("i18n/i18n.jl") # provides framework for multiple language support
+include("i18n/i18n.jl") # framework for multiple language support
 export AbstractLanguage, set_language!
 export preferred_text
 

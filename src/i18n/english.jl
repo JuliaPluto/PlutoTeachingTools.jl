@@ -1,8 +1,8 @@
 module PTTEnglish
 
-using Markdown
+using Markdown: @md_str
 
-using ..PlutoTeachingTools
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type English <: AbstractLanguage end
 struct EnglishUS <: English end

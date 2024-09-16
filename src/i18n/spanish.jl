@@ -1,8 +1,8 @@
 module PTTSpanish
 
-using Markdown
+using Markdown: @md_str
 
-using ..PlutoTeachingTools
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type Spanish <: AbstractLanguage end
 struct SpanishFormal <: Spanish end

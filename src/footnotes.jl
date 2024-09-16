@@ -1,12 +1,8 @@
 #=
 inpired by discussion and code found here
-
 - https://hub.gke2.mybinder.org/user/fonsp-pluto-on-binder-o5onajv8/pluto/edit?id=f001628e-4bfb-11ed-04d7-892b7e9b1fe3&token=OG86wPs6Tn2cc0wPePWTPw#footnote-what_is_this
-
 - https://github.com/JuliaPluto/PlutoUI.jl/issues/44
 =#
-using HypertextLiteral
-using PlutoUI
 
 function FootnotesInlineNumbered()
     html"""
