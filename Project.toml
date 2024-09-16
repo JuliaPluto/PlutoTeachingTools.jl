@@ -14,15 +14,12 @@ PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [compat]
+Downloads = "<0.0.1, 1"
 HypertextLiteral = "0.9"
 LaTeXStrings = "1"
 Latexify = "0.15, 0.16"
+Markdown = "<0.0.1, 1"
 PlutoLinks = "0.1.5"
 PlutoUI = "0.7"
+Random = "<0.0.1, 1"
 julia = "1.6"
-
-[extras]
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
-
-[targets]
-test = ["Test"]
