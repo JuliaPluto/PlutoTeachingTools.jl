@@ -155,10 +155,7 @@ end
 keep_working(text, lang::AbstractLanguage=default_language[]) = keep_working(; lang, text);
 
 function keep_working_if_var_contains_substr(
-    var::Symbol,
-    str::Union{String,Markdown.MD},
-    substr::String,
-    lang::AbstractLanguage=default_language[],
+    var::Symbol, str::String, substr::String, lang::AbstractLanguage=default_language[]
 )
     # I had to remove !@isdefined(var) due to how Pluto puts variables into different modules
     # not exported, so provide function with same name in notebook
@@ -167,13 +164,15 @@ function keep_working_if_var_contains_substr(
     elseif isnothing(var)
         still_nothing()
     else
-        if typeof(str) == Markdown.MD
-            str = Markdown.plain(str)
-        end
         if occursin(substr, str)
             keep_working(keep_working_update_str(var, lang))
         end
     end
+end
+function keep_working_if_var_contains_substr(
+    var::Symbol, str::Markdown.MD, substr::String, lang::AbstractLanguage=default_language[]
+)
+    return keep_working_if_var_contains_substr(var, Markdown.plain(str), substr, lang)
 end
 
 type_isa(var, t::Union{Type,Vector{Type},Vector{DataType}}) = (any(typeof(var) .<: t))
