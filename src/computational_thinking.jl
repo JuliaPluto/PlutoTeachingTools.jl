@@ -58,7 +58,7 @@ function answer_box(
     lang::AbstractLanguage=default_language[];
     boxlabel=answer_boxlabel_str(lang),
 )
-    return answer(text; lang, invite, boxlabel)
+    return answer_box(text; lang, invite, boxlabel)
 end
 
 "Admonition box labeled a warning with arguement as text."
