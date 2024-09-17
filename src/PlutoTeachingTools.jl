@@ -1,10 +1,11 @@
 module PlutoTeachingTools
 
-using PlutoUI: Resource, LocalResource, combine
 using Markdown: @md_str, MD, Admonition, LaTeX
 using HypertextLiteral: @htl, @htl_str
-using Latexify: latexify
-using Downloads: download
+using Downloads: download # used in robustlocalresouce.jl
+using PlutoUI: Resource, LocalResource # used in robustlocalresouce.jl
+using PlutoUI: combine # used in footnotes.jl
+using Latexify: latexify # used in latex.jl
 
 using PlutoLinks: @ingredients
 export @ingredients
