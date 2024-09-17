@@ -266,7 +266,7 @@ eqn_str = "x^2+y^2 = z^2"
 md"And you can grab equations in variables like $(wrap_tex(eqn_str)) inside markdown."
 
 # ╔═╡ a9d9d87e-4cfe-4a34-bdb9-6bf3fc979bab
-md"To simplify typing and displaying equations, we recommend using the [LaTeXStrings.jl](https://github.com/JuliaStrings/LaTeXStrings.jl) package:" 
+md"To simplify typing and displaying equations, we recommend using the [LaTeXStrings.jl](https://github.com/JuliaStrings/LaTeXStrings.jl) package:"
 
 # ╔═╡ 0aefcfcd-ac8f-471b-8f90-7bb5235589ad
 L"x^2+y^2 = z^2"
