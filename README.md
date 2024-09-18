@@ -8,11 +8,25 @@ Several functions have optional arguements that aren't (yet?) demonstrated in th
 
 I encourage others to improve and/or contribute new functions that are of value to other educators.  PRs welcome.  (Breaking PRs will usualy be delayed until the end of the academic semester for the maintainer.)
 
+# Courses/Sites using PlutoTeachingTools 
+- [Astroinformatics Summer School (2022)](https://github.com/Astroinformatics/SummerSchool2022)
+- [Data Science Applications for Exoplanets](https://github.com/PsuAstro497/Fall2022)
+- [High-Performance Computing for Astropysics](https://psuastro528.github.io/Fall2023/)
+- [Julia programming for Machine Learning](https://github.com/adrhill/julia-ml-course)
+
 # Acknowledgements
 - [Pluto](https://github.com/fonsp/Pluto.jl)
 - [PlutoUI](https://github.com/fonsp/PlutoUI.jl)
 - [PlutoLinks.jl](https://github.com/JuliaPluto/PlutoLinks.jl)
 - [PlutoThemes.jl](https://github.com/JuliaPluto/PlutoThemes.jl)
-- [jonschumacher](https://github.com/jonschumacher):  Internationalization & German
 - Some material on this website is based on "Computational Thinking, a live online Julia/Pluto textbook, https://computationalthinking.mit.edu"
+
+## Contributors
+- [fonsp](https://github.com/fonsp): Pluto development, tips, and answering questions.
+- [eford](https://github.com/eford):  Getting the package started
+- [adrhill](https://github.com/adrhill):  Cleanup, Improving software development practices
+- [jonschumacher](https://github.com/jonschumacher):  Internationalization & German
+- [mathutopia](https://github.com/mathutopia): Chinese
+- [kagalenko-m-b](kagalenko-m-b): Russian
+- [Several more users](https://github.com/JuliaPluto/PlutoTeachingTools.jl/graphs/contributors)
 
