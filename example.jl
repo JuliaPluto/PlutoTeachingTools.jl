@@ -1,25 +1,49 @@
 ### A Pluto.jl notebook ###
-# v0.19.22
+# v0.19.42
 
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
-begin
-	using PlutoUI, PlutoTeachingTools
-	
-	# PlutoTeachingTools looks up language based on ENV["LANG"]
-	# Uncomment a line below to override default language
-	#set_language!(PlutoTeachingTools.EnglishUS())      # default
-	#set_language!(PlutoTeachingTools.GermanGermany())  
-	#set_language!(PlutoTeachingTools.SpanishFormal())  
-	
-	nb_link_prefix = PlutoRunner.notebook_id[] |>string
-	pkg_cell_link = "#" * (PlutoRunner.currently_running_cell_id[] |> string)
-end;
+# This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
+macro bind(def, element)
+    quote
+        local iv = try
+            Base.loaded_modules[Base.PkgId(
+                Base.UUID("6e696c72-6542-2067-7265-42206c756150"),
+                "AbstractPlutoDingetjes",
+            )].Bonds.initial_value
+        catch
+            b -> missing
+        end
+        local el = $(esc(element))
+        global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : iv(el)
+        el
+    end
+end
+
+# ╔═╡ dee4aa68-e5eb-4a8a-869f-867e61de5ec5
+using PlutoUI
+
+# ╔═╡ 3f8dc975-b091-4dbe-bd48-c33236e61ece
+using LaTeXStrings
 
 # ╔═╡ cd581a51-fb2b-4579-9a7d-0d723ad5d467
 md"# [PlutoTeachingTools.jl](https://github.com/JuliaPluto/PlutoTeachingTools.jl) Examples"
+
+# ╔═╡ 84ccb960-41f8-430d-bd73-a7c0248cfb95
+md"""
+Language for common prompts: $(@bind lang Select(["en"=>"English","de"=>"German","es"=>"Spanish","ru"=>"Russian", "zh"=>"Chinese"]))
+"""
+
+# ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
+begin
+    using PlutoTeachingTools
+    # Optionally override default language choice (lang defined in widget above)
+    set_language!(PlutoTeachingTools.get_language(lang))
+
+    nb_link_prefix = string(PlutoRunner.notebook_id[]) # for making urls to notebook
+    pkg_cell_link = "#" * (string(PlutoRunner.currently_running_cell_id[])) # for making urls to this cell
+end;
 
 # ╔═╡ f0704e56-7e97-4c92-bbdd-76d7a873e6d8
 TableOfContents()   # from PlutoUI
@@ -30,7 +54,9 @@ md"""
 """
 
 # ╔═╡ 8c3f1fe2-c934-4743-b30b-07dc97aeac46
-almost(md"You're right that the answer is a positive number, but the value isn't quite right.")
+almost(
+    md"You're right that the answer is a positive number, but the value isn't quite right."
+)
 
 # ╔═╡ b48468f0-eeaa-4e1a-ad0b-3cfe42b6ab15
 correct()
@@ -63,13 +89,16 @@ warning_box(md"Be extra careful here.")
 blockquote("A insightful quote that spans two lines.")
 
 # ╔═╡ e9c10995-ff3d-4a47-82d1-051b0b7cc65d
-blockquote("Logic will get you from A to B.  Imagination will take you everywhere.", md"-- A. Einstein")
+blockquote(
+    "Logic will get you from A to B.  Imagination will take you everywhere.",
+    md"-- A. Einstein",
+)
 
 # ╔═╡ 4758e75c-1729-4dab-964c-7a2ee9798534
 TODO("Remember to add good documentation.")
 
 # ╔═╡ 39766d40-81a8-498b-83d9-c6f27c131db7
-TODO("Remember to add good documentation.", heading="TODO #2")
+TODO("Remember to add good documentation."; heading="TODO #2")
 
 # ╔═╡ 462025ab-b520-499d-9925-4b5770b80355
 md"""
@@ -96,25 +125,25 @@ md"""
 """
 
 # ╔═╡ 438c621a-1991-476f-9889-55c053941e1b
-a= 1
+a = 1
 
 # ╔═╡ 1381ca68-cc1d-4fe7-9587-ee13a5db92ab
 type_eq(a, Float64)
 
 # ╔═╡ b52ff55b-3a8a-44e6-9bf6-2b6f9dda5e33
-type_isa(a,Real)
+type_isa(a, Real)
 
 # ╔═╡ 0cb5c037-8c2f-4fca-a999-63f9a4f9b891
-wrong_type(:a,Float64)
+wrong_type(:a, Float64)
 
 # ╔═╡ 4a380230-f977-4ff7-9114-9d4075bba240
 eval(Meta.parse(PlutoTeachingTools.code_for_check_type_funcs))
 
 # ╔═╡ 42cb6d16-98e0-4ea8-8b54-370df71fe54e
-display_msg_if_fail(check_type_isa(:a,a,Float64))
+display_msg_if_fail(check_type_isa(:a, a, Float64))
 
 # ╔═╡ 1f3e04b4-28f9-4bb8-a233-fd061ac2ee75
-display_msg_if_fail(check_type_isa(:a,a,Int64))  # should display nothing
+display_msg_if_fail(check_type_isa(:a, a, Int64))  # should display nothing
 
 # ╔═╡ db745245-805a-478b-b3f5-c7974fab0e9c
 md"""
@@ -125,23 +154,29 @@ md"""
 response_1 = missing # replace with your answer
 
 # ╔═╡ 8f980fa3-559e-491d-8a84-34a4678fa53d
-if ismissing(response_1)  still_missing() end
+if ismissing(response_1)
+    still_missing()
+end
 
 # ╔═╡ 5f95518f-62cd-4869-b6cf-85a7860f38ec
 response_2 = "Insert your response here."
 
 # ╔═╡ 3e12dbd9-f02a-479d-9eff-234ac88e059b
-PlutoTeachingTools.keep_working_if_var_contains_substr(:response_2,response_2,"Insert your")
+PlutoTeachingTools.keep_working_if_var_contains_substr(
+    :response_2, response_2, "Insert your"
+)
 
 # ╔═╡ c8811462-874c-47da-bb34-797234046fdf
-PlutoTeachingTools.keep_working_if_var_contains_substr(:response_2,response_2,"should display nothing")
+PlutoTeachingTools.keep_working_if_var_contains_substr(
+    :response_2, response_2, "should display nothing"
+)
 
 # ╔═╡ 40155961-e8bb-41d1-bf54-178cf2a0c524
 responce_1 = missing
 
 # ╔═╡ 957ec770-ab5b-4b0b-a38d-46834d96fa68
 if !ismissing(responce_1) && responce_1 == 42
-	PlutoTeachingTools.confetti()
+    PlutoTeachingTools.confetti()
 end
 
 # ╔═╡ 7596325b-7a1b-4fad-bac3-ae6743e3f8dd
@@ -149,15 +184,15 @@ md"""# Robust Local Resources"""
 
 # ╔═╡ 2bfcfe6d-221e-4619-b794-92e44494460b
 begin
-	url = "https://raw.githubusercontent.com/gist/fonsp/9a36c183e2cad7c8fc30290ec95eb104/raw/ca3a38a61f95cd58d79d00b663a3c114d21e284e/cute.svg"
-	path = "data/cute.svg"
+    url = "https://raw.githubusercontent.com/gist/fonsp/9a36c183e2cad7c8fc30290ec95eb104/raw/ca3a38a61f95cd58d79d00b663a3c114d21e284e/cute.svg"
+    path = "data/cute.svg"
 end;
 
 # ╔═╡ 43a47026-4b09-4c20-9ccb-a766a17f8ff4
-RobustLocalResource(url, path, cache=false) # specify to not save a local copy
+RobustLocalResource(url, path; cache=false) # specify to not save a local copy
 
 # ╔═╡ 4774a4d7-d5f1-40e4-8c2f-f0f96e9242ce
-RobustLocalResource(url, path, :width=>200, :alt=>"Pluto logo") # add html attributes
+RobustLocalResource(url, path, :width => 200, :alt => "Pluto logo") # add html attributes
 
 # ╔═╡ d61ec51d-60c4-4f48-8179-2c8045416953
 md"""
@@ -170,40 +205,45 @@ md"""
 """
 
 # ╔═╡ c46d1e7c-df6e-460e-a103-a486d27932c9
-Foldable("Want more?",md"Extra info")
+Foldable("Want more?", md"Extra info")
 
 # ╔═╡ fb77557c-cbf1-4d91-bf4b-76abd54a4024
 answer_box(
-md"""
-The stone has a greater force becasue force is give by Newtons 2nd law: 
+    md"""
+    The stone has a greater force becasue force is given by Newtons 2nd law: 
 
-```math
-F=m \times a
-```
+    ```math
+    F=m \times a
+    ```
 
-It has a greater mass, therefore $m$ is larger, this then results in a larger force $F$
-"""
+    It has a greater mass, therefore $m$ is larger. This then results in a larger force $F$
+    """
 )
 
 # ╔═╡ 8eb551ef-a9c0-43e3-aea7-d83679436e93
-answer_box(md"""Three""", invite="1+2 = ?")
+answer_box(md"""Three"""; invite="1+2 = ?")
 
 # ╔═╡ fb4ff876-a668-40ab-8d30-bfaa858849e4
-protip(md"The `CSV.read` function has lots of useful optional arguements.")
+protip(md"The `CSV.read` function has lots of useful optional arguments.")
 
 # ╔═╡ 69a9e9f3-a72e-4935-a200-2842010f1e54
-protip(md"Several of these functions have optional arguements.", invite="Invitation to learn more")
+protip(
+    md"Several of these functions have optional arguments.";
+    invite="Invitation to learn more",
+)
 
 # ╔═╡ 08794ef8-4e10-4913-808e-06ac194625b6
 md"""
 ## Aside
+`aside` shows text on the right side of the Pluto notebook. 
+The vertical offset can be set by the optional parameter `v_offset`.
 """
 
 # ╔═╡ 77bb3822-2a1d-4e23-b852-6b6202069efa
-aside(tip(md"Extra information to consider.") )
+aside(tip(md"Extra information to consider."))
 
 # ╔═╡ cc66ef97-36f2-478c-961b-dd8ab2bda4ac
-aside(tip(md"Even more information to consider."),v_offset=100)
+aside(tip(md"Even more information to consider."); v_offset=100)
 
 # ╔═╡ 0b2a4490-7e29-42c0-af9a-e99b5540d154
 set_aside_width(400)
@@ -214,7 +254,7 @@ md"""
 """
 
 # ╔═╡ f49ccb75-7cb8-49ce-95b9-ed59033a589d
-A = rand(2,2)
+A = rand(2, 2)
 
 # ╔═╡ af5673b5-a7f9-4033-ac9b-845254f62c98
 md"Now, you can include variables like $A=$ $(latexify_md(A)) inside markdown."
@@ -224,6 +264,12 @@ eqn_str = "x^2+y^2 = z^2"
 
 # ╔═╡ 7390e4a7-0561-4611-b3c1-9b83601c5805
 md"And you can grab equations in variables like $(wrap_tex(eqn_str)) inside markdown."
+
+# ╔═╡ a9d9d87e-4cfe-4a34-bdb9-6bf3fc979bab
+md"To simplify typing and displaying equations, we recommend using the [LaTeXStrings.jl](https://github.com/JuliaStrings/LaTeXStrings.jl) package:"
+
+# ╔═╡ 0aefcfcd-ac8f-471b-8f90-7bb5235589ad
+L"x^2+y^2 = z^2"
 
 # ╔═╡ a05aa377-a201-4670-aae9-8de4059b67cb
 md"#### Heading $nbsp $nbsp with extra space"
@@ -249,7 +295,9 @@ TwoColumnWideLeft(md"Left col", md"Right col")
 TwoColumnWideRight(md"Left col", md"Right col")
 
 # ╔═╡ 44d651d3-ce42-4061-b193-da7c31efed8e
-TwoColumnWideLeft(warning_box(md"Discussion of figure on right."), RobustLocalResource(url, path))
+TwoColumnWideLeft(
+    warning_box(md"Discussion of figure on right."), RobustLocalResource(url, path)
+)
 
 # ╔═╡ 7859ad2b-7e87-442c-8684-f731f2512a42
 md"""
@@ -330,20 +378,29 @@ FootnotesNumbered()
 
 # ╔═╡ f4201010-71d1-4889-99e7-abb774612a4d
 begin
-	mls_link = "#" * (PlutoRunner.currently_running_cell_id[] |> string)
-	md"# Multi-language support"
+    mls_link = "#" * (string(PlutoRunner.currently_running_cell_id[]))
+    md"# Multi-language support"
 end
 
+# ╔═╡ d6b3f009-22e4-4b21-8986-a29e3f261c3b
+Markdown.parse("""See also [multi-language support]($mls_link) section below""")
+
 # ╔═╡ ef32d891-0a7a-4803-95ae-a930787c243a
-preferred_text( (en=md"Hello",de=md"Hallo",es=md"Hola") )
+preferred_text((en=md"Hello", de=md"Hallo", es=md"Hola"))
 
 # ╔═╡ d3762092-e31d-4b96-840a-3939b89f60b7
-tip(preferred_text( (en=md"Remember to add good documentation.",
-						de=md"Denken Sie daran, eine gute Dokumentation hinzuzufügen.",
-						es=md"Recuerde agregar buena documentación") ))
+tip(
+    preferred_text((
+        en=md"Remember to add good documentation.",
+        de=md"Denken Sie daran, eine gute Dokumentation hinzuzufügen.",
+        es=md"Recuerde agregar buena documentación",
+    )),
+)
 
 # ╔═╡ 93e4e977-efb1-48c7-ac4c-c578140135ee
-Markdown.parse("""See also [package cell]($pkg_cell_link) for overriding default language selected from `ENV[LANG]`.""")
+Markdown.parse(
+    """See also [package cell]($pkg_cell_link) for overriding default language selected from `ENV[LANG]`.""",
+)
 
 # ╔═╡ 743491af-3d4b-4dee-9ad7-2372ba4e97bd
 md"""
@@ -353,9 +410,9 @@ md"""
 
 # ╔═╡ 23afc83f-e971-4356-a30e-1b7a247ff38d
 begin
-	MyModule = @ingredients "demo_module.jl" # provided by PlutoLinks.jl
-	import .MyModule: Demo
-	import .Demo: hello
+    MyModule = @ingredients "demo_module.jl" # provided by PlutoLinks.jl
+    import .MyModule: Demo
+    import .Demo: hello
 end
 
 # ╔═╡ d4b1b5f2-b4ae-4988-aded-79398949f1c8
@@ -370,27 +427,29 @@ hello()
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 PlutoTeachingTools = "661c6b06-c737-4d37-b85c-46df65de6f69"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
-PlutoTeachingTools = "~0.2.8"
-PlutoUI = "~0.7.50"
+LaTeXStrings = "~1.3.1"
+PlutoTeachingTools = "~0.2.12"
+PlutoUI = "~0.7.52"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.2"
+julia_version = "1.10.5"
 manifest_format = "2.0"
-project_hash = "6bb201a032efe7739abcd2613b6a702f0cfd8acf"
+project_hash = "6a2354003a5c918e3f094011d689b03f8cd6a3fb"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
-git-tree-sha1 = "8eaf9f1b4921132a4cff3f36a1d9ba923b14a481"
+git-tree-sha1 = "91bd53c39b9cbfb5ef4b015e8b582d344532bd0a"
 uuid = "6e696c72-6542-2067-7265-42206c756150"
-version = "1.1.4"
+version = "1.2.0"
 
 [[deps.ArgTools]]
 uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
@@ -404,9 +463,9 @@ uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 
 [[deps.CodeTracking]]
 deps = ["InteractiveUtils", "UUIDs"]
-git-tree-sha1 = "d730914ef30a06732bdd9f763f6cc32e92ffbff1"
+git-tree-sha1 = "a1296f0fe01a4c3f9bf0dc2934efbf4416f5db31"
 uuid = "da1fd8a2-8d9e-5ec2-8556-3022fb5608a2"
-version = "1.3.1"
+version = "1.3.4"
 
 [[deps.ColorTypes]]
 deps = ["FixedPointNumbers", "Random"]
@@ -417,7 +476,7 @@ version = "0.11.4"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "0.5.2+0"
+version = "1.1.1+0"
 
 [[deps.Dates]]
 deps = ["Printf"]
@@ -461,9 +520,9 @@ version = "0.9.4"
 
 [[deps.IOCapture]]
 deps = ["Logging", "Random"]
-git-tree-sha1 = "f7be53659ab06ddc986428d3a9dcc95f6fa6705a"
+git-tree-sha1 = "d75853a0bdbfb1ac815478bacd89cd27b550ace6"
 uuid = "b5f81e59-6552-4d32-b1f0-c071b021bf89"
-version = "0.2.2"
+version = "0.2.3"
 
 [[deps.InteractiveUtils]]
 deps = ["Markdown"]
@@ -477,45 +536,58 @@ version = "0.21.4"
 
 [[deps.JuliaInterpreter]]
 deps = ["CodeTracking", "InteractiveUtils", "Random", "UUIDs"]
-git-tree-sha1 = "6a125e6a4cb391e0b9adbd1afa9e771c2179f8ef"
+git-tree-sha1 = "e8ab063deed72e14666f9d8af17bd5f9eab04392"
 uuid = "aa1ae85d-cabe-5617-a682-6adf51b2e16a"
-version = "0.9.23"
+version = "0.9.24"
 
 [[deps.LaTeXStrings]]
-git-tree-sha1 = "f2355693d6778a178ade15952b7ac47a4ff97996"
+git-tree-sha1 = "50901ebc375ed41dbf8058da26f9de442febbbec"
 uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
-version = "1.3.0"
+version = "1.3.1"
 
 [[deps.Latexify]]
 deps = ["Formatting", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "OrderedCollections", "Printf", "Requires"]
-git-tree-sha1 = "98dc144f1e0b299d49e8d23e56ad68d3e4f340a5"
+git-tree-sha1 = "f428ae552340899a935973270b8d98e5a31c49fe"
 uuid = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
-version = "0.15.20"
+version = "0.16.1"
+
+    [deps.Latexify.extensions]
+    DataFramesExt = "DataFrames"
+    SymEngineExt = "SymEngine"
+
+    [deps.Latexify.weakdeps]
+    DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+    SymEngine = "123dc426-2d89-5057-bbad-38513e3affd8"
 
 [[deps.LibCURL]]
 deps = ["LibCURL_jll", "MozillaCACerts_jll"]
 uuid = "b27032c2-a3e7-50c8-80cd-2d36dbcbfd21"
-version = "0.6.3"
+version = "0.6.4"
 
 [[deps.LibCURL_jll]]
 deps = ["Artifacts", "LibSSH2_jll", "Libdl", "MbedTLS_jll", "Zlib_jll", "nghttp2_jll"]
 uuid = "deac9b47-8bc7-5906-a0fe-35ac56dc84c0"
-version = "7.84.0+0"
+version = "8.4.0+0"
 
 [[deps.LibGit2]]
-deps = ["Base64", "NetworkOptions", "Printf", "SHA"]
+deps = ["Base64", "LibGit2_jll", "NetworkOptions", "Printf", "SHA"]
 uuid = "76f85450-5226-5b5a-8eaa-529ad045b433"
+
+[[deps.LibGit2_jll]]
+deps = ["Artifacts", "LibSSH2_jll", "Libdl", "MbedTLS_jll"]
+uuid = "e37daf67-58a4-590a-8e99-b0245dd2ffc5"
+version = "1.6.4+0"
 
 [[deps.LibSSH2_jll]]
 deps = ["Artifacts", "Libdl", "MbedTLS_jll"]
 uuid = "29816b5a-b9ab-546f-933c-edad1886dfa8"
-version = "1.10.2+0"
+version = "1.11.0+1"
 
 [[deps.Libdl]]
 uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 
 [[deps.LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl", "OpenBLAS_jll", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[deps.Logging]]
@@ -545,14 +617,14 @@ uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
 [[deps.MbedTLS_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
-version = "2.28.0+0"
+version = "2.28.2+1"
 
 [[deps.Mmap]]
 uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 
 [[deps.MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
-version = "2022.2.1"
+version = "2023.1.10"
 
 [[deps.NetworkOptions]]
 uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
@@ -561,23 +633,23 @@ version = "1.2.0"
 [[deps.OpenBLAS_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
 uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
-version = "0.3.20+0"
+version = "0.3.23+4"
 
 [[deps.OrderedCollections]]
-git-tree-sha1 = "d321bf2de576bf25ec4d3e4360faca399afca282"
+git-tree-sha1 = "2e73fe17cac3c62ad1aebe70d44c963c3cfdc3e3"
 uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
-version = "1.6.0"
+version = "1.6.2"
 
 [[deps.Parsers]]
-deps = ["Dates", "SnoopPrecompile"]
-git-tree-sha1 = "478ac6c952fddd4399e71d4779797c538d0ff2bf"
+deps = ["Dates", "PrecompileTools", "UUIDs"]
+git-tree-sha1 = "716e24b21538abc91f6205fd1d8363f39b442851"
 uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
-version = "2.5.8"
+version = "2.7.2"
 
 [[deps.Pkg]]
-deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
+deps = ["Artifacts", "Dates", "Downloads", "FileWatching", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
-version = "1.8.0"
+version = "1.10.0"
 
 [[deps.PlutoHooks]]
 deps = ["InteractiveUtils", "Markdown", "UUIDs"]
@@ -593,21 +665,27 @@ version = "0.1.6"
 
 [[deps.PlutoTeachingTools]]
 deps = ["Downloads", "HypertextLiteral", "LaTeXStrings", "Latexify", "Markdown", "PlutoLinks", "PlutoUI", "Random"]
-git-tree-sha1 = "901509f7ae6abfb20281c53c34ecfa95ec3119df"
+git-tree-sha1 = "542de5acb35585afcf202a6d3361b430bc1c3fbd"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
-version = "0.2.10"
+version = "0.2.13"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "FixedPointNumbers", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "MIMEs", "Markdown", "Random", "Reexport", "URIs", "UUIDs"]
-git-tree-sha1 = "5bb5129fdd62a2bbbe17c2756932259acf467386"
+git-tree-sha1 = "e47cd150dbe0443c3a3651bc5b9cbd5576ab75b7"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
-version = "0.7.50"
+version = "0.7.52"
+
+[[deps.PrecompileTools]]
+deps = ["Preferences"]
+git-tree-sha1 = "9673d39decc5feece56ef3940e5dafba15ba0f81"
+uuid = "aea7be01-6a6a-4083-8856-8a6e6704d82a"
+version = "1.1.2"
 
 [[deps.Preferences]]
 deps = ["TOML"]
-git-tree-sha1 = "47e5f437cc0e7ef2ce8406ce1e7e24d44915f88d"
+git-tree-sha1 = "7eb1686b4f04b82f96ed7a4ea5890a4f0c7a09f1"
 uuid = "21216c6a-2e73-6563-6e65-726566657250"
-version = "1.3.0"
+version = "1.4.0"
 
 [[deps.Printf]]
 deps = ["Unicode"]
@@ -618,7 +696,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[deps.Random]]
-deps = ["SHA", "Serialization"]
+deps = ["SHA"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[deps.Reexport]]
@@ -634,9 +712,9 @@ version = "1.3.0"
 
 [[deps.Revise]]
 deps = ["CodeTracking", "Distributed", "FileWatching", "JuliaInterpreter", "LibGit2", "LoweredCodeUtils", "OrderedCollections", "Pkg", "REPL", "Requires", "UUIDs", "Unicode"]
-git-tree-sha1 = "feafdc70b2e6684314e188d95fe66d116de834a7"
+git-tree-sha1 = "1e597b93700fa4045d7189afa7c004e0584ea548"
 uuid = "295af30f-e4ad-537b-8983-00126c2a3abe"
-version = "3.5.2"
+version = "3.5.3"
 
 [[deps.SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
@@ -645,32 +723,33 @@ version = "0.7.0"
 [[deps.Serialization]]
 uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 
-[[deps.SnoopPrecompile]]
-deps = ["Preferences"]
-git-tree-sha1 = "e760a70afdcd461cf01a575947738d359234665c"
-uuid = "66db9d55-30c0-4569-8b51-7e840670fc0c"
-version = "1.0.3"
-
 [[deps.Sockets]]
 uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
 
 [[deps.SparseArrays]]
-deps = ["LinearAlgebra", "Random"]
+deps = ["Libdl", "LinearAlgebra", "Random", "Serialization", "SuiteSparse_jll"]
 uuid = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
+version = "1.10.0"
 
 [[deps.Statistics]]
 deps = ["LinearAlgebra", "SparseArrays"]
 uuid = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+version = "1.10.0"
+
+[[deps.SuiteSparse_jll]]
+deps = ["Artifacts", "Libdl", "libblastrampoline_jll"]
+uuid = "bea87d4a-7f5b-5778-9afe-8cc45184846c"
+version = "7.2.1+1"
 
 [[deps.TOML]]
 deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
-version = "1.0.0"
+version = "1.0.3"
 
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
-version = "1.10.1"
+version = "1.10.0"
 
 [[deps.Test]]
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
@@ -682,9 +761,9 @@ uuid = "410a4b4d-49e4-4fbc-ab6d-cb71b17b3775"
 version = "0.1.7"
 
 [[deps.URIs]]
-git-tree-sha1 = "074f993b0ca030848b897beff716d93aca60f06a"
+git-tree-sha1 = "b7a5e99f24892b6824a954199a45e9ffcc1c70f0"
 uuid = "5c2747f8-b7ea-4ff2-ba2e-563bfd36b1d4"
-version = "1.4.2"
+version = "1.5.0"
 
 [[deps.UUIDs]]
 deps = ["Random", "SHA"]
@@ -696,26 +775,29 @@ uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 [[deps.Zlib_jll]]
 deps = ["Libdl"]
 uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
-version = "1.2.12+3"
+version = "1.2.13+1"
 
 [[deps.libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+deps = ["Artifacts", "Libdl"]
 uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-version = "5.1.1+0"
+version = "5.11.0+0"
 
 [[deps.nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "8e850ede-7688-5339-a07c-302acd2aaf8d"
-version = "1.48.0+0"
+version = "1.52.0+1"
 
 [[deps.p7zip_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
-version = "17.4.0+0"
+version = "17.4.0+2"
 """
 
 # ╔═╡ Cell order:
 # ╟─cd581a51-fb2b-4579-9a7d-0d723ad5d467
+# ╠═dee4aa68-e5eb-4a8a-869f-867e61de5ec5
+# ╠═84ccb960-41f8-430d-bd73-a7c0248cfb95
+# ╟─d6b3f009-22e4-4b21-8986-a29e3f261c3b
 # ╠═657c3eea-1ef6-11ed-3e82-5daad2bc19a1
 # ╠═f0704e56-7e97-4c92-bbdd-76d7a873e6d8
 # ╟─d173896e-021a-4b2c-b913-62c5a2320341
@@ -774,6 +856,9 @@ version = "17.4.0+0"
 # ╠═af5673b5-a7f9-4033-ac9b-845254f62c98
 # ╠═8fcfe710-ac2b-4282-85c6-d3b8800fa53a
 # ╠═7390e4a7-0561-4611-b3c1-9b83601c5805
+# ╟─a9d9d87e-4cfe-4a34-bdb9-6bf3fc979bab
+# ╠═3f8dc975-b091-4dbe-bd48-c33236e61ece
+# ╠═0aefcfcd-ac8f-471b-8f90-7bb5235589ad
 # ╠═a05aa377-a201-4670-aae9-8de4059b67cb
 # ╠═25066f0b-7100-431c-8695-70005738bbfd
 # ╟─d7593309-3462-4dba-8275-c2eb76b4c3fe
