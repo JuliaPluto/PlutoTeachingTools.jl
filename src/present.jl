@@ -18,28 +18,27 @@ function Base.show(io, mime::MIME"text/html", fld::Foldable)
     return nothing
 end
 
-function Columns(cols...; widths=nothing, gap = 2)
+function Columns(cols...; widths=nothing, gap=2)
     ncols = length(cols)
     ngaps = ncols - 1
     if isnothing(widths)
-        widths = fill(100/ncols, ncols)
+        widths = fill(100 / ncols, ncols)
     end
     if gap > 0 # adjust widths if gaps are desired
-        widths = widths / sum(widths) * (100 - gap*ngaps)
+        widths = widths / sum(widths) * (100 - gap * ngaps)
     end
-    
+
     columns = [
-        DivElement(children=[cols[i]], style="display: flex; flex: 0 1 $(widths[i])%") for i ∈ 1:ncols
+        DivElement(; children=[cols[i]], style="display: flex; flex: 0 1 $(widths[i])%") for
+        i in 1:ncols
     ]
-    the_gap = DivElement(children = [], style="display: flex; flex: 0 0 $gap%" )
+    the_gap = DivElement(; children=[], style="display: flex; flex: 0 0 $gap%")
 
     # insert gaps between columns
     # i.e. [a, b, c] ==> [a, gap, b, gap, c]
-    children = vec([reshape(columns, 1, :); fill(the_gap, 1, ncols)])[1:end-1]
-    
-    DivElement(; children,
-          style="display: flex; flex-direction: row;"
-    )
+    children = vec([reshape(columns, 1, :); fill(the_gap, 1, ncols)])[1:(end - 1)]
+
+    return DivElement(; children, style="display: flex; flex-direction: row;")
 end
 
 # for backwards compatibility
@@ -47,9 +46,9 @@ TwoColumn(a, b; kwargs...) = Columns(a, b; kwargs...)
 
 ThreeColumn(a, b, c; kwargs...) = Columns(a, b, c; kwargs...)
 
-TwoColumnWideLeft(a, b; kwargs...) = Columns(a, b; widths = [66, 34], kwargs...)
+TwoColumnWideLeft(a, b; kwargs...) = Columns(a, b; widths=[66, 34], kwargs...)
 
-TwoColumnWideRight(a, b; kwargs...) = Columns(a, b; widths = [34, 66], kwargs...)
+TwoColumnWideRight(a, b; kwargs...) = Columns(a, b; widths=[34, 66], kwargs...)
 
 """ Provides checkbox to toggle full width and present mode. """
 function ChooseDisplayMode(;
