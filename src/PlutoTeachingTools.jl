@@ -1,5 +1,6 @@
 module PlutoTeachingTools
 
+using Pluto: PlutoRunner
 using Markdown: @md_str, MD, Admonition, LaTeX
 using HypertextLiteral: @htl, @htl_str
 using Downloads: download # used in robustlocalresouce.jl
@@ -30,7 +31,7 @@ export display_msg_if_fail
 include("present.jl")
 export present_button
 export Foldable
-export TwoColumn, ThreeColumn
+export Columns, TwoColumn, ThreeColumn
 export TwoColumnWideLeft, TwoColumnWideRight
 export ChooseDisplayMode # combines present_button and WidthOverDocs
 
