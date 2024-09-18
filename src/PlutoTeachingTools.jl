@@ -1,6 +1,6 @@
 module PlutoTeachingTools
 
-using Pluto: PlutoRunner
+using Pluto.PlutoRunner: DivElement
 using Markdown: @md_str, MD, Admonition, LaTeX
 using HypertextLiteral: @htl, @htl_str
 using Downloads: download # used in robustlocalresouce.jl

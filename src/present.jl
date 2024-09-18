@@ -29,15 +29,15 @@ function Columns(cols...; widths=nothing, gap = 2)
     end
     
     columns = [
-        PlutoRunner.DivElement(children=[cols[i]], style="display: flex; flex: 0 1 $(widths[i])%") for i ∈ 1:ncols
+        DivElement(children=[cols[i]], style="display: flex; flex: 0 1 $(widths[i])%") for i ∈ 1:ncols
     ]
-    the_gap = PlutoRunner.DivElement(children = [], style="display: flex; flex: 0 0 $gap%" )
+    the_gap = DivElement(children = [], style="display: flex; flex: 0 0 $gap%" )
 
     # insert gaps between columns
     # i.e. [a, b, c] ==> [a, gap, b, gap, c]
     children = vec([reshape(columns, 1, :); fill(the_gap, 1, ncols)])[1:end-1]
     
-    PlutoRunner.DivElement(; children,
+    DivElement(; children,
           style="display: flex; flex-direction: row;"
     )
 end
