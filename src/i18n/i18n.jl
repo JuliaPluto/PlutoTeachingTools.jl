@@ -179,6 +179,14 @@ const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
     ),
 )
 
+select_lang_dropdown = Select([
+    "en" => "English",
+    "de" => "German/Deutsch",
+    "es" => "Spanish/Español",
+    "ru" => "Russian",
+    "zh" => "Chinese",
+]);
+
 # Allow users to register additional languages
 function register_language!(str::AbstractString, lang::Lang) where {Lang<:AbstractLanguage}
     languages_registered[][str] = lang
