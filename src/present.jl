@@ -15,7 +15,7 @@ function Base.show(io, mime::MIME"text/html", fld::Foldable)
     write(io, "<details><summary>$(fld.title)</summary><p>")
     show(io, mime, fld.content)
     write(io, "</p></details>")
-    return nothing
+    nothing
 end
 
 struct TwoColumn{L,R}
@@ -86,7 +86,7 @@ end
 function ChooseDisplayMode(;
     wide::Bool=false, present::Bool=false, lang::AbstractLanguage=default_language[]
 )  # Adapted from PlutoThemes.jl
-    checked = wide ? "checked" : ""
+    checked = wide  ? "checked" :  ""
     checked_present_mode = present ? "checked" : ""
     init = wide ? "toggle_width(document.getElementById('width-over-livedocs'))" : ""
     return HTML("""
