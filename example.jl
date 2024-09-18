@@ -24,12 +24,15 @@ end
 # ╔═╡ dee4aa68-e5eb-4a8a-869f-867e61de5ec5
 using PlutoUI
 
+# ╔═╡ 3f8dc975-b091-4dbe-bd48-c33236e61ece
+using LaTeXStrings
+
 # ╔═╡ cd581a51-fb2b-4579-9a7d-0d723ad5d467
 md"# [PlutoTeachingTools.jl](https://github.com/JuliaPluto/PlutoTeachingTools.jl) Examples"
 
 # ╔═╡ 84ccb960-41f8-430d-bd73-a7c0248cfb95
 md"""
-Language for common prompts: $(@bind lang Select(["en"=>"English","de"=>"German","es"=>"Spanish","ru"=>"Russian", "zh"=>"chinese"]))
+Language for common prompts: $(@bind lang Select(["en"=>"English","de"=>"German","es"=>"Spanish","ru"=>"Russian", "zh"=>"Chinese"]))
 """
 
 # ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
@@ -262,6 +265,12 @@ eqn_str = "x^2+y^2 = z^2"
 # ╔═╡ 7390e4a7-0561-4611-b3c1-9b83601c5805
 md"And you can grab equations in variables like $(wrap_tex(eqn_str)) inside markdown."
 
+# ╔═╡ a9d9d87e-4cfe-4a34-bdb9-6bf3fc979bab
+md"To simplify typing and displaying equations, we recommend using the [LaTeXStrings.jl](https://github.com/JuliaStrings/LaTeXStrings.jl) package:"
+
+# ╔═╡ 0aefcfcd-ac8f-471b-8f90-7bb5235589ad
+L"x^2+y^2 = z^2"
+
 # ╔═╡ a05aa377-a201-4670-aae9-8de4059b67cb
 md"#### Heading $nbsp $nbsp with extra space"
 
@@ -418,10 +427,12 @@ hello()
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 PlutoTeachingTools = "661c6b06-c737-4d37-b85c-46df65de6f69"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
+LaTeXStrings = "~1.3.1"
 PlutoTeachingTools = "~0.2.12"
 PlutoUI = "~0.7.52"
 """
@@ -432,7 +443,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.10.5"
 manifest_format = "2.0"
-project_hash = "2af2aaef1ea67811bc114f2d0bf7f61179b912c7"
+project_hash = "6a2354003a5c918e3f094011d689b03f8cd6a3fb"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
@@ -530,9 +541,9 @@ uuid = "aa1ae85d-cabe-5617-a682-6adf51b2e16a"
 version = "0.9.24"
 
 [[deps.LaTeXStrings]]
-git-tree-sha1 = "f2355693d6778a178ade15952b7ac47a4ff97996"
+git-tree-sha1 = "50901ebc375ed41dbf8058da26f9de442febbbec"
 uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
-version = "1.3.0"
+version = "1.3.1"
 
 [[deps.Latexify]]
 deps = ["Formatting", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "OrderedCollections", "Printf", "Requires"]
@@ -845,6 +856,9 @@ version = "17.4.0+2"
 # ╠═af5673b5-a7f9-4033-ac9b-845254f62c98
 # ╠═8fcfe710-ac2b-4282-85c6-d3b8800fa53a
 # ╠═7390e4a7-0561-4611-b3c1-9b83601c5805
+# ╟─a9d9d87e-4cfe-4a34-bdb9-6bf3fc979bab
+# ╠═3f8dc975-b091-4dbe-bd48-c33236e61ece
+# ╠═0aefcfcd-ac8f-471b-8f90-7bb5235589ad
 # ╠═a05aa377-a201-4670-aae9-8de4059b67cb
 # ╠═25066f0b-7100-431c-8695-70005738bbfd
 # ╟─d7593309-3462-4dba-8275-c2eb76b4c3fe

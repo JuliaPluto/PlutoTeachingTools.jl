@@ -1,5 +1,4 @@
-export AbstractLanguage, set_language!
-export preferred_text
+
 abstract type AbstractLanguage end
 
 # computational_thinking.jl
@@ -148,30 +147,35 @@ import .PTTChinese: ChineseZH
 
 const languages_registered = Ref{Dict{String,AbstractLanguage}}(
     Dict(
-        "en" => PTTEnglish.EnglishUS(),
-        "en_us" => PTTEnglish.EnglishUS(),
-        "de" => PTTGerman.GermanGermany(),
-        "de_colloq" => PTTGerman.GermanGermanyColloquial(),
-        "de_de" => PTTGerman.GermanGermany(),
-        "de_de_colloq" => PTTGerman.GermanGermanyColloquial(),
-        "ru" => PTTRussian.RussianRU(),
-        "es" => PTTSpanish.SpanishES(),
-        "es_colloq" => PTTSpanish.SpanishColloquial(),
-        "es_es" => PTTSpanish.SpanishES(),
-        "es_es_colloq" => PTTSpanish.SpanishColloquial(),
-        "zh" => PTTChinese.ChineseZH(),
+        "en" => EnglishUS(),
+        "en_us" => EnglishUS(),
+        "de" => GermanGermany(),
+        "de_colloq" => GermanGermanyColloquial(),
+        "de_formal" => GermanGermanyFormal(),
+        "de_de" => GermanGermany(),
+        "de_de_colloq" => GermanGermanyColloquial(),
+        "de_de_formal" => GermanGermanyFormal(),
+        "ru" => RussianRU(),
+        "ru_ru" => RussianRU(),
+        "es" => SpanishES(),
+        "es_colloq" => SpanishColloquial(),
+        "es_es" => SpanishES(),
+        "es_es_colloq" => SpanishColloquial(),
+        "zh" => ChineseZH(),
+        "zh_cn" => ChineseZH(),
     ),
 )
 
 const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
     Dict(
-        PTTEnglish.EnglishUS() => ["en", "en_us"],
-        PTTGerman.GermanGermany() => ["de", "de_de"],
-        PTTGerman.GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"],
-        PTTRussian.RussianRU() => ["ru", "ru_ru"],
-        PTTSpanish.SpanishES() => ["es", "es_es"],
-        PTTSpanish.SpanishColloquial() => ["es_colloq", "es_es_colloq"],
-        PTTChinese.ChineseZH() => ["zh", "zh_cn"],
+        EnglishUS() => ["en", "en_us"],
+        GermanGermany() => ["de", "de_de"],
+        GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"],
+        GermanGermanyFormal() => ["de_formal", "de_de_formal"],
+        RussianRU() => ["ru", "ru_ru"],
+        SpanishES() => ["es", "es_es"],
+        SpanishColloquial() => ["es_colloq", "es_es_colloq"],
+        ChineseZH() => ["zh", "zh_cn"],
     ),
 )
 
@@ -198,7 +202,7 @@ function get_language(str::AbstractString)
     key = isnothing(m) ? str : first(m.captures)
     if !haskey(languages_registered[], key)
         # @info "Sorry, PlutoTeachingTools doesn't include that language."
-        nothing # PTTEnglish.EnglishUS()
+        nothing # EnglishUS()
     else
         languages_registered[][key]
     end
@@ -207,20 +211,18 @@ end
 # Keeping around until new version is better tested
 function get_language_old(str::AbstractString)
     if contains(str, r"^en")
-        PTTEnglish.EnglishUS()
+        EnglishUS()
     elseif contains(str, r"^de")
-        PTTGerman.GermanGermany()
+        GermanGermany()
     elseif contains(str, r"^es")
-        PTTSpanish.SpanishFormal()
+        SpanishFormal()
     else # Sorry, we don't have your language yet.
         # @info "Sorry, PlutoTeachingTools doesn't include that language."
-        PTTEnglish.EnglishUS()
+        EnglishUS()
     end
 end
 
-function get_language_from_env(;
-    default::Lang=PTTEnglish.EnglishUS()
-) where {Lang<:AbstractLanguage}
+function get_language_from_env(; default::Lang=EnglishUS()) where {Lang<:AbstractLanguage}
     lang = default
     if @isdefined(ENV) && haskey(ENV, "LANG")
         lang = get_language(ENV["LANG"])
@@ -232,7 +234,7 @@ function get_language_from_env(;
 end
 
 # Keep track of language to use
-#const default_language = Ref{AbstractLanguage}(PTTEnglish.EnglishUS())
+#const default_language = Ref{AbstractLanguage}(EnglishUS())
 const default_language = Ref{AbstractLanguage}(get_language_from_env())
 
 function set_language!(lang::AbstractLanguage)

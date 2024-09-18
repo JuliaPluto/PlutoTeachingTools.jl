@@ -1,12 +1,5 @@
 
 # Borrowed/adapted from https://andreaskroepelin.de/blog/plutoslides/
-export present_button
-export Foldable
-export TwoColumn, ThreeColumn
-
-# My Minimal tweaks
-export TwoColumnWideLeft, TwoColumnWideRight
-export ChooseDisplayMode # combines present_button and WidthOverDocs
 
 function present_button(lang::AbstractLanguage=default_language[])
     txt = present_str(lang)
@@ -66,7 +59,7 @@ function Base.show(io, mime::MIME"text/html", tc::TwoColumnWideRight)
     write(io, """</div><div style="flex: 2%;">""")
     write(io, """</div><div style="flex: 65%;">""")
     show(io, mime, tc.right)
-    qwrite(io, """</div></div>""")
+    write(io, """</div></div>""")
     return nothing
 end
 

@@ -1,8 +1,7 @@
 module PTTEnglish
 
-using Markdown
-
-using ..PlutoTeachingTools
+using Markdown: @md_str, Code
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type English <: AbstractLanguage end
 struct EnglishUS <: English end
@@ -42,13 +41,15 @@ PlutoTeachingTools.func_not_defined_str(lang::Lang) where {Lang<:English} = "Oop
 function PlutoTeachingTools.func_not_defined_text_str(
     func_name, lang::Lang
 ) where {Lang<:English}
-    md"Make sure that you define a function called **$(Markdown.Code(string(func_name)))**"
+    fn = Code(string(func_name))
+    md"Make sure that you define a function called **$(fn)**"
 end
 PlutoTeachingTools.var_not_defined_str(lang::Lang) where {Lang<:English} = "Oopsie!"
 function PlutoTeachingTools.var_not_defined_text_str(
     variable_name, lang::Lang
 ) where {Lang<:English}
-    md"Make sure that you define a variable called **$(Markdown.Code(string(variable_name)))**"
+    vn = Code(string(variable_name))
+    md"Make sure that you define a variable called **$(vn)**"
 end
 function PlutoTeachingTools.keep_working_str(lang::Lang) where {Lang<:English}
     return "Keep working on it!"

@@ -1,8 +1,7 @@
 module PTTRussian
 
-using Markdown
-
-using ..PlutoTeachingTools
+using Markdown: @md_str, Code
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type Russian <: AbstractLanguage end
 struct RussianRU <: Russian end
@@ -46,13 +45,15 @@ PlutoTeachingTools.func_not_defined_str(lang::Lang) where {Lang<:Russian} = "О�
 function PlutoTeachingTools.func_not_defined_text_str(
     func_name, lang::Lang
 ) where {Lang<:Russian}
-    md"Убедитесь, что вы определили функцию под названием **$(Markdown.Code(string(func_name)))**"
+    fn = Code(string(func_name))
+    md"Убедитесь, что вы определили функцию под названием **$(fn)**"
 end
 PlutoTeachingTools.var_not_defined_str(lang::Lang) where {Lang<:Russian} = "Ой!"
 function PlutoTeachingTools.var_not_defined_text_str(
     variable_name, lang::Lang
 ) where {Lang<:Russian}
-    md"Убедитесь, что вы определили переменную под названием **$(Markdown.Code(string(variable_name)))**"
+    vn = Code(string(variable_name))
+    md"Убедитесь, что вы определили переменную под названием **$(vn)**"
 end
 function PlutoTeachingTools.keep_working_str(lang::Lang) where {Lang<:Russian}
     return "Продолжайте работу!"

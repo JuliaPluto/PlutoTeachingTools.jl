@@ -1,8 +1,7 @@
 module PTTGerman
 
-using Markdown
-
-using ..PlutoTeachingTools
+using Markdown: @md_str, Code
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type German <: AbstractLanguage end
 struct GermanGermanyFormal <: German end
@@ -65,23 +64,27 @@ PlutoTeachingTools.func_not_defined_str(lang::Lang) where {Lang<:German} = "Uups
 function PlutoTeachingTools.func_not_defined_text_str(
     func_name, lang::Lang
 ) where {Lang<:GermanGermanyFormal}
-    md"Stellen Sie sicher, eine Funktion mit dem Namen **$(Markdown.Code(string(func_name)))** zu definieren."
+    fn = Code(string(func_name))
+    md"Stellen Sie sicher, eine Funktion mit dem Namen **$(fn)** zu definieren."
 end
 function PlutoTeachingTools.func_not_defined_text_str(
     func_name, lang::Lang
 ) where {Lang<:GermanGermanyColloquial}
-    md"Stelle sicher, eine Funktion mit dem Namen **$(Markdown.Code(string(func_name)))** zu definieren."
+    fn = Code(string(func_name))
+    md"Stelle sicher, eine Funktion mit dem Namen **$(fn)** zu definieren."
 end
 PlutoTeachingTools.var_not_defined_str(lang::Lang) where {Lang<:German} = "Uups!"
 function PlutoTeachingTools.var_not_defined_text_str(
     variable_name, lang::Lang
 ) where {Lang<:GermanGermanyFormal}
-    md"Stellen Sie sicher, eine Variable mit dem Namen **$(Markdown.Code(string(variable_name)))** zu definieren."
+    vn = Code(string(variable_name))
+    md"Stellen Sie sicher, eine Variable mit dem Namen **$(vn)** zu definieren."
 end
 function PlutoTeachingTools.var_not_defined_text_str(
     variable_name, lang::Lang
 ) where {Lang<:GermanGermanyColloquial}
-    md"Stelle sicher, eine Variable mit dem Namen **$(Markdown.Code(string(variable_name)))** zu definieren."
+    vn = Code(string(variable_name))
+    md"Stelle sicher, eine Variable mit dem Namen **$(vn)** zu definieren."
 end
 function PlutoTeachingTools.keep_working_str(lang::Lang) where {Lang<:GermanGermanyFormal}
     return "Versuchen Sie es weiter!"

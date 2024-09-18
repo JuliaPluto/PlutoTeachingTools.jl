@@ -1,8 +1,7 @@
 module PTTSpanish
 
-using Markdown
-
-using ..PlutoTeachingTools
+using Markdown: @md_str, Code
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type Spanish <: AbstractLanguage end
 struct SpanishFormal <: Spanish end
@@ -63,23 +62,27 @@ PlutoTeachingTools.func_not_defined_str(lang::Lang) where {Lang<:Spanish} = "¡U
 function PlutoTeachingTools.func_not_defined_text_str(
     func_name, lang::Lang
 ) where {Lang<:SpanishColloquial}
-    md"Debes definir una función llamada **$(Markdown.Code(string(func_name)))**"
+    fn = Code(string(func_name))
+    md"Debes definir una función llamada **$(fn)**"
 end
 function PlutoTeachingTools.func_not_defined_text_str(
     func_name, lang::Lang
 ) where {Lang<:SpanishFormal}
-    md"Debe definir una función llamada **$(Markdown.Code(string(func_name)))**"
+    fn = Code(string(func_name))
+    md"Debe definir una función llamada **$(fn)**"
 end
 PlutoTeachingTools.var_not_defined_str(lang::Lang) where {Lang<:Spanish} = "¡Ups!"
 function PlutoTeachingTools.var_not_defined_text_str(
     variable_name, lang::Lang
 ) where {Lang<:SpanishColloquial}
-    md"Debes definir una variable llamada **$(Markdown.Code(string(variable_name)))**"
+    vn = Code(string(variable_name))
+    md"Debes definir una variable llamada **$(vn)**"
 end
 function PlutoTeachingTools.var_not_defined_text_str(
     variable_name, lang::Lang
 ) where {Lang<:SpanishFormal}
-    md"Debe definir una variable llamada **$(Markdown.Code(string(variable_name)))**"
+    vn = Code(string(variable_name))
+    md"Debe definir una variable llamada **$(vn)**"
 end
 function PlutoTeachingTools.keep_working_str(lang::Lang) where {Lang<:SpanishColloquial}
     return "¡Sigue trabajando en ello!"

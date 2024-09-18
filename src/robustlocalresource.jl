@@ -1,5 +1,3 @@
-using Downloads
-export RobustLocalResource
 
 """
 `RobustLocalResource(url, path, [html_attributes]; [cache] )`
@@ -19,7 +17,7 @@ function RobustLocalResource(
         return LocalResource(path, html_attributes...)
     elseif cache
         mkpath(dirname(path))
-        Downloads.download(url, path)
+        download(url, path)
         LocalResource(path, html_attributes...)
     else
         Resource(url, html_attributes...)

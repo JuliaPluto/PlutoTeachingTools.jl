@@ -1,8 +1,7 @@
 module PTTChinese
 
-using Markdown
-
-using ..PlutoTeachingTools
+using Markdown: @md_str, Code
+using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type Chinese <: AbstractLanguage end
 struct ChineseZH <: Chinese end
@@ -36,13 +35,15 @@ PlutoTeachingTools.func_not_defined_str(lang::Lang) where {Lang<:Chinese} = "糟
 function PlutoTeachingTools.func_not_defined_text_str(
     func_name, lang::Lang
 ) where {Lang<:Chinese}
-    md"请确定你定义了一个名为 **$(Markdown.Code(string(func_name)))** 的函数。"
+    fn = Code(string(func_name))
+    md"请确定你定义了一个名为 **$(fn)** 的函数。"
 end
 PlutoTeachingTools.var_not_defined_str(lang::Lang) where {Lang<:Chinese} = "糟糕!"
 function PlutoTeachingTools.var_not_defined_text_str(
     variable_name, lang::Lang
 ) where {Lang<:Chinese}
-    md"请确定你定义了一个名为 **$(Markdown.Code(string(variable_name)))** 的变量。"
+    vn = Code(string(variable_name))
+    md"请确定你定义了一个名为 **$(vn)** 的变量。"
 end
 PlutoTeachingTools.keep_working_str(lang::Lang) where {Lang<:Chinese} = "继续加油！"
 PlutoTeachingTools.keep_working_text_str(lang::Lang) where {Lang<:Chinese} = md"答案还不太对."
