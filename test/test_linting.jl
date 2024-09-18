@@ -6,7 +6,7 @@ using JET: JET
 using ExplicitImports: ExplicitImports
 
 @testset "Aqua tests" begin
-    Aqua.test_all(PlutoTeachingTools; ambiguities=false)
+    Aqua.test_all(PlutoTeachingTools; ambiguities = false)
 end
 
 @testset "JET tests" begin
