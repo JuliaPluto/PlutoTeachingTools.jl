@@ -10,9 +10,11 @@ I encourage others to improve and/or contribute new functions that are of value 
 
 # Courses/Sites using PlutoTeachingTools 
 - [Astroinformatics Summer School (2022)](https://github.com/Astroinformatics/SummerSchool2022)
+- [Introduction to Computational Thinking](https://computationalthinking.mit.edu/Fall24/)
 - [Data Science Applications for Exoplanets](https://github.com/PsuAstro497/Fall2022)
 - [High-Performance Computing for Astropysics](https://psuastro528.github.io/Fall2023/)
 - [Julia programming for Machine Learning](https://github.com/adrhill/julia-ml-course)
+- [Máquinas Elétricas II](https://ricardo-luis.github.io/isel-me2/Fall23/)
 
 # Acknowledgements
 - [Pluto](https://github.com/fonsp/Pluto.jl)
