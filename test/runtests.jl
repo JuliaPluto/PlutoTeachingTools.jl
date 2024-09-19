@@ -1,7 +1,5 @@
 using PlutoTeachingTools
 using Test
-using JuliaFormatter
-
 using Markdown
 
 @testset verbose = true "PlutoTeachingTools.jl" begin
