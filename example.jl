@@ -397,6 +397,8 @@ tip(
         en=md"Remember to add good documentation.",
         de=md"Denken Sie daran, eine gute Dokumentation hinzuzufügen.",
         es=md"Recuerde agregar buena documentación",
+        ru=md"Не забудьте добавить хорошую документацию.",
+        cn=md"記得新增好的文檔"
     )),
 )
 
