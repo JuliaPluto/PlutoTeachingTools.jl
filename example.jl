@@ -1,6 +1,19 @@
 ### A Pluto.jl notebook ###
 # v0.19.46
 
+#> [frontmatter]
+#> title = "PlutoTeachingTools.jl Examples"
+#> description = "Demonstrates functions and patterns for making tutorials in Pluto with PlutoTeachingTools"
+#> tags = ["basic", "julia", "pluto", "plutoteachingtools", "examples"]
+#> date = "2024-09-24"
+#> license = "CC BY-SA 4.0"
+#> license_url = "https://creativecommons.org/licenses/by-sa/4.0/"
+#> image = "https://avatars.githubusercontent.com/u/74617459?s=200&v=4"
+#> 
+#>     [[frontmatter.author]]
+#>     name = "Eric Ford"
+#>     url = "https://github.com/eford"
+
 using Markdown
 using InteractiveUtils
 
