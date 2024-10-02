@@ -297,7 +297,7 @@ You can customize the widths of the columns.
 """
 
 # ╔═╡ 0e1e62a6-3b78-4415-89fe-fa17279fddbf
-Columns(md"Left col", md"Right col"; widths=[1 / 3, 2 / 3])
+Columns(md"Left col", md"Right col"; widths=[33, 66])
 
 # ╔═╡ f43beea9-7a7e-4ee6-8ae6-350640c426aa
 TwoColumnWideRight(md"Left col", md"Right col")
