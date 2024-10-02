@@ -18,6 +18,31 @@ function Base.show(io, mime::MIME"text/html", fld::Foldable)
     return nothing
 end
 
+"""
+
+    Columns(cols...; widths, gap)
+
+Displays (any number of) columns nicely in Pluto. 
+
+* `widths` should sum to 100
+* `gap` in percent
+
+### Examples
+```julia
+# three columns
+Columns(
+    almost(md"here"),
+    almost(md"there"),
+    md"bla bla bla"
+)
+
+# two columns with customization
+Columns(
+    almost(md"here"), almost(md"there"), 
+    widths = [40, 60], gap = 2
+)
+```
+"""
 function Columns(cols...; widths=nothing, gap=2)
     ncols = length(cols)
     ngaps = ncols - 1
@@ -25,20 +50,20 @@ function Columns(cols...; widths=nothing, gap=2)
         widths = fill(100 / ncols, ncols)
     end
     if gap > 0 # adjust widths if gaps are desired
-        widths = widths / sum(widths) * (100 - gap * ngaps)
+        widths = widths / sum(widths) * (sum(widths) - gap * ngaps)
     end
 
     columns = [
-        DivElement(; children=[cols[i]], style="display: flex; flex: 0 1 $(widths[i])%") for
+        Div([cols[i]], style=Dict("flex" => "0 1 $(widths[i])%")) for
         i in 1:ncols
     ]
-    the_gap = DivElement(; children=[], style="display: flex; flex: 0 0 $gap%")
+   the_gap = Div([], style=Dict("flex" => "0 0 $gap%"))
 
     # insert gaps between columns
     # i.e. [a, b, c] ==> [a, gap, b, gap, c]
     children = vec([reshape(columns, 1, :); fill(the_gap, 1, ncols)])[1:(end - 1)]
 
-    return DivElement(; children, style="display: flex; flex-direction: row;")
+    return Div(children, style=Dict("display" => "flex", "flex-direction" => "row"))
 end
 
 # for backwards compatibility
