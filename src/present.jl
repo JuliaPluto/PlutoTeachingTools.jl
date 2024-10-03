@@ -6,17 +6,8 @@ function present_button(lang::AbstractLanguage=default_language[])
     htl"<button onclick='present()'>$txt</button>"
 end
 
-struct Foldable{C}
-    title::String
-    content::C
-end
+Foldable(title, content) = details(title, content)
 
-function Base.show(io, mime::MIME"text/html", fld::Foldable)
-    write(io, "<details><summary>$(fld.title)</summary><p>")
-    show(io, mime, fld.content)
-    write(io, "</p></details>")
-    return nothing
-end
 
 struct TwoColumn{L,R}
     left::L
