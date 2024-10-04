@@ -295,13 +295,18 @@ md"""
 """
 
 # ╔═╡ fc5789dd-4b86-4007-9771-a6246235fd73
-TwoColumn(md"Left col", md"Right col")
+Columns(md"Left col", md"Right col")
 
 # ╔═╡ 2881e5de-f6b7-47c0-a794-3e0fa57b712b
-ThreeColumn(md"Left col", md"Middle col", md"Right col")
+Columns(md"Left col", md"Middle col", md"Right col")
+
+# ╔═╡ c22f7f6a-171d-4379-86c9-1781875cf0a4
+md"""
+You can customize the widths of the columns.
+"""
 
 # ╔═╡ 0e1e62a6-3b78-4415-89fe-fa17279fddbf
-TwoColumnWideLeft(md"Left col", md"Right col")
+Columns(md"Left col", md"Right col"; widths=[33, 66])
 
 # ╔═╡ f43beea9-7a7e-4ee6-8ae6-350640c426aa
 TwoColumnWideRight(md"Left col", md"Right col")
@@ -957,6 +962,7 @@ version = "17.4.0+2"
 # ╟─d7593309-3462-4dba-8275-c2eb76b4c3fe
 # ╠═fc5789dd-4b86-4007-9771-a6246235fd73
 # ╠═2881e5de-f6b7-47c0-a794-3e0fa57b712b
+# ╟─c22f7f6a-171d-4379-86c9-1781875cf0a4
 # ╠═0e1e62a6-3b78-4415-89fe-fa17279fddbf
 # ╠═f43beea9-7a7e-4ee6-8ae6-350640c426aa
 # ╠═44d651d3-ce42-4061-b193-da7c31efed8e

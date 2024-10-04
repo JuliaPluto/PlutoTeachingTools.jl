@@ -8,70 +8,62 @@ end
 
 Foldable(title, content) = details(title, content)
 
+"""
 
-struct TwoColumn{L,R}
-    left::L
-    right::R
+    Columns(cols...; widths, gap)
+
+Displays (any number of) columns nicely in Pluto. 
+
+* `widths` should sum to 100
+* `gap` in percent
+
+### Examples
+```julia
+# three columns
+Columns(
+    almost(md"here"),
+    almost(md"there"),
+    md"bla bla bla"
+)
+
+# two columns with customization
+Columns(
+    almost(md"here"), almost(md"there"), 
+    widths = [40, 60], gap = 2
+)
+```
+"""
+function Columns(cols...; widths=nothing, gap=2)
+    ncols = length(cols)
+    ngaps = ncols - 1
+    if isnothing(widths)
+        widths = fill(100 / ncols, ncols)
+    end
+    if gap > 0 # adjust widths if gaps are desired
+        widths = widths / sum(widths) * (sum(widths) - gap * ngaps)
+    end
+
+    columns = [
+        Div([cols[i]], style=Dict("flex" => "0 1 $(widths[i])%")) for
+        i in 1:ncols
+    ]
+   the_gap = Div([], style=Dict("flex" => "0 0 $gap%"))
+
+    # insert gaps between columns
+    # i.e. [a, b, c] ==> [a, gap, b, gap, c]
+    children = vec([reshape(columns, 1, :); fill(the_gap, 1, ncols)])[1:(end - 1)]
+
+    return Div(children, style=Dict("display" => "flex", "flex-direction" => "row"))
 end
 
-function Base.show(io, mime::MIME"text/html", tc::TwoColumn)
-    write(io, """<div style="display: flex;"><div style="flex: 49%;">""")
-    show(io, mime, tc.left)
-    write(io, """</div><div style="flex: 2%;">""")
-    write(io, """</div><div style="flex: 49%;">""")
-    show(io, mime, tc.right)
-    write(io, """</div></div>""")
-    return nothing
-end
+# for backwards compatibility
+TwoColumn(a, b; kwargs...) = Columns(a, b; kwargs...)
 
-struct TwoColumnWideLeft{L,R}
-    left::L
-    right::R
-end
+ThreeColumn(a, b, c; kwargs...) = Columns(a, b, c; kwargs...)
 
-function Base.show(io, mime::MIME"text/html", tc::TwoColumnWideLeft)
-    write(io, """<div style="display: flex;"><div style="flex: 65%;">""")
-    show(io, mime, tc.left)
-    write(io, """</div><div style="flex: 2%;">""")
-    write(io, """</div><div style="flex: 33%;">""")
-    show(io, mime, tc.right)
-    write(io, """</div></div>""")
-    return nothing
-end
+TwoColumnWideLeft(a, b; kwargs...) = Columns(a, b; widths=[66, 34], kwargs...)
 
-struct TwoColumnWideRight{L,R}
-    left::L
-    right::R
-end
-
-function Base.show(io, mime::MIME"text/html", tc::TwoColumnWideRight)
-    write(io, """<div style="display: flex;"><div style="flex: 33%;">""")
-    show(io, mime, tc.left)
-    write(io, """</div><div style="flex: 2%;">""")
-    write(io, """</div><div style="flex: 65%;">""")
-    show(io, mime, tc.right)
-    write(io, """</div></div>""")
-    return nothing
-end
-
-struct ThreeColumn{L,C,R}
-    left::L
-    center::C
-    right::R
-end
-
-function Base.show(io, mime::MIME"text/html", tc::ThreeColumn)
-    write(io, """<div style="display: flex;"><div style="flex: 32%;">""")
-    show(io, mime, tc.left)
-    write(io, """</div><div style="flex: 2%;">""")
-    write(io, """</div><div style="flex: 32%;">""")
-    show(io, mime, tc.center)
-    write(io, """</div><div style="flex: 2%;">""")
-    write(io, """</div><div style="flex: 32%;">""")
-    show(io, mime, tc.right)
-    write(io, """</div></div>""")
-    return nothing
-end
+TwoColumnWideRight(a, b; kwargs...) = Columns(a, b; widths=[34, 66], kwargs...)
 
 """ Provides checkbox to toggle full width and present mode. """
 function ChooseDisplayMode(;
