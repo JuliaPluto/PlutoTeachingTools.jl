@@ -6,6 +6,7 @@ using Downloads: download # used in robustlocalresouce.jl
 using PlutoUI: Resource, LocalResource # used in robustlocalresouce.jl
 using PlutoUI: combine # used in footnotes.jl
 using PlutoUI: Select # used in i8n/i8n.jl
+using PlutoUI: details # used in present.jl for Foldable
 using Latexify: latexify # used in latex.jl
 
 using PlutoLinks: @ingredients
