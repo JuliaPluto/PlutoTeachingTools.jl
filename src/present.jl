@@ -8,7 +8,6 @@ end
 
 Foldable(title, content) = details(title, content)
 
-
 """
 
     Columns(cols...; widths, gap)
