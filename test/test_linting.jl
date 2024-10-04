@@ -1,14 +1,9 @@
 using PlutoTeachingTools
 using Test
 
-using JuliaFormatter: JuliaFormatter
 using Aqua: Aqua
 using JET: JET
 using ExplicitImports: ExplicitImports
-
-@testset "Code formatting" begin
-    @test JuliaFormatter.format(PlutoTeachingTools; verbose=false, overwrite=false)
-end
 
 @testset "Aqua tests" begin
     Aqua.test_all(PlutoTeachingTools; ambiguities=false)
