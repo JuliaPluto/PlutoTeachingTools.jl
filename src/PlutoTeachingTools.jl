@@ -1,6 +1,6 @@
 module PlutoTeachingTools
 
-using PlutoUI.ExperimentalLayout: Div
+using PlutoUI.ExperimentalLayout: Div # used for Columns and aside
 using Markdown: @md_str, MD, Admonition, LaTeX
 using HypertextLiteral: @htl, @htl_str
 using Downloads: download # used in robustlocalresouce.jl
@@ -40,7 +40,7 @@ include("latex.jl")
 export latexify_md, wrap_tex
 
 include("aside.jl")
-export aside, set_aside_width
+export aside
 
 include("robustlocalresource.jl")
 export RobustLocalResource
