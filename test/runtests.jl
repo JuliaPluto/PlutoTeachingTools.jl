@@ -47,8 +47,4 @@ using Markdown
     @testset "Changing width" begin
         @test_nowarn WidthOverDocs()
     end
-
-    @testset "Ingredients" begin
-        @test typeof(@ingredients("empty_module.jl")) == Module
-    end
 end
