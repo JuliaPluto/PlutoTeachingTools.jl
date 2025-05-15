@@ -40,5 +40,6 @@ If you are using PlutoTeachingTools in a course/workshop and your notebooks are 
 - [jonschumacher](https://github.com/jonschumacher):  Internationalization & German
 - [mathutopia](https://github.com/mathutopia): Chinese
 - [kagalenko-m-b](kagalenko-m-b): Russian
+- [blegat](https://github.com/blegat): French
 - [Several more users](https://github.com/JuliaPluto/PlutoTeachingTools.jl/graphs/contributors)
  
