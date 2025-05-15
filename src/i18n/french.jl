@@ -4,9 +4,11 @@ using Markdown: @md_str, Code
 using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 
 abstract type French <: AbstractLanguage end
-struct FrenchFormal <: French end
-struct FrenchColloquial <: French end
-FrenchFrance = FrenchFormal
+abstract type FrenchFormal <: French end
+abstract type FrenchColloquial <: French end
+struct FrenchBelgiumFormal <: FrenchFormal end
+struct FrenchBelgiumColloquial <: FrenchColloquial end
+FrenchBelgium = FrenchBelgiumColloquial
 
 # computational_thinking.jl
 PlutoTeachingTools.hint_str(lang::Lang) where {Lang<:French} = "Indice"
