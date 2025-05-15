@@ -6,6 +6,7 @@ using ..PlutoTeachingTools: PlutoTeachingTools, AbstractLanguage
 abstract type French <: AbstractLanguage end
 struct FrenchFormal <: French end
 struct FrenchColloquial <: French end
+FrenchFrance = FrenchFormal
 
 # computational_thinking.jl
 PlutoTeachingTools.hint_str(lang::Lang) where {Lang<:French} = "Indice"
