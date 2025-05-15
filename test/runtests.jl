@@ -24,9 +24,9 @@ using Markdown
             @test_nowarn keep_working(md"Maybe the hint will help.")
             @test_nowarn keyconcept("Julia", md"Julia is an amazing programming language.")
         end
-        @test_nowarn (x = 5; var_not_defined(x))
-        @test_nowarn (x = 5; not_defined(x))
-        @test_nowarn (f(x) = x; func_not_defined(f))
+        @test_nowarn (x=5; var_not_defined(x))
+        @test_nowarn (x=5; not_defined(x))
+        @test_nowarn (f(x)=x; func_not_defined(f))
     end
 
     @testset "aside" begin
