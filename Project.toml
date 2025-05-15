@@ -11,9 +11,9 @@ Markdown = "d6f4376e-aef5-505a-96c1-9c027394607a"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
-Downloads = "<0.0.1, 1"
+Downloads = "<0.0.1, 0.1, 0.2, 1"
 HypertextLiteral = "0.9"
 Latexify = "0.15, 0.16"
 Markdown = "<0.0.1, 1"
-PlutoUI = "0.7"
+PlutoUI = "0.7.56"
 julia = "1.6"
