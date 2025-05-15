@@ -137,7 +137,7 @@ end
 include("english.jl")
 import .PTTEnglish: EnglishUS
 include("french.jl")
-import .PTTFrench: FrenchFormal, FrenchColloquial
+import .PTTFrench: FrenchFormal, FrenchColloquial, FrenchBelgium, FrenchBelgiumFormal, FrenchBelgiumColloquial
 include("german.jl")
 import .PTTGerman: GermanGermany, GermanGermanyFormal, GermanGermanyColloquial
 include("russian.jl")
