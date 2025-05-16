@@ -62,9 +62,6 @@ end;
 # ╔═╡ f0704e56-7e97-4c92-bbdd-76d7a873e6d8
 TableOfContents()   # from PlutoUI
 
-# ╔═╡ 4cdfcaf6-d172-4dbf-afa9-8f0cd37a10e8
-md"[test](pkg_cell_link)"
-
 # ╔═╡ d173896e-021a-4b2c-b913-62c5a2320341
 md"""
 ## Common Note Boxes
@@ -930,7 +927,6 @@ version = "17.4.0+2"
 # ╟─d6b3f009-22e4-4b21-8986-a29e3f261c3b
 # ╠═657c3eea-1ef6-11ed-3e82-5daad2bc19a1
 # ╠═f0704e56-7e97-4c92-bbdd-76d7a873e6d8
-# ╠═4cdfcaf6-d172-4dbf-afa9-8f0cd37a10e8
 # ╟─d173896e-021a-4b2c-b913-62c5a2320341
 # ╠═8c3f1fe2-c934-4743-b30b-07dc97aeac46
 # ╠═b48468f0-eeaa-4e1a-ad0b-3cfe42b6ab15

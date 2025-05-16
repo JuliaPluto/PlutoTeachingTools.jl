@@ -56,7 +56,7 @@ function Columns(cols...; widths=nothing, gap=2)
     return Div(children, style=Dict("display" => "flex", "flex-direction" => "row"))
 end
 
-# for backwards compatibility
+# Deprecatd, but kept for backwards compatibility 
 TwoColumn(a, b; kwargs...) = Columns(a, b; kwargs...)
 
 ThreeColumn(a, b, c; kwargs...) = Columns(a, b, c; kwargs...)
