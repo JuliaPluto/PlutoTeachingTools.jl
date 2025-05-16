@@ -1,6 +1,7 @@
 
 # Borrowed/adapted from https://andreaskroepelin.de/blog/plutoslides/
 
+# Deprecated since Pluto now has a present button at top
 function present_button(lang::AbstractLanguage=default_language[])
     txt = present_str(lang)
     htl"<button onclick='present()'>$txt</button>"

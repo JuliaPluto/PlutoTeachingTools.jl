@@ -322,15 +322,11 @@ TwoColumnWideLeft(
 md"""
 ## Presentation mode
 """
+# ╔═╡ 1f417420-cc7f-4e88-9b2b-05185ff81c31
+WidthOverDocs()  
 
 # ╔═╡ 96ebc3d2-fc70-4a56-8e87-dfe686c723c4
 ChooseDisplayMode()
-
-# ╔═╡ a6485a75-6b52-4549-94e9-658dd971c43b
-present_button()  # Don't use this with ChooseDisplayMode() since two ways to toggle will make the checkbox behavior confusing
-
-# ╔═╡ 1f417420-cc7f-4e88-9b2b-05185ff81c31
-#WidthOverDocs()  # deprecated in favor of ChooseDisplayMode
 
 # ╔═╡ a0e8b662-074f-47c0-9f0c-545ee847f6b9
 Markdown.parse("Here's a link to the [Pkg cell]($pkg_cell_link).")
@@ -994,9 +990,8 @@ version = "17.4.0+2"
 # ╠═f43beea9-7a7e-4ee6-8ae6-350640c426aa
 # ╠═44d651d3-ce42-4061-b193-da7c31efed8e
 # ╟─7859ad2b-7e87-442c-8684-f731f2512a42
-# ╠═96ebc3d2-fc70-4a56-8e87-dfe686c723c4
-# ╠═a6485a75-6b52-4549-94e9-658dd971c43b
 # ╠═1f417420-cc7f-4e88-9b2b-05185ff81c31
+# ╠═96ebc3d2-fc70-4a56-8e87-dfe686c723c4
 # ╠═a0e8b662-074f-47c0-9f0c-545ee847f6b9
 # ╟─97967267-6dbe-4d13-b9cf-1be9038b23ab
 # ╠═c83e0b4a-7376-4061-8796-ba396c9fbc7a
