@@ -43,17 +43,14 @@ function Columns(cols...; widths=nothing, gap=2)
         widths = widths / sum(widths) * (sum(widths) - gap * ngaps)
     end
 
-    columns = [
-        Div([cols[i]], style=Dict("flex" => "0 1 $(widths[i])%")) for
-        i in 1:ncols
-    ]
-   the_gap = Div([], style=Dict("flex" => "0 0 $gap%"))
+    columns = [Div([cols[i]]; style=Dict("flex" => "0 1 $(widths[i])%")) for i in 1:ncols]
+    the_gap = Div([]; style=Dict("flex" => "0 0 $gap%"))
 
     # insert gaps between columns
     # i.e. [a, b, c] ==> [a, gap, b, gap, c]
     children = vec([reshape(columns, 1, :); fill(the_gap, 1, ncols)])[1:(end - 1)]
 
-    return Div(children, style=Dict("display" => "flex", "flex-direction" => "row"))
+    return Div(children; style=Dict("display" => "flex", "flex-direction" => "row"))
 end
 
 # for backwards compatibility
