@@ -74,6 +74,9 @@ begin
     pkg_cell_link = "#" * (string(PlutoRunner.currently_running_cell_id[])) # for making urls to this cell
 end;
 
+# ╔═╡ a0e8b662-074f-47c0-9f0c-545ee847f6b9
+Markdown.parse("Here's a link to the [cell]($pkg_cell_link) the loads PlutoTeachingTools.")
+
 # ╔═╡ d173896e-021a-4b2c-b913-62c5a2320341
 md"""
 ## Common Note Boxes
@@ -342,14 +345,26 @@ md"""
 ## Presentation mode
 """
 
+# ╔═╡ b1f41633-82fd-4e67-9d57-f66623036417
+md"""
+Add a checkbox to choose to use the full browser window width (e.g., for large plots).
+"""
+
 # ╔═╡ 1f417420-cc7f-4e88-9b2b-05185ff81c31
 WidthOverDocs()  
+
+# ╔═╡ c4d405ee-5b55-4e0b-9a95-3340cf6a0c7e
+md"""
+Or add a compact pair of checkboxes for both full width mode and presentation mode.  
+"""
 
 # ╔═╡ 96ebc3d2-fc70-4a56-8e87-dfe686c723c4
 ChooseDisplayMode()
 
-# ╔═╡ a0e8b662-074f-47c0-9f0c-545ee847f6b9
-Markdown.parse("Here's a link to the [Pkg cell]($pkg_cell_link).")
+# ╔═╡ 17fa85c6-0e36-47d4-925e-fae0b4b61d4c
+protip(md"""
+You can also access presentation mode by clicking the Export and Start Presentation buttons at the very top of the Pluto notebook.  The checkbox below triggers a toggle, so using both the Start Presentation Button and the checkbox below can cause the displayed check to be out of sync with the current display mode.
+""", invite="Bulit-in Presentation Mode")
 
 # ╔═╡ 97967267-6dbe-4d13-b9cf-1be9038b23ab
 md"""
@@ -941,6 +956,7 @@ version = "17.4.0+2"
 # ╠═84ccb960-41f8-430d-bd73-a7c0248cfb95
 # ╟─d6b3f009-22e4-4b21-8986-a29e3f261c3b
 # ╠═657c3eea-1ef6-11ed-3e82-5daad2bc19a1
+# ╠═a0e8b662-074f-47c0-9f0c-545ee847f6b9
 # ╟─d173896e-021a-4b2c-b913-62c5a2320341
 # ╠═8c3f1fe2-c934-4743-b30b-07dc97aeac46
 # ╠═b48468f0-eeaa-4e1a-ad0b-3cfe42b6ab15
@@ -1011,9 +1027,11 @@ version = "17.4.0+2"
 # ╠═f43beea9-7a7e-4ee6-8ae6-350640c426aa
 # ╠═44d651d3-ce42-4061-b193-da7c31efed8e
 # ╟─7859ad2b-7e87-442c-8684-f731f2512a42
+# ╟─b1f41633-82fd-4e67-9d57-f66623036417
 # ╠═1f417420-cc7f-4e88-9b2b-05185ff81c31
+# ╠═c4d405ee-5b55-4e0b-9a95-3340cf6a0c7e
 # ╠═96ebc3d2-fc70-4a56-8e87-dfe686c723c4
-# ╠═a0e8b662-074f-47c0-9f0c-545ee847f6b9
+# ╟─17fa85c6-0e36-47d4-925e-fae0b4b61d4c
 # ╟─97967267-6dbe-4d13-b9cf-1be9038b23ab
 # ╠═c83e0b4a-7376-4061-8796-ba396c9fbc7a
 # ╠═26219cb8-b1a2-4a35-b50d-10d496954f34
