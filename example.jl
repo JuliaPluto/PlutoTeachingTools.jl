@@ -406,11 +406,9 @@ One common use-case is to quickly cite something in a footnote. Why write out or
 """
 
 # ╔═╡ 9c53984f-0632-4bdf-a041-6e0df4beb43a
-MarkdownLiteral.@markdown(
-"""
-[^turing]: $(DOI("10.1007/978-1-4020-6710-5_3"))
-"""
-)
+MarkdownLiteral.@markdown("""
+                          [^turing]: $(DOI("10.1007/978-1-4020-6710-5_3"))
+                          """)
 
 # ╔═╡ f4201010-71d1-4889-99e7-abb774612a4d
 begin
