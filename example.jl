@@ -30,7 +30,7 @@ macro bind(def, element)
 end
 
 # ╔═╡ dee4aa68-e5eb-4a8a-869f-867e61de5ec5
-using PlutoUI
+using PlutoUI    # Provides widgets like Select
 
 # ╔═╡ 3f8dc975-b091-4dbe-bd48-c33236e61ece
 using LaTeXStrings
@@ -43,6 +43,11 @@ using PlutoLinks
 
 # ╔═╡ cd581a51-fb2b-4579-9a7d-0d723ad5d467
 md"# [PlutoTeachingTools.jl](https://github.com/JuliaPluto/PlutoTeachingTools.jl) Examples"
+
+# ╔═╡ 9b272420-8ab0-4b8e-9c4f-bf81a56227db
+md"""
+This notebook demonstrates how to use the functions from the [PlutoTeachingTools.jl](https://github.com/JuliaPluto/PlutoTeachingTools.jl) package, as well as some common patterns for creating lab tutorials.
+"""
 
 # ╔═╡ f0704e56-7e97-4c92-bbdd-76d7a873e6d8
 TableOfContents()   # from PlutoUI
@@ -57,13 +62,13 @@ Language for common prompts: $(@bind lang Select([
     "ru" => "Russian/Русский",
     "zh" => "Chinese/中文",
 ]))
-"""
+"""  # Copied from src/i8n/i8n.jl since needed before loading PlutoTeachingTools
 
 # ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
 begin
     using PlutoTeachingTools
     # Optionally override default language choice (lang defined in widget above)
-    set_language!(PlutoTeachingTools.get_language(lang))
+	set_language!(PlutoTeachingTools.get_language(lang))
 
     nb_link_prefix = string(PlutoRunner.notebook_id[]) # for making urls to notebook
     pkg_cell_link = "#" * (string(PlutoRunner.currently_running_cell_id[])) # for making urls to this cell
@@ -75,9 +80,7 @@ md"""
 """
 
 # ╔═╡ 8c3f1fe2-c934-4743-b30b-07dc97aeac46
-almost(
-    md"You're right that the answer is a positive number, but the value isn't quite right."
-)
+almost(md"You're right that the answer is a positive number, but the value isn't quite right.")
 
 # ╔═╡ b48468f0-eeaa-4e1a-ad0b-3cfe42b6ab15
 correct()
@@ -203,6 +206,11 @@ end
 # ╔═╡ 7596325b-7a1b-4fad-bac3-ae6743e3f8dd
 md"""# Robust Local Resources"""
 
+# ╔═╡ e02ed182-69f7-4c64-9172-f8c9f77c76ed
+md"""
+It can be desirable to cache images locally, so they don't need to be redownloaded every time.  However, it's also desirable for Pluto notebooks to be self-contained.  `RobustLocalResources` provides the best of both worlds.  It will check if a file exists locally, if not download it, and then display it as a `LocalResource`.  `LocalResource` has advantages over regular markdown, since you can specify html attributes such as alt text.
+"""
+
 # ╔═╡ 2bfcfe6d-221e-4619-b794-92e44494460b
 begin
     url = "https://raw.githubusercontent.com/gist/fonsp/9a36c183e2cad7c8fc30290ec95eb104/raw/ca3a38a61f95cd58d79d00b663a3c114d21e284e/cute.svg"
@@ -223,6 +231,7 @@ md"""
 # ╔═╡ cccaff2f-3fa0-45f2-9fa6-cf8a21ade844
 md"""
 ## Foldable content
+(`Foldable` now simply forwards to `PlutoUI.details`.)
 """
 
 # ╔═╡ c46d1e7c-df6e-460e-a103-a486d27932c9
@@ -274,23 +283,26 @@ md"""
 ## Markdown / LaTeX / HTML hacks
 """
 
-# ╔═╡ f49ccb75-7cb8-49ce-95b9-ed59033a589d
-A = rand(2, 2)
-
-# ╔═╡ af5673b5-a7f9-4033-ac9b-845254f62c98
-md"Now, you can include variables like $A=$ $(latexify_md(A)) inside markdown."
-
-# ╔═╡ 8fcfe710-ac2b-4282-85c6-d3b8800fa53a
-eqn_str = "x^2+y^2 = z^2"
-
-# ╔═╡ 7390e4a7-0561-4611-b3c1-9b83601c5805
-md"And you can grab equations in variables like $(wrap_tex(eqn_str)) inside markdown."
-
 # ╔═╡ a9d9d87e-4cfe-4a34-bdb9-6bf3fc979bab
 md"To simplify typing and displaying equations, we recommend using the [LaTeXStrings.jl](https://github.com/JuliaStrings/LaTeXStrings.jl) package:"
 
 # ╔═╡ 0aefcfcd-ac8f-471b-8f90-7bb5235589ad
 L"x^2+y^2 = z^2"
+
+# ╔═╡ 8fcfe710-ac2b-4282-85c6-d3b8800fa53a
+eqn_str = "x^2+y^2 = z^2";
+
+# ╔═╡ 7390e4a7-0561-4611-b3c1-9b83601c5805
+md"You can grab equations in variables like $(wrap_tex(eqn_str)) inside markdown."
+
+# ╔═╡ f49ccb75-7cb8-49ce-95b9-ed59033a589d
+A = rand(2, 2);
+
+# ╔═╡ af5673b5-a7f9-4033-ac9b-845254f62c98
+md"`latexify_md` allows you to include numerical values inside markdown.
+
+For example, 
+$A=$ $(latexify_md(A))."
 
 # ╔═╡ a05aa377-a201-4670-aae9-8de4059b67cb
 md"#### Heading $nbsp $nbsp with extra space"
@@ -446,23 +458,27 @@ md"""
 # Ingredients
 The `@ingredients` macro from `PlutoLinks.jl` allows a Pluto to including code from external files.  
 However, adding `PlutoLinks.jl` as dependency makes the notebook load slower (because it depends on Revise).
+Note that the example below requires that `demo_module.jl` is present on the local file system.  It is avaliable if you clone the PlutoTeachingTools.jl repository, but not if you download only the notebook.
 """
 
+# ╔═╡ 5fab1bb9-aca6-4e95-9156-076db27f1832
+demonstrate_ingredients = isfile("demo_module.jl")
+
 # ╔═╡ 23afc83f-e971-4356-a30e-1b7a247ff38d
-begin
+if demonstrate_ingredients
     MyModule = @ingredients "demo_module.jl" # provided by PlutoLinks.jl
     import .MyModule: Demo
     import .Demo: hello
 end
 
 # ╔═╡ d4b1b5f2-b4ae-4988-aded-79398949f1c8
-MyModule.Demo.hundred
+demonstrate_ingredients && MyModule.Demo.hundred
 
 # ╔═╡ 95528ca8-bb97-4af2-bbba-dbf1ac188622
-Demo.hundred
+demonstrate_ingredients && Demo.hundred
 
 # ╔═╡ 5985de1c-a429-4449-87c2-3eb6d5bfb247
-hello()
+demonstrate_ingredients && hello()
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -919,6 +935,7 @@ version = "17.4.0+2"
 
 # ╔═╡ Cell order:
 # ╟─cd581a51-fb2b-4579-9a7d-0d723ad5d467
+# ╟─9b272420-8ab0-4b8e-9c4f-bf81a56227db
 # ╠═dee4aa68-e5eb-4a8a-869f-867e61de5ec5
 # ╠═f0704e56-7e97-4c92-bbdd-76d7a873e6d8
 # ╠═84ccb960-41f8-430d-bd73-a7c0248cfb95
@@ -961,6 +978,7 @@ version = "17.4.0+2"
 # ╠═40155961-e8bb-41d1-bf54-178cf2a0c524
 # ╠═957ec770-ab5b-4b0b-a38d-46834d96fa68
 # ╟─7596325b-7a1b-4fad-bac3-ae6743e3f8dd
+# ╟─e02ed182-69f7-4c64-9172-f8c9f77c76ed
 # ╠═2bfcfe6d-221e-4619-b794-92e44494460b
 # ╠═43a47026-4b09-4c20-9ccb-a766a17f8ff4
 # ╠═4774a4d7-d5f1-40e4-8c2f-f0f96e9242ce
@@ -976,13 +994,13 @@ version = "17.4.0+2"
 # ╠═cc66ef97-36f2-478c-961b-dd8ab2bda4ac
 # ╠═0b2a4490-7e29-42c0-af9a-e99b5540d154
 # ╟─88b9d474-3449-4931-ac39-4dc377c04abd
-# ╠═f49ccb75-7cb8-49ce-95b9-ed59033a589d
-# ╠═af5673b5-a7f9-4033-ac9b-845254f62c98
-# ╠═8fcfe710-ac2b-4282-85c6-d3b8800fa53a
-# ╠═7390e4a7-0561-4611-b3c1-9b83601c5805
 # ╟─a9d9d87e-4cfe-4a34-bdb9-6bf3fc979bab
 # ╠═3f8dc975-b091-4dbe-bd48-c33236e61ece
 # ╠═0aefcfcd-ac8f-471b-8f90-7bb5235589ad
+# ╠═7390e4a7-0561-4611-b3c1-9b83601c5805
+# ╠═8fcfe710-ac2b-4282-85c6-d3b8800fa53a
+# ╠═af5673b5-a7f9-4033-ac9b-845254f62c98
+# ╠═f49ccb75-7cb8-49ce-95b9-ed59033a589d
 # ╠═a05aa377-a201-4670-aae9-8de4059b67cb
 # ╠═25066f0b-7100-431c-8695-70005738bbfd
 # ╟─d7593309-3462-4dba-8275-c2eb76b4c3fe
@@ -1014,6 +1032,7 @@ version = "17.4.0+2"
 # ╟─93e4e977-efb1-48c7-ac4c-c578140135ee
 # ╟─743491af-3d4b-4dee-9ad7-2372ba4e97bd
 # ╠═2236d8e7-6e13-4b79-b90e-34f3d3bf2d77
+# ╠═5fab1bb9-aca6-4e95-9156-076db27f1832
 # ╠═23afc83f-e971-4356-a30e-1b7a247ff38d
 # ╠═d4b1b5f2-b4ae-4988-aded-79398949f1c8
 # ╠═95528ca8-bb97-4af2-bbba-dbf1ac188622
