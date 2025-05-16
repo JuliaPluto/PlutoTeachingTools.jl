@@ -178,8 +178,8 @@ const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
     Dict(
         EnglishUS() => ["en", "en_us"],
         FrenchBelgium() => ["fr", "fr_be"],
-        FrenchColloquial() => ["fr_colloq", "fr_be_colloq"],
-        FrenchFormal() => ["fr_formal", "fr_be_formal"],
+        FrenchBelgiumColloquial() => ["fr_colloq", "fr_be_colloq"],
+        FrenchBelgiumFormal() => ["fr_formal", "fr_be_formal"],
         GermanGermany() => ["de", "de_de"],
         GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"],
         GermanGermanyFormal() => ["de_formal", "de_de_formal"],
