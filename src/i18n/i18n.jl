@@ -80,6 +80,8 @@ present_mode_str(lang::AbstractLanguage) = @error "Please define a translation."
 # Language Options
 include("english.jl")
 import .PTTEnglish: EnglishUS
+include("french.jl")
+import .PTTFrench: FrenchBelgium, FrenchBelgiumFormal, FrenchBelgiumColloquial
 include("german.jl")
 import .PTTGerman: GermanGermany, GermanGermanyFormal, GermanGermanyColloquial
 include("russian.jl")
@@ -92,6 +94,12 @@ import .PTTChinese: ChineseZH
 const languages_registered = Dict(
     "en" => EnglishUS(),
     "en_us" => EnglishUS(),
+    "fr" => FrenchBelgium(),
+    "fr_colloq" => FrenchBelgiumColloquial(),
+    "fr_formal" => FrenchBelgiumFormal(),
+    "fr_be" => FrenchBelgium(),
+    "fr_be_colloq" => FrenchBelgiumColloquial(),
+    "fr_be_formal" => FrenchBelgiumFormal(),
     "de" => GermanGermany(),
     "de_colloq" => GermanGermanyColloquial(),
     "de_formal" => GermanGermanyFormal(),
@@ -111,6 +119,12 @@ const languages_registered = Dict(
 
 const language_codes_registered = Dict(
     EnglishUS() => ["en", "en_us"],
+    FrenchBelgium() => ["fr"], 
+    FrenchBelgiumColloquial() => ["fr_colloq"],
+    FrenchBelgiumFormal() => ["fr_formal"], 
+    FrenchBelgium() => ["fr_be"], 
+    FrenchBelgiumColloquial() => "fr_be_colloq"], 
+    FrenchBelgiumFormal() => ["fr_be_formal"], 
     GermanGermany() => ["de", "de_de"],
     GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"],
     GermanGermanyFormal() => ["de_formal", "de_de_formal"],
@@ -122,6 +136,7 @@ const language_codes_registered = Dict(
 
 const select_lang_dropdown = Select([
     "en" => "English",
+    "fr" => "French/Belgium",
     "de" => "German/Deutsch",
     "es" => "Spanish/Español",
     "ru" => "Russian/Русский",
