@@ -130,6 +130,7 @@ const language_codes_registered = Dict(
     GermanGermanyFormal() => ["de_formal", "de_de_formal"],
     RussianRU() => ["ru", "ru_ru"],
     SpanishES() => ["es", "es_es"],
+    SpanishFormal() => ["es_formal"],
     SpanishColloquial() => ["es_colloq", "es_es_colloq"],
     ChineseZH() => ["zh", "zh_cn"],
 )
