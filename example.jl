@@ -46,7 +46,7 @@ md"# [PlutoTeachingTools.jl](https://github.com/JuliaPluto/PlutoTeachingTools.jl
 
 # ╔═╡ 84ccb960-41f8-430d-bd73-a7c0248cfb95
 md"""
-Language for common prompts: $(@bind lang Select(["en"=>"English", "de"=>"German/Deutsch", "es"=>"Spanish/Español", "ru"=>"Russian", "zh"=>"Chinese"]))
+Language for common prompts: $(@bind lang Select(["en"=>"English", "de"=>"German/Deutsch", "es"=>"Spanish/Español", "fr" => "French/Français", "ru"=>"Russian", "zh"=>"Chinese"]))
 """
 
 # ╔═╡ 657c3eea-1ef6-11ed-3e82-5daad2bc19a1
@@ -425,7 +425,7 @@ end
 Markdown.parse("""See also [multi-language support]($mls_link) section below""")
 
 # ╔═╡ ef32d891-0a7a-4803-95ae-a930787c243a
-preferred_text((en=md"Hello", de=md"Hallo", es=md"Hola", ru=md"привет", zh="你好!"))
+preferred_text((en=md"Hello", de=md"Hallo", es=md"Hola", fr=md"Bonjour", ru=md"привет", zh="你好!"))
 
 # ╔═╡ d3762092-e31d-4b96-840a-3939b89f60b7
 tip(
@@ -433,6 +433,7 @@ tip(
         en=md"Remember to add good documentation.",
         de=md"Denken Sie daran, eine gute Dokumentation hinzuzufügen.",
         es=md"Recuerde agregar buena documentación",
+        fr=md"Ne pas oublier d'ajouter une bonne documentation.",
     )),
 )
 

@@ -136,6 +136,8 @@ end
 # Language Options
 include("english.jl")
 import .PTTEnglish: EnglishUS
+include("french.jl")
+import .PTTFrench: FrenchBelgium, FrenchBelgiumFormal, FrenchBelgiumColloquial
 include("german.jl")
 import .PTTGerman: GermanGermany, GermanGermanyFormal, GermanGermanyColloquial
 include("russian.jl")
@@ -149,6 +151,12 @@ const languages_registered = Ref{Dict{String,AbstractLanguage}}(
     Dict(
         "en" => EnglishUS(),
         "en_us" => EnglishUS(),
+        "fr" => FrenchBelgium(),
+        "fr_colloq" => FrenchBelgiumColloquial(),
+        "fr_formal" => FrenchBelgiumFormal(),
+        "fr_be" => FrenchBelgium(),
+        "fr_be_colloq" => FrenchBelgiumColloquial(),
+        "fr_be_formal" => FrenchBelgiumFormal(),
         "de" => GermanGermany(),
         "de_colloq" => GermanGermanyColloquial(),
         "de_formal" => GermanGermanyFormal(),
@@ -169,6 +177,9 @@ const languages_registered = Ref{Dict{String,AbstractLanguage}}(
 const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
     Dict(
         EnglishUS() => ["en", "en_us"],
+        FrenchBelgium() => ["fr", "fr_be"],
+        FrenchBelgiumColloquial() => ["fr_colloq", "fr_be_colloq"],
+        FrenchBelgiumFormal() => ["fr_formal", "fr_be_formal"],
         GermanGermany() => ["de", "de_de"],
         GermanGermanyColloquial() => ["de_colloq", "de_de_colloq"],
         GermanGermanyFormal() => ["de_formal", "de_de_formal"],
@@ -181,6 +192,7 @@ const language_codes_registered = Ref{Dict{AbstractLanguage,Vector{String}}}(
 
 select_lang_dropdown = Select([
     "en" => "English",
+    "fr" => "French/Belgium",
     "de" => "German/Deutsch",
     "es" => "Spanish/Español",
     "ru" => "Russian",
@@ -220,6 +232,8 @@ end
 function get_language_old(str::AbstractString)
     if contains(str, r"^en")
         EnglishUS()
+    elseif contains(str, r"^fr")
+        FrenchBelgium()
     elseif contains(str, r"^de")
         GermanGermany()
     elseif contains(str, r"^es")
