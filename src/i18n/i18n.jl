@@ -102,6 +102,7 @@ const languages_registered = Dict(
     "ru_ru" => RussianRU(),
     "es" => SpanishES(),
     "es_colloq" => SpanishColloquial(),
+    "es_formal" => SpanishFormal(),
     "es_es" => SpanishES(),
     "es_es_colloq" => SpanishColloquial(),
     "zh" => ChineseZH(),
