@@ -56,7 +56,7 @@ TableOfContents()   # from PlutoUI
 md"""
 Language for common prompts: $(@bind lang Select([
     "en" => "English",
-    "fr" => "French/Belgium",
+    "fr" => "French/Français",
     "de" => "German/Deutsch",
     "es" => "Spanish/Español",
     "ru" => "Russian/Русский",
