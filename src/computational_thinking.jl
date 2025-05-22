@@ -239,31 +239,31 @@ end
 
 function TODO(; lang::AbstractLanguage=default_language[], text="", heading=todo_str(lang))
     @htl("""
-    <div class="todo-tape">
+    <div class="ptt-todo-tape">
     </div> 
-    <div class="todo-tape-content">
+    <div class="ptt-todo-content">
     <h1>&#9888; $heading &#9888;</h1>
     <p>$text</p>
     </div> 
-    <div class="todo-tape">
+    <div class="ptt-todo-tape">
     </div> 
 
 
     <style> 
-    div.todo-tape {
-    padding: 1rem;
-    background: repeating-linear-gradient(
-    45deg,
-    #FFE41E,
-    #FFE41E 12px,
-    #141617 12px,
-    #141617 24px
-    );
+    div.ptt-todo-tape {
+        padding: 1rem;
+        background: repeating-linear-gradient(
+        45deg,
+        #FFE41E,
+        #FFE41E 12px,
+        #141617 12px,
+        #141617 24px
+        );
     }
 
-    div.todo-tape-content {
-    padding:1.2rem;
-    background-color: white;
+    div.ptt-todo-content {
+        padding:1.2rem;
+        background-color: white;
     }
     </style>
     """)
