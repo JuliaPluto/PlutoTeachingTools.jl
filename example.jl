@@ -290,6 +290,14 @@ md"""
 # Fancy Formating
 """
 
+# ╔═╡ 809de91f-90bf-4a59-b980-81ee80112414
+section_outline("Example:", "Fancy section outline")
+
+# ╔═╡ 5a42a1b2-6300-4b81-9784-575b5f9a22ea
+md"""
+You can use the `section_outline` to make a section stand out! In our course, we use this for: "Problem statement" (in red) and "Solution" (in green).
+"""
+
 # ╔═╡ cccaff2f-3fa0-45f2-9fa6-cf8a21ade844
 md"""
 ## Foldable content
@@ -568,6 +576,7 @@ ShortCodes = "f62ebe17-55c5-4640-972f-b59c0dd11ccf"
 LaTeXStrings = "~1.4.0"
 MarkdownLiteral = "~0.1.1"
 PlutoLinks = "~0.1.6"
+PlutoTeachingTools = "~0.4.2"
 PlutoUI = "~0.7.61"
 ShortCodes = "~0.3.6"
 """
@@ -578,7 +587,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.10.9"
 manifest_format = "2.0"
-project_hash = "9db4552400eb9e557cac893a9d7baf1cfc0a8e93"
+project_hash = "eb3ebfbb90a68194f64456efdf32474739aa132c"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
@@ -845,9 +854,9 @@ version = "0.1.6"
 
 [[deps.PlutoTeachingTools]]
 deps = ["Downloads", "HypertextLiteral", "Latexify", "Markdown", "PlutoUI"]
-git-tree-sha1 = "537c439831c0f8d37265efe850ee5c0d9c7efbe4"
+git-tree-sha1 = "ce33e4fd343e43905a8416e6148de8c630101909"
 uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
-version = "0.4.1"
+version = "0.4.2"
 
 [[deps.PlutoUI]]
 deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Downloads", "FixedPointNumbers", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "MIMEs", "Markdown", "Random", "Reexport", "URIs", "UUIDs"]
@@ -1056,6 +1065,8 @@ version = "17.4.0+2"
 # ╠═43a47026-4b09-4c20-9ccb-a766a17f8ff4
 # ╠═4774a4d7-d5f1-40e4-8c2f-f0f96e9242ce
 # ╟─d61ec51d-60c4-4f48-8179-2c8045416953
+# ╠═809de91f-90bf-4a59-b980-81ee80112414
+# ╟─5a42a1b2-6300-4b81-9784-575b5f9a22ea
 # ╟─cccaff2f-3fa0-45f2-9fa6-cf8a21ade844
 # ╠═c46d1e7c-df6e-460e-a103-a486d27932c9
 # ╠═fb77557c-cbf1-4d91-bf4b-76abd54a4024
