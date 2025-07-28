@@ -25,6 +25,7 @@ export code_for_check_type_funcs
 export TODO, nbsp
 export blockquote
 export display_msg_if_fail
+export section_outline
 
 include("present.jl")
 export present_button
