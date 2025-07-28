@@ -69,13 +69,7 @@ begin
     using PlutoTeachingTools
     # Optionally override default language choice (lang defined in widget above)
 	set_language!(PlutoTeachingTools.get_language(lang))
-
-    nb_link_prefix = string(PlutoRunner.notebook_id[]) # for making urls to notebook
-    pkg_cell_link = "#" * (string(PlutoRunner.currently_running_cell_id[])) # for making urls to this cell
 end;
-
-# ╔═╡ a0e8b662-074f-47c0-9f0c-545ee847f6b9
-Markdown.parse("Here's a link to the [cell]($pkg_cell_link) the loads PlutoTeachingTools.")
 
 # ╔═╡ d173896e-021a-4b2c-b913-62c5a2320341
 md"""
@@ -530,7 +524,7 @@ tip(
 
 # ╔═╡ 93e4e977-efb1-48c7-ac4c-c578140135ee
 Markdown.parse(
-    """See also [package cell]($pkg_cell_link) for overriding default language selected from `ENV[LANG]`.""",
+    """See also [package cell](#PlutoTeachingTools) for overriding default language selected from `ENV[LANG]`.""",
 )
 
 # ╔═╡ 743491af-3d4b-4dee-9ad7-2372ba4e97bd
@@ -1007,10 +1001,9 @@ version = "17.4.0+2"
 # ╟─9b272420-8ab0-4b8e-9c4f-bf81a56227db
 # ╠═dee4aa68-e5eb-4a8a-869f-867e61de5ec5
 # ╠═f0704e56-7e97-4c92-bbdd-76d7a873e6d8
-# ╠═84ccb960-41f8-430d-bd73-a7c0248cfb95
+# ╟─84ccb960-41f8-430d-bd73-a7c0248cfb95
 # ╟─d6b3f009-22e4-4b21-8986-a29e3f261c3b
 # ╠═657c3eea-1ef6-11ed-3e82-5daad2bc19a1
-# ╠═a0e8b662-074f-47c0-9f0c-545ee847f6b9
 # ╟─d173896e-021a-4b2c-b913-62c5a2320341
 # ╠═9ceaa0a3-0e68-4373-add9-49b6fa908b39
 # ╠═4f968b5c-cb11-4d22-ad5b-5ec9c7c94c87
