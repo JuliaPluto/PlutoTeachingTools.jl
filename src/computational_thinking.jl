@@ -346,3 +346,89 @@ function blockquote(text, author="")
     </style>
     """)
 end
+
+
+"""
+A clear visual indicator of a section, with a colored outline. You use this function at the start of a section.
+
+The outline extends below the cell, which makes it useful to visually group multiple cells together.
+
+```julia
+section_outline(
+    section_type::String,
+    section_title::String;
+    color::String="green", # this can be any valid CSS color
+    big::Bool=false, # if true, the outline will be larger
+    header_level::Int=2, # the level of the header to use. 2 means a ## header, 3 means a ### header, etc.
+)
+```
+
+
+# Example
+
+```julia
+section_outline("Example:", "Finding the roots of a polynomial"; color="red")
+```
+
+```julia
+md"\""
+Let's find the roots of the polynomial ``x^2 - 4x + 4 = 0``.
+""\"
+```
+
+```julia
+f(x) = x^2 - 4x + 4
+```
+
+```julia
+f(2.0)
+```
+
+> This looks like:
+> 
+> ![Screenshot of the section outline from the code above](https://i.imgur.com/2cYDNiv.png)
+
+"""
+section_outline(
+	section_text,
+	title; 
+	color="green",
+	big::Bool=false,
+	header_level::Int=2,
+) = @htl """
+<$("h$header_level") class="ptt-section $(big ? "big" : "")" style="--ptt-accent: $(color);"><span>$(section_text)</span> $(title)</$("h$header_level")>
+	
+<style>
+.ptt-section::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: -25px;
+	right: -6px;
+	top: -4px;
+	height: 200px;
+	border: 4px solid salmon;
+	border-bottom: none;
+	border-image-source: linear-gradient(to bottom, var(--ptt-accent), transparent);
+	border-image-slice: 1;
+	opacity: .7;
+	pointer-events: none;
+}
+
+.big.ptt-section::before {
+	height: 500px;
+}
+	
+
+.ptt-section > span {
+	color: color-mix(in hwb, var(--ptt-accent) 60%, black);
+	@media (prefers-color-scheme: dark) {
+		color: color-mix(in hwb, var(--ptt-accent) 30%, white);
+	}
+	font-style: italic;
+}
+
+	
+</style>
+"""
+
