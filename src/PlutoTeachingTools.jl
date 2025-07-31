@@ -1,5 +1,6 @@
 module PlutoTeachingTools
 
+import PlutoUI
 using PlutoUI.ExperimentalLayout: Div
 using Markdown: @md_str, MD, Admonition, LaTeX
 using HypertextLiteral: @htl, @htl_str
@@ -36,6 +37,7 @@ export ChooseDisplayMode # combines present_button and WidthOverDocs
 
 include("latex.jl")
 export latexify_md, wrap_tex
+export @widemath_str
 
 include("aside.jl")
 export aside, set_aside_width
