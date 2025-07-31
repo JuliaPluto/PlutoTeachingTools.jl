@@ -1,4 +1,3 @@
-import Markdown
 
 text_to_content(x) = x
 text_to_content(x::String) = Markdown.parse(x)
