@@ -38,6 +38,26 @@ function WidthOverDocs(
    """)
 end
 
+
+"""
+Render LaTeX math text in an extra wide cell. This uses [PlutoUI.WideCell](https://featured.plutojl.org/basic/plutoui.jl#WideCell) to get an extra wide cell, and any content that does fit becomes scrollable: you can scroll the equation to reveal hidden parts.
+
+# Example
+
+```julia
+widemath""\"
+\\sqrt{some very long equation that does not fit in the screen normally} +
+\\sqrt{some very long equation that does not fit in the screen normally} +
+\\sqrt{some very long equation that does not fit in the screen normally}
+"\""
+```
+"""
+macro widemath_str(s)
+	f(x) = PlutoUI.ExperimentalLayout.Div([x]; style="min-width: max-content;") |> PlutoUI.WideCell
+	:(Markdown.parse("```math\n$($(esc(s)))\n```") |> $f)
+end
+
+
 """
 Display a full-screen confetti animation! The confetti will disappear automatically, and it will be fired every time the cell is re-run.
 

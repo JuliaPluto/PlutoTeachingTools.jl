@@ -1,5 +1,6 @@
 module PlutoTeachingTools
 
+import PlutoUI
 using PlutoUI.ExperimentalLayout: Div
 using Markdown: @md_str, MD, Admonition, LaTeX
 using HypertextLiteral: @htl, @htl_str
@@ -45,6 +46,7 @@ export RobustLocalResource
 
 include("other.jl")
 export WidthOverDocs
+export @widemath_str
 export confetti
 
 include("footnotes.jl")
