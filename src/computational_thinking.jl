@@ -1,6 +1,9 @@
+import Markdown
+
+
 
 text_to_content(x) = x
-text_to_content(x::String) = Markdown.parse(x)
+text_to_content(x::String) = @static(isdefined(Markdown, :parse) ? getfield(Markdown, :parse)(x) : x)
 
 
 "Hint box with arguement as text."
@@ -156,7 +159,7 @@ end
 function keep_working_if_var_contains_substr(
     var::Symbol, str::MD, substr::String, lang::AbstractLanguage=default_language[]
 )
-    return keep_working_if_var_contains_substr(var, Markdown.plain(str), substr, lang)
+    return keep_working_if_var_contains_substr(var, @static(isdefined(Markdown, :plain) ? getfield(Markdown, :plain)(str) : str), substr, lang)
 end
 
 type_isa(var, t::Union{Type,Vector{Type},Vector{DataType}}) = (any(typeof(var) .<: t))
