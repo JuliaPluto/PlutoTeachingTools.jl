@@ -53,7 +53,7 @@ widemath""\"
 ```
 """
 macro widemath_str(s)
-	f(x) = PlutoUI.ExperimentalLayout.Div([x]; style="min-width: max-content;") |> PlutoUI.WideCell
+	f(x) = Div([x]; style="min-width: max-content;") |> PlutoUI.WideCell
 	:(Markdown.parse("```math\n$($(esc(s)))\n```") |> $f)
 end
 
