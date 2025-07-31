@@ -37,6 +37,7 @@ export ChooseDisplayMode # combines present_button and WidthOverDocs
 
 include("latex.jl")
 export latexify_md, wrap_tex
+export @widemath_str
 
 include("aside.jl")
 export aside, set_aside_width
@@ -46,7 +47,6 @@ export RobustLocalResource
 
 include("other.jl")
 export WidthOverDocs
-export @widemath_str
 export confetti
 
 include("footnotes.jl")
