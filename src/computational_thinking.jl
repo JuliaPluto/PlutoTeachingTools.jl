@@ -396,14 +396,18 @@ f(2.0)
 > ![Screenshot of the section outline from the code above](https://i.imgur.com/2cYDNiv.png)
 
 """
-section_outline(
+function section_outline(
 	section_text,
 	title; 
 	color="green",
 	big::Bool=false,
 	header_level::Int=2,
-) = @htl """
-<$("h$header_level") class="ptt-section $(big ? "big" : "")" style="--ptt-accent: $(color);"><span>$(section_text)</span> $(title)</$("h$header_level")>
+)
+	header_contents = repr(MIME"text/html"(), @htl "$section_text $title")
+	id = replace(header_contents, " " => "-") # see https://github.com/fonsp/Pluto.jl/pull/3243
+	
+	h = @htl("""
+<$("h$header_level") id=$id class="ptt-section $(big ? "big" : "")" style="--ptt-accent: $(color);"><span>$(section_text)</span> $(title)</$("h$header_level")>
 	
 <style>
 .ptt-section::before {
@@ -437,5 +441,9 @@ section_outline(
 
 	
 </style>
-"""
+""")
+
+    # wrap it in a Markdown.MD object so that it can use the header ID copy feature: https://github.com/fonsp/Pluto.jl/pull/3264
+	Markdown.MD(h)
+end
 
