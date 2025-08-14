@@ -303,9 +303,7 @@ function blockquote(text, author="")
     <style> 
     .nice-blockquote{
     padding: 25px;
-    background: light grey;
     border: 0.5px solid #ccc;
-    color: black;
     box-sizing:border-box;
     overflow-y:hidden;
     }
