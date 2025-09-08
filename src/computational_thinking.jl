@@ -270,7 +270,7 @@ function TODO(; lang::AbstractLanguage=default_language[], text="", heading=todo
 
     div.ptt-todo-content {
         padding:1.2rem;
-        background-color: white;
+        background-color: var(--white);
     }
     </style>
     """)
@@ -295,7 +295,7 @@ function blockquote(text, author="")
     <div class="nice-blockquote nice-blockquote__bordered nice-blockquote--quoted">
     <p class="nice-blockquote__text">
     $text
-    <p>
+    </p>
     <div class="nice-blockquote__text nice-blockquote__text--author">
     $author
     </div> 
@@ -310,21 +310,35 @@ function blockquote(text, author="")
     .nice-blockquote__bordered{
     border-left-width: 14px;
     }
-    .nice-blockquote--quoted::before{
-    content:open-quote;
-    font-size:70px;
-    font-family: Arial;
-    font-weight:bold;
-    color:#ccc;
-    display:block;
-    margin-top:-20px;
-    margin-bottom:-40px;
-    font-family: Arial;
+    p.nice-blockquote__text::before,
+    p.nice-blockquote__text::after{
+        content: open-quote;
+        font-size: 70px;
+        font-family: Arial;
+        font-weight: bold;
+        color: #ccc;
+        display: block;
+        /* margin-top: -20px; */
+        /* margin-bottom: -40px; */
+        font-family: Arial;
+        float: left;
+        /* padding: 0.1ch 1ch; */
     }
+    
+    p.nice-blockquote__text::before{
+        padding-inline-end: .2ch;
+        line-height: 0.5;
+    }
+    p.nice-blockquote__text::after{
+        content: close-quote;
+        float: right;
+        padding-inline-start: .2ch;
+            line-height: .7;
+    }
+        
     .nice-blockquote__text{
     font-family: Arial;
     font-style: italic;
-    fontsize: 1.5em;	
     margin:0;
     line height: 1.5;
     text-align:left;
@@ -333,21 +347,12 @@ function blockquote(text, author="")
     margin-bottom:10px;
     }
     .nice-blockquote__text--author{
-    font-weight:bold;
-    font-style: normal;
-    text-align:right;
-    fontsize: 2em;
+        font-weight:bold;
+        font-style: normal;
+        text-align:right;
+        margin-block-start: 3em;
     }
-    .nice-blockquote__text--author::before{
-    content:close-quote;
-    font-size:70px;
-    font-family: Arial;
-    font-weight:bold;
-    color:#ccc;
-    display:block;
-    margin-top:-28px;
-    margin-bottom:-40px;
-    }
+    
     </style>
     """)
 end
