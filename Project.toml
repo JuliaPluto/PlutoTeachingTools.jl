@@ -12,7 +12,7 @@ PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
 Downloads = "<0.0.1, 0.1, 0.2, 1"
-HypertextLiteral = "0.9"
+HypertextLiteral = "0.9, 1.0"
 Latexify = "0.15, 0.16"
 Markdown = "<0.0.1, 1"
 PlutoUI = "0.7.56"
