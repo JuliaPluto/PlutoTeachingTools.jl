@@ -1,0 +1,19 @@
+name = "PlutoTeachingTools"
+uuid = "661c6b06-c737-4d37-b85c-46df65de6f69"
+authors = ["Eric Ford <ebf11@psu.edu> and contributors"]
+version = "0.4.7"
+
+[deps]
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
+Latexify = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
+Markdown = "d6f4376e-aef5-505a-96c1-9c027394607a"
+PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
+
+[compat]
+Downloads = "<0.0.1, 0.1, 0.2, 1"
+HypertextLiteral = "0.9, 1.0"
+Latexify = "0.15, 0.16"
+Markdown = "<0.0.1, 1"
+PlutoUI = "0.7.56"
+julia = "1.6"
