@@ -94,3 +94,29 @@ function confetti()
    </script>
    """)
 end
+
+"""
+	expected_failure(f)
+
+Run the function `f`, and if it throws an error, display the error message in a red box. 
+If it does not throw an error, display a warning in a yellow box.
+
+```julia
+expected_failure() do
+	error("This is an error message")
+end
+```
+"""
+function expected_failure(f)
+	try
+		f()
+		Markdown.MD(Markdown.Admonition("warning", "Expected failure", [
+			Markdown.Paragraph(["The code was expected to fail, but it evaluated successfully."])
+		]))
+	catch e
+		msg = sprint(showerror, e)
+		Markdown.MD(Markdown.Admonition("danger", "Expected failure", [
+			Markdown.Code("julia", msg)
+		]))
+	end
+end
