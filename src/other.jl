@@ -98,8 +98,8 @@ end
 """
 	expected_failure(f)
 
-Run the function `f`, and if it throws an error, display the error message in a red box. 
-If it does not throw an error, display a warning in a yellow box.
+Run the function `f`, and if it throws an error, displays just the error message similar
+to how Pluto renders errors. If it does not throw an error, display a warning in a yellow box.
 
 ```julia
 expected_failure() do
@@ -107,16 +107,24 @@ expected_failure() do
 end
 ```
 """
-function expected_failure(f)
+function expected_failure_2(f)
 	try
 		f()
 		Markdown.MD(Markdown.Admonition("warning", "Expected failure", [
 			Markdown.Paragraph(["The code was expected to fail, but it evaluated successfully."])
 		]))
 	catch e
-		msg = sprint(showerror, e)
-		Markdown.MD(Markdown.Admonition("danger", "Expected failure", [
-			Markdown.Code("julia", msg)
-		]))
+		str = sprint() do io
+			showerror(IOContext(io, :color=>true), e)
+		end
+		@htl """
+		<div>
+		<jlerror>
+		<header style='overflow: auto;'>
+		$(embed_display(Text(str)))
+		</header>
+		</jlerror>
+		</div>
+		"""
 	end
 end
