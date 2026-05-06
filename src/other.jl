@@ -107,11 +107,11 @@ expected_failure() do
 end
 ```
 """
-function expected_failure(f)
+function expected_failure(f; lang::AbstractLanguage=default_language[])
 	try
 		f()
-		Markdown.MD(Markdown.Admonition("warning", "Expected failure", [
-			Markdown.Paragraph(["The code was expected to fail, but it evaluated successfully."])
+		MD(Admonition("warning", expected_failure_str(lang), [
+			text_to_content(expected_failure_text_str(lang))
 		]))
 	catch e
 		str = sprint() do io
@@ -121,10 +121,10 @@ function expected_failure(f)
 		<div>
 		<jlerror>
 		<div class="error-header">
-		<secret-h1>Expected error message</secret-h1>
+		<secret-h1>$(expected_error_message_str(lang))</secret-h1>
 		</div>
 		<header style='overflow: auto;'>
-		$(embed_display(Text(str)))
+		$(Main.PlutoRunner.embed_display(Text(str)))
 		</header>
 		</jlerror>
 		</div>

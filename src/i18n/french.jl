@@ -163,6 +163,9 @@ end
 
 # other.jl
 PlutoTeachingTools.full_width_mode_str(lang::Lang) where {Lang<:French} = "Mode Pleine Largeur"
+PlutoTeachingTools.expected_failure_str(lang::Lang) where {Lang<:French} = "Échec attendu"
+PlutoTeachingTools.expected_failure_text_str(lang::Lang) where {Lang<:French} = "Le code était censé échouer, mais il a été évalué avec succès."
+PlutoTeachingTools.expected_error_message_str(lang::Lang) where {Lang<:French} = "Message d'erreur attendu"
 
 # present.jl
 PlutoTeachingTools.present_str(lang::Lang) where {Lang<:French} = "présentation"
