@@ -107,7 +107,7 @@ expected_failure() do
 end
 ```
 """
-function expected_failure_2(f)
+function expected_failure(f)
 	try
 		f()
 		Markdown.MD(Markdown.Admonition("warning", "Expected failure", [
@@ -120,6 +120,9 @@ function expected_failure_2(f)
 		@htl """
 		<div>
 		<jlerror>
+		<div class="error-header">
+		<secret-h1>Expected error message</secret-h1>
+		</div>
 		<header style='overflow: auto;'>
 		$(embed_display(Text(str)))
 		</header>
