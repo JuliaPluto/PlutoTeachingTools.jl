@@ -72,6 +72,9 @@ end
 
 # other.jl
 full_width_mode_str(lang::AbstractLanguage) = @error "Please define a translation."
+expected_failure_str(lang::AbstractLanguage) = @error "Please define a translation."
+expected_failure_text_str(lang::AbstractLanguage) = @error "Please define a translation."
+expected_error_message_str(lang::AbstractLanguage) = @error "Please define a translation."
 
 # present.jl
 present_str(lang::AbstractLanguage) = @error "Please define a translation."

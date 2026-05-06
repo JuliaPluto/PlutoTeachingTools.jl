@@ -117,6 +117,9 @@ end
 function PlutoTeachingTools.full_width_mode_str(lang::Russian)
     return "Режим полной ширины"
 end
+PlutoTeachingTools.expected_failure_str(lang::Russian) = "Ожидаемая ошибка"
+PlutoTeachingTools.expected_failure_text_str(lang::Russian) = "Ожидалось, что код завершится с ошибкой, но он выполнился успешно."
+PlutoTeachingTools.expected_error_message_str(lang::Russian) = "Ожидаемое сообщение об ошибке"
 
 # present.jl
 PlutoTeachingTools.present_str(lang::Russian) = "презентация"

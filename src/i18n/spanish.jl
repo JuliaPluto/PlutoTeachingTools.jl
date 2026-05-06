@@ -158,6 +158,9 @@ end
 function PlutoTeachingTools.full_width_mode_str(lang::Spanish)
     return "Modo Pantalla Completa"
 end
+PlutoTeachingTools.expected_failure_str(lang::Spanish) = "Fallo esperado"
+PlutoTeachingTools.expected_failure_text_str(lang::Spanish) = "Se esperaba que el código fallara, pero se ejecutó correctamente."
+PlutoTeachingTools.expected_error_message_str(lang::Spanish) = "Mensaje de error esperado"
 
 # present.jl
 PlutoTeachingTools.present_str(lang::Spanish) = "presentación"

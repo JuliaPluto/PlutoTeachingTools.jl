@@ -94,3 +94,40 @@ function confetti()
    </script>
    """)
 end
+
+"""
+	expected_failure(f)
+
+Run the function `f`, and if it throws an error, displays just the error message similar
+to how Pluto renders errors. If it does not throw an error, display a warning in a yellow box.
+
+```julia
+expected_failure() do
+	error("This is an error message")
+end
+```
+"""
+function expected_failure(f; lang::AbstractLanguage=default_language[])
+	try
+		f()
+		MD(Admonition("warning", expected_failure_str(lang), [
+			text_to_content(expected_failure_text_str(lang))
+		]))
+	catch e
+		str = sprint() do io
+			showerror(IOContext(io, :color=>true), e)
+		end
+		@htl """
+		<div>
+		<jlerror>
+		<div class="error-header">
+		<secret-h1>$(expected_error_message_str(lang))</secret-h1>
+		</div>
+		<header style='overflow: auto;'>
+		$(Main.PlutoRunner.embed_display(Text(str)))
+		</header>
+		</jlerror>
+		</div>
+		"""
+	end
+end
