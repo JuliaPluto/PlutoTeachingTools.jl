@@ -91,6 +91,30 @@ import .PTTSpanish: SpanishES, SpanishFormal, SpanishColloquial
 include("chinese.jl")
 import .PTTChinese: ChineseZH
 
+"""
+Returns the BCP47 language code (e.g. `"fr"`) for `lang`, so callers can set the HTML
+`lang` attribute on localized content (WCAG 3.1.2 Language of Parts) — without it,
+assistive technology reads localized admonition titles using the surrounding
+document's language, in the wrong accent/voice.
+
+Formal/colloquial registers of the same language share one code, since BCP47 has no
+register subtag. Falls back to `""` (no attribute emitted) for languages registered
+by a package user via `register_language!` that have no code defined here.
+"""
+# Note: FrenchBelgium === FrenchBelgiumColloquial, GermanGermany === GermanGermanyFormal,
+# and SpanishES === SpanishFormal (type aliases defined in the respective language
+# files), so each concrete struct gets exactly one method below.
+get_language_code(::AbstractLanguage) = ""
+get_language_code(::EnglishUS) = "en"
+get_language_code(::FrenchBelgiumFormal) = "fr"
+get_language_code(::FrenchBelgiumColloquial) = "fr"
+get_language_code(::GermanGermanyFormal) = "de"
+get_language_code(::GermanGermanyColloquial) = "de"
+get_language_code(::RussianRU) = "ru"
+get_language_code(::SpanishFormal) = "es"
+get_language_code(::SpanishColloquial) = "es"
+get_language_code(::ChineseZH) = "zh"
+
 const languages_registered = Dict(
     "en" => EnglishUS(),
     "en_us" => EnglishUS(),

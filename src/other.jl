@@ -25,6 +25,12 @@ function WidthOverDocs(
    	       # max-width: calc(100% - 4rem);
                   # margin-right: 2rem;
    	}
+   	/* WCAG 2.4.7 (Focus Visible): make keyboard focus visible on this
+   	   checkbox, scoped by id so other checkboxes are unaffected. */
+   	#width-over-livedocs:focus-visible {
+   		outline: 2px solid #4A90E2;
+   		outline-offset: 2px;
+   	}
    </style>
    <script>
    	const toggle_width = function(t) {

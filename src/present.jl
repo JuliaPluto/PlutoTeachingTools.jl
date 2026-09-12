@@ -51,7 +51,31 @@ function Columns(cols...; widths=nothing, gap=2)
     # i.e. [a, b, c] ==> [a, gap, b, gap, c]
     children = vec([reshape(columns, 1, :); fill(the_gap, 1, ncols)])[1:(end - 1)]
 
-    return Div(children; style=Dict("display" => "flex", "flex-direction" => "row"))
+    # Unique class per call, so that (a) the <style> block below only affects
+    # this instance and (b) multiple Columns()/TwoColumn()/ThreeColumn() calls
+    # on the same page don't clash with each other.
+    # WCAG 1.4.10 (Reflow): fixed-percentage-width columns become unreadably
+    # narrow (or require horizontal scrolling) once the viewport shrinks to
+    # the 320px minimum reflow width, so stack columns vertically below a
+    # 600px breakpoint. This must live in a real <style> block (rather than
+    # an inline `style="..."` attribute) because inline styles cannot contain
+    # `@media` rules.
+    id = "pluto-columns-$(string(rand(UInt64); base=16))"
+
+    row = Div(
+        children; style=Dict("display" => "flex", "flex-direction" => "row"), class=id
+    )
+
+    return @htl("""
+    <style>
+    @media (max-width: 600px) {
+        .$(id) {
+            flex-direction: column !important;
+        }
+    }
+    </style>
+    $(row)
+    """)
 end
 
 TwoColumn(a, b; kwargs...) = Columns(a, b; kwargs...)
@@ -92,6 +116,16 @@ function ChooseDisplayMode(;
                 #align-self: flex-star;
                 #margin-left: 50px;
                 #margin-right: 2rem;
+        }
+        /* WCAG 2.4.7 (Focus Visible): make keyboard focus visible on these
+           checkboxes, scoped by id so other checkboxes are unaffected. */
+        #width-over-livedocs:focus-visible {
+            outline: 2px solid #4A90E2;
+            outline-offset: 2px;
+        }
+        #present-mode:focus-visible {
+            outline: 2px solid #4A90E2;
+            outline-offset: 2px;
         }
 </style>
 <script>
