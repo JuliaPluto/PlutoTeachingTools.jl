@@ -48,6 +48,7 @@ export RobustLocalResource
 include("other.jl")
 export WidthOverDocs
 export confetti
+export expected_failure
 
 include("footnotes.jl")
 export FootnotesInlineNumbered

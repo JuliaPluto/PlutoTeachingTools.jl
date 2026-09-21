@@ -265,6 +265,11 @@ if !ismissing(responce_1) && responce_1 == 42
     PlutoTeachingTools.confetti()
 end
 
+# ╔═╡ 957ec770-ab5b-4b0b-a38d-46834d96fb68
+expected_failure() do
+    error("This is an error message")
+end
+
 # ╔═╡ 7596325b-7a1b-4fad-bac3-ae6743e3f8dd
 md"""# Robust Local Resources"""
 

@@ -105,6 +105,9 @@ end
 
 # other.jl
 PlutoTeachingTools.full_width_mode_str(lang::English) = "Full Width Mode"
+PlutoTeachingTools.expected_failure_str(lang::English) = "Expected failure"
+PlutoTeachingTools.expected_failure_text_str(lang::English) = "The code was expected to fail, but it evaluated successfully."
+PlutoTeachingTools.expected_error_message_str(lang::English) = "Expected error message"
 
 # present.jl
 PlutoTeachingTools.present_str(lang::English) = "present"
