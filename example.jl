@@ -578,8 +578,7 @@ md"""
 PlutoTeachingTools.jl has been updated to meet WCAG 2.1 AA accessibility requirements, including:
 - dynamic feedback boxes are announced to screen readers, 
 - admonition titles carry a `lang` attribute for the selected language, 
-- `blockquote`/`section_outline` colors adapt to light/dark themes, 
-- `Columns`/`TwoColumn`/`ThreeColumn` reflow to a single column on narrow screens, and 
+- `blockquote`/`section_outline` colors adapt to light/dark themes, and
 - checkboxes show a visible keyboard-focus outline. 
 
 See accessibility.md in the repository for full details, including one return-type change.  If you notice accessibility issues, please submit an issue and/or pull request, so we can make PlutoTeachingTools.jl even better.
