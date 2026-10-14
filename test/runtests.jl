@@ -9,6 +9,14 @@ using Markdown
         end
     end
 
+    @testset "Computational thinking" begin
+        include("computational_thinking.jl")
+    end
+
+    @testset "Present" begin
+        include("present.jl")
+    end
+
     @testset "Admonitions" begin
         @testset "Standard String arguments" begin
             @test_nowarn hint("Test hint")
@@ -30,14 +38,7 @@ using Markdown
     end
 
     @testset "aside" begin
-        @test_nowarn aside("testing aside")
-        @test_nowarn aside("testing aside with offset", v_offset=50)
-        @test_nowarn aside(md"testing in markdown")
-        @test_nowarn aside(tip(md"Good tip here"))
-        @test_nowarn aside(md"""
- Testing
- Multi-line
- """)
+        include("aside.jl")
     end
 
     @testset "Useful strings" begin
@@ -46,5 +47,9 @@ using Markdown
 
     @testset "Changing width" begin
         @test_nowarn WidthOverDocs()
+    end
+
+    @testset "Other" begin
+        include("other.jl")
     end
 end

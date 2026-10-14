@@ -6,6 +6,8 @@ Math from computation, math with computation (Spring 2021)](https://computationa
 See the **[example notebook](https://juliapluto.github.io/PlutoTeachingTools.jl/example.html)** for functions provided.
 Several functions have optional arguments that aren't (yet?) demonstrated in the example notebook.
 
+See [accessibility.md](accessibility.md) for the WCAG 2.1 AA accessibility fixes applied to this package's output and any compatibility notes for existing notebooks.
+
 Others are encouraged to improve and/or contribute new functions that are of value to other educators (in either formal or informal settings).  Pull Requests welcome, but please be patient when we are slow to review/merge PRs.
 
 # Other useful packages for Pluto notebook tutorials
