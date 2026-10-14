@@ -24,8 +24,6 @@ editor chrome and notebook UI are out of scope (see [Pluto.jl](https://github.co
 | `hint`, `tip`, `almost`, `warning_box`, `question_box`, `keyconcept`, `danger`, `func_not_defined`, `var_not_defined`, `protip`, `answer_box`, and the boxes above | 3.1.2 Language of Parts | Localized admonition titles wrapped in `lang="xx"` (via new `get_language_code(lang)` in `src/i18n/i18n.jl`) so assistive technology uses the correct voice for the notebook's selected language. |
 | `blockquote` | 1.4.3 Contrast (Minimum) | Border and quote-mark color changed from hardcoded `#ccc` to `color-mix(in srgb, currentColor 40%, transparent)`, which tracks the current theme's text color instead of failing contrast in dark mode. |
 | `section_outline` | 1.4.3 Contrast (Minimum) | Documentation only — see [Custom colors in `section_outline`](#custom-colors-in-section_outline) below. |
-| `Columns`, `TwoColumn`, `ThreeColumn`, `TwoColumnWideLeft`, `TwoColumnWideRight` | 1.4.10 Reflow | Columns now stack into a single column below a 600px viewport width instead of staying in a fixed-percentage row that becomes unreadably narrow. |
-| `TODO` | 1.1.1 Non-text Content | Decorative warning-sign glyphs wrapped in `<span aria-hidden="true">` so screen readers don't announce them. |
 | `blockquote` | 1.1.1 Non-text Content | Quote marks moved from CSS `content: open-quote`/`close-quote` (inconsistent screen reader behavior) to real `<span aria-hidden="true">` text. |
 | `ChooseDisplayMode`, `WidthOverDocs` | 2.4.7 Focus Visible | Checkboxes now show a `:focus-visible` outline for keyboard navigation. |
 | `aside` | 1.3.1 Info and Relationships | Added `aria-label="Aside"`, and a docstring note that `aside` content should be supplementary/non-critical (see below). |
@@ -58,15 +56,6 @@ The other admonition functions (`hint`, `tip`, `almost`, `warning_box`, `questio
 `Markdown.MD` (so `isa(x, Markdown.MD)` still holds), but their `.content` is now the HTML-wrapped
 admonition rather than a bare `Markdown.Admonition`, so the same plain-text/`.content`-inspection
 caveat applies to them too.
-
-### `Columns` / `TwoColumn` / `ThreeColumn` / `TwoColumnWideLeft` / `TwoColumnWideRight`
-
-These used to return a `PlutoUI.ExperimentalLayout.Div`. They now return an `@htl`-wrapped object
-(so a scoped `<style>` block can be emitted alongside the row) and stack to one column below
-600px. Visual layout at normal widths is unchanged, and passing the result directly to Pluto for
-display works as before. If you were composing the result further with
-`PlutoUI.ExperimentalLayout` combinators expecting a `Div`/`Node`, that composition may no longer
-apply cleanly, since the return value is no longer a bare `Div`.
 
 ### Custom colors in `section_outline`
 

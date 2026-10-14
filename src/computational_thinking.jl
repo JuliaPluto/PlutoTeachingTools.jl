@@ -283,7 +283,7 @@ function TODO(; lang::AbstractLanguage=default_language[], text="", heading=todo
     <div class="ptt-todo-tape">
     </div> 
     <div class="ptt-todo-content">
-    <h1><span aria-hidden="true">&#9888;</span> $heading <span aria-hidden="true">&#9888;</span></h1>
+    <h1>&#9888; $heading &#9888;</h1>
     <p>$text</p>
     </div> 
     <div class="ptt-todo-tape">

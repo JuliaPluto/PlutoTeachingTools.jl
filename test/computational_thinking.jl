@@ -23,22 +23,6 @@
     @test has_status_live_region(wrong_type(:x, Int))
 end
 
-@testset "TODO() decorative warning icon (WCAG 1.1.1)" begin
-    # TODO() surrounds its heading with a warning-sign glyph purely for visual
-    # framing. Without aria-hidden, a screen reader announces "warning sign" as
-    # if it were content (e.g. "warning sign, TODO, warning sign"). The glyph(s)
-    # must be wrapped in <span aria-hidden="true">...</span> so they are skipped.
-    html_str = repr(MIME"text/html"(), TODO())
-
-    @test occursin("&#9888;", html_str)
-    @test occursin("<span aria-hidden=\"true\">&#9888;</span>", html_str)
-    # There are two decorative occurrences, flanking the heading text.
-    @test count("<span aria-hidden=\"true\">&#9888;</span>", html_str) == 2
-
-    html_str_with_text = repr(MIME"text/html"(), TODO("Finish this section."))
-    @test count("<span aria-hidden=\"true\">&#9888;</span>", html_str_with_text) == 2
-end
-
 @testset "blockquote() border/quote-mark contrast (WCAG 1.4.3)" begin
     # The border and decorative quote marks used to be a hardcoded #ccc, which is
     # invisible/fails contrast against a dark background in Pluto's dark theme.
