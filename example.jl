@@ -409,6 +409,8 @@ Columns(md"Left col", md"Middle col", md"Right col")
 # ╔═╡ c22f7f6a-171d-4379-86c9-1781875cf0a4
 md"""
 You can customize the widths of the columns.
+
+*Note: columns now automatically stack into a single column on narrow/mobile screens (below 600px wide).*
 """
 
 # ╔═╡ 0e1e62a6-3b78-4415-89fe-fa17279fddbf
